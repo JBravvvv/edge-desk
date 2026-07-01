@@ -1,0 +1,54 @@
+name: Refresh live data (market-day loop)
+
+# GitHub's scheduled cron is unreliable for tight intervals (it delays and skips),
+# so instead of a 15-min cron we run ONE long job that loops for the trading day,
+# force-pushing a fresh snapshot to the `data` branch every ~15 min. The app reads
+# that branch via raw.githubusercontent (CORS-enabled). This only needs the
+# scheduler to fire ~once each morning — and can be started manually any time.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "32 13 * * 1-5"   # ~09:32 ET, a few morning attempts in case one is skipped
+    - cron: "2 14 * * 1-5"
+    - cron: "17 15 * * 1-5"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-loop
+  cancel-in-progress: true
+
+jobs:
+  loop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install advisor dependencies
+        run: pip install -r edge-desk-app/requirements.txt
+      - name: Loop — publish snapshots to the data branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REMOTE="https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          END=$(( $(date -u +%s) + 20400 ))   # run ~5.66h, then exit under the 6h cap
+          while [ "$(date -u +%s)" -lt "$END" ]; do
+            python edge_desk_advisor.py --snapshot /tmp/data.json || true
+            if [ -s /tmp/data.json ]; then
+              rm -rf /tmp/pub && mkdir /tmp/pub
+              cp /tmp/data.json /tmp/pub/data.json
+              ( cd /tmp/pub
+                git init -q
+                git checkout -q -b data
+                git -c user.name="edge-desk-bot" -c user.email="actions@users.noreply.github.com" add data.json
+                git -c user.name="edge-desk-bot" -c user.email="actions@users.noreply.github.com" commit -q -m "data $(date -u +%FT%H:%MZ)"
+                git push -q --force "$REMOTE" data )
+              echo "published $(date -u +%H:%MZ)"
+            fi
+            sleep 900
+          done

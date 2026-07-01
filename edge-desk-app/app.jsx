@@ -132,7 +132,11 @@ const rankedSignals = () => [...SIGNALS].sort((a, b) => V_ORDER[a.verdict] - V_O
    All numbers come from that advisor export — nothing is invented here. If the
    file is missing (e.g. running as a chat artifact), we fall back to the
    hand-verified snapshot and say so honestly in the header. */
-const DATA_URL = "data.json";
+/* Live feed: a refresher job force-pushes a fresh snapshot to the `data` branch
+   every ~15 min during market hours; raw.githubusercontent serves it with CORS.
+   Falls back to the Pages-bundled copy when offline / first paint. */
+const DATA_URL = "https://raw.githubusercontent.com/JBravvvv/edge-desk/data/data.json";
+const DATA_FALLBACK = "data.json";
 const REFRESH_MS = 60000;
 
 const fmtClock = (iso) => {
@@ -147,10 +151,10 @@ function useLiveData() {
   const [d, setD] = useState({ status: "idle", updated: null, calls: null, positions: null, crypto: null });
   const refresh = useCallback(async () => {
     setD((s) => ({ ...s, status: s.status === "live" ? "live" : "loading" }));
+    const grab = async (url) => { const res = await fetch(`${url}?t=${Date.now()}`, { cache: "no-store" }); if (!res.ok) throw new Error(String(res.status)); return res.json(); };
     try {
-      const res = await fetch(`${DATA_URL}?t=${Date.now()}`, { cache: "no-store" });
-      if (!res.ok) throw new Error(String(res.status));
-      const j = await res.json();
+      let j;
+      try { j = await grab(DATA_URL); } catch (_) { j = await grab(DATA_FALLBACK); }
       setD({ status: "live", updated: j.updated || null, calls: Array.isArray(j.calls) ? j.calls : null, positions: Array.isArray(j.positions) ? j.positions : null, crypto: j.crypto || null });
     } catch (e) { setD((s) => ({ status: s.updated ? "live" : "snapshot", updated: s.updated, calls: s.calls, positions: s.positions, crypto: s.crypto })); }
   }, []);
