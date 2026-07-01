@@ -250,6 +250,7 @@ export default function EdgeDesk() {
               <span className={`live live-${statusMeta.cls} live-static`}><span className="live-dot" /><span className="live-txt num">{statusMeta.txt}</span></span>
             </div>
             <div className="menu-rows">
+              <button className={`menu-row ${tab === "about" ? "menu-row-on" : ""}`} onClick={() => go("about")}><span>How it works</span><span className="menu-arrow">›</span></button>
               <button className={`menu-row ${tab === "analyst" ? "menu-row-on" : ""}`} onClick={() => go("analyst")}><span>Analyst</span><span className="menu-arrow">›</span></button>
             </div>
             <button className="menu-reset" onClick={reset}>Reset trade log to defaults</button>
@@ -265,6 +266,7 @@ export default function EdgeDesk() {
         {tab === "portfolio" && <Portfolio positions={positions} setPositions={setPositions} live={live} />}
         {tab === "sizer" && <div className="wrap"><Sizer /></div>}
         {tab === "analyst" && <div className="wrap"><Analyst onAdd={(it) => addPosition(it.ticker, it.company || it.name)} /></div>}
+        {tab === "about" && <About go={go} />}
       </main>
 
       <nav className="tabbar">
@@ -298,7 +300,7 @@ function Overview({ regime, go, live = {} }) {
       </section>
 
       <div className="wrap">
-        <Section eyebrow="Top calls" title={`Highest-conviction buys · ${ASOF}`} sub="My strongest setups right now. Tap to see the full call list.">
+        <Section eyebrow="Top calls" title="Highest-conviction buys" date={ASOF} sub="My strongest setups right now. Tap to see the full call list.">
           <div className="tops">
             {buys.map((s) => (
               <button key={s.ticker} className="card top-card" onClick={() => go("signals")}>
@@ -310,7 +312,7 @@ function Overview({ regime, go, live = {} }) {
           </div>
         </Section>
 
-        <Section eyebrow="Macro" title={`The regime · ${ASOF}`} sub="My current read on the forces framing every call — read-only, not a guess you adjust. It updates when the analysis refreshes.">
+        <Section eyebrow="Macro" title="The regime" date={ASOF} sub="My current read on the forces framing every call — read-only, not a guess you adjust. It updates when the analysis refreshes.">
           <div className="macro-grid">
             {SEED_MACRO.map((m) => { const meta = STATE_META[m.state]; return (
               <div key={m.id} className="card macro-card" style={{ borderTopColor: meta.color }}>
@@ -672,10 +674,35 @@ function Analyst({ onAdd }) {
 }
 
 /* ======================= atoms ======================= */
-function Section({ eyebrow, title, sub, children }) {
+function About({ go }) {
+  return (
+    <div className="wrap">
+      <div className="page-head"><div><h1 className="page-title">How it works</h1><p className="page-sub">What Edge Desk does, where the numbers come from, and what it isn't.</p></div></div>
+      <div className="card card-pad about">
+        <h3 className="about-h">The idea</h3>
+        <p>Edge Desk scans 100+ liquid names with a transparent rules engine — trend, momentum, breakout and pullback structure, and relative strength versus the market — then ranks each one Buy, Watch, or Avoid. It's a shortlist of setups that match criteria, not predictions.</p>
+        <h3 className="about-h">Where the numbers come from</h3>
+        <p>The advisor computes everything from live prices and publishes a snapshot the app pulls through the day — on open, on a timer, and when you tap the live badge. Nothing here is hand-typed or guessed.</p>
+        <h3 className="about-h">The tabs</h3>
+        <ul className="about-list">
+          <li><b>Overview</b> — the macro regime and sector momentum framing every call.</li>
+          <li><b>Signals</b> — ranked Buy / Watch / Avoid with entry zone, stop, and thesis.</li>
+          <li><b>Universe</b> — every tracked name, re-ranked live by today's prices.</li>
+          <li><b>Portfolio</b> — your trade log; it marks P&amp;L to live prices automatically.</li>
+          <li><b>Sizer</b> — stop-based position sizing and R-multiples.</li>
+        </ul>
+        <h3 className="about-h">Important</h3>
+        <p>This is an <b>informational tool, not investment advice</b>. The calls are setups that match criteria; you decide what to trade — willing to win or lose. The win/loss record exists to keep the process honest.</p>
+        <button className="btn btn-block" onClick={() => go("signals")}>See today's signals →</button>
+      </div>
+    </div>
+  );
+}
+
+function Section({ eyebrow, title, date, sub, children }) {
   return (
     <section className="sec">
-      <div className="sec-head">{eyebrow && <span className="sec-eyebrow">{eyebrow}</span>}<h2 className="sec-title">{title}</h2>{sub && <p className="sec-sub">{sub}</p>}</div>
+      <div className="sec-head">{eyebrow && <span className="sec-eyebrow">{eyebrow}</span>}<h2 className="sec-title">{title}{date && <span className="sec-date num">{date}</span>}</h2>{sub && <p className="sec-sub">{sub}</p>}</div>
       {children}
     </section>
   );
@@ -745,6 +772,7 @@ const CSS = `
 .sec{ margin-bottom:38px; } .sec-head{ margin-bottom:16px; }
 .sec-eyebrow{ display:inline-block; font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--brand); margin-bottom:7px; }
 .sec-title{ font-family:var(--disp); font-weight:600; font-size:25px; letter-spacing:-.01em; margin:0; }
+.sec-date{ font-family:var(--body); font-weight:500; font-size:12.5px; color:var(--ink2); letter-spacing:.01em; margin-left:10px; vertical-align:2px; }
 .sec-sub{ color:var(--ink2); font-size:14.5px; line-height:1.5; margin:5px 0 0; max-width:64ch; }
 .page-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap; padding:34px 0 22px; }
 .page-title{ font-family:var(--disp); font-weight:600; font-size:32px; letter-spacing:-.02em; margin:0; }
@@ -985,4 +1013,13 @@ const CSS = `
 .uni-live .live-dot{ background:#1FB37D; animation:livepulse 1.7s ease-in-out infinite; }
 .uni-tkr{ font-family:var(--disp); }
 .uni-row{ border-radius:12px; }
+
+/* about / how it works */
+.about h3.about-h{ font-family:var(--disp); font-weight:600; font-size:16px; letter-spacing:-.01em; margin:18px 0 6px; }
+.about h3.about-h:first-child{ margin-top:0; }
+.about p{ font-size:13.5px; line-height:1.6; color:var(--ink2); margin:0; }
+.about .about-list{ margin:4px 0 0; padding-left:18px; }
+.about .about-list li{ font-size:13.5px; line-height:1.6; color:var(--ink2); margin-bottom:5px; }
+.about .about-list b, .about p b{ color:var(--ink); font-weight:600; }
+.about .btn-block{ margin-top:20px; }
 `;
