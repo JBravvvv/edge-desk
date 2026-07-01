@@ -240,9 +240,10 @@ export default function EdgeDesk() {
           <span className="brand-mark" /><span className="brand-name">Edge<span className="brand-thin">Desk</span></span>
         </button>
         <div className="appbar-right">
-          <button className={`live live-${statusMeta.cls}`} onClick={live.refresh} aria-label="Refresh live data">
-            <span className="live-dot" /><span className="live-txt num">{statusMeta.txt}</span><span className="live-ref"><IconRefresh /></span>
-          </button>
+          <span className={`live live-${statusMeta.cls} live-static`}>
+            <span className="live-dot" /><span className="live-txt num">{statusMeta.txt}</span>
+          </span>
+          <button className={`iconbtn refresh-btn ${live.status === "loading" ? "spinning" : ""}`} onClick={live.refresh} aria-label="Refresh now"><IconRefresh /></button>
           <button className="iconbtn burger" onClick={() => setMenu(true)} aria-label="More"><span /><span /><span /></button>
         </div>
       </header>
@@ -1022,6 +1023,10 @@ const CSS = `
 
 /* menu (more) button + slide-out additions */
 .iconbtn{ display:flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.07); border:none; }
+.iconbtn .ic{ color:#CBD3DD; width:19px; height:19px; }
+.refresh-btn:active{ transform:scale(.92); }
+.refresh-btn.spinning .ic{ animation:spin .8s linear infinite; }
+@keyframes spin{ to{ transform:rotate(360deg); } }
 .appbar .burger{ display:flex !important; flex-direction:column; gap:3.5px; align-items:center; }
 .appbar .burger span{ width:16px; height:1.8px; background:#CBD3DD; border-radius:2px; }
 .menu-reg{ display:flex; gap:8px; flex-wrap:wrap; padding:16px 20px 4px; }
