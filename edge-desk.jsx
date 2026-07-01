@@ -146,17 +146,24 @@ const fmtClock = (iso) => {
 
 function useLiveData() {
   const [d, setD] = useState({ status: "idle", updated: null, calls: null, positions: null, crypto: null });
-  const refresh = useCallback(async () => {
-    setD((s) => ({ ...s, status: s.status === "live" ? "live" : "loading" }));
+  const [busy, setBusy] = useState(false);
+  const refresh = useCallback(async (manual) => {
+    if (manual) setBusy(true);
+    const started = Date.now();
     const grab = async (url) => { const res = await fetch(`${url}?t=${Date.now()}`, { cache: "no-store" }); if (!res.ok) throw new Error(String(res.status)); return res.json(); };
     try {
       let j;
       try { j = await grab(DATA_URL); } catch (_) { j = await grab(DATA_FALLBACK); }
       setD({ status: "live", updated: j.updated || null, calls: Array.isArray(j.calls) ? j.calls : null, positions: Array.isArray(j.positions) ? j.positions : null, crypto: j.crypto || null });
     } catch (e) { setD((s) => ({ status: s.updated ? "live" : "snapshot", updated: s.updated, calls: s.calls, positions: s.positions, crypto: s.crypto })); }
+    if (manual) {
+      const el = Date.now() - started;                 // keep the spin visible for at least a beat
+      if (el < 650) await new Promise((r) => setTimeout(r, 650 - el));
+      setBusy(false);
+    }
   }, []);
-  useEffect(() => { refresh(); const id = setInterval(refresh, REFRESH_MS); return () => clearInterval(id); }, [refresh]);
-  return { ...d, refresh };
+  useEffect(() => { refresh(); const id = setInterval(() => refresh(), REFRESH_MS); return () => clearInterval(id); }, [refresh]);
+  return { ...d, busy, refresh };
 }
 
 /* Build a ticker→price map from whatever the live feed carries. */
@@ -243,7 +250,7 @@ export default function EdgeDesk() {
           <span className={`live live-${statusMeta.cls} live-static`}>
             <span className="live-dot" /><span className="live-txt num">{statusMeta.txt}</span>
           </span>
-          <button className={`iconbtn refresh-btn ${live.status === "loading" ? "spinning" : ""}`} onClick={live.refresh} aria-label="Refresh now"><IconRefresh /></button>
+          <button className={`iconbtn refresh-btn ${live.busy ? "spinning" : ""}`} onClick={() => live.refresh(true)} aria-label="Refresh now"><IconRefresh /></button>
           <button className="iconbtn burger" onClick={() => setMenu(true)} aria-label="More"><span /><span /><span /></button>
         </div>
       </header>
