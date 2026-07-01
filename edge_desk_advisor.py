@@ -67,6 +67,26 @@ UNIVERSE = [
 UNIVERSE = sorted(set(UNIVERSE))
 BENCHMARK = "SPY"
 
+# ----------------------------------------------------------------------
+# 100+ liquid crypto (same rules engine, benchmarked vs BTC). yfinance
+# uses SYMBOL-USD. Illiquid / too-new names are dropped by the same filters.
+# ----------------------------------------------------------------------
+CRYPTO_BENCHMARK = "BTC-USD"
+CRYPTO_MIN_DOLLAR_VOL = 5_000_000
+CRYPTO_UNIVERSE = [f"{s}-USD" for s in [
+    "BTC", "ETH", "BNB", "SOL", "XRP", "ADA", "DOGE", "AVAX", "TRX", "DOT",
+    "LINK", "MATIC", "LTC", "BCH", "UNI", "XLM", "ATOM", "XMR", "ETC", "HBAR",
+    "FIL", "ICP", "APT", "NEAR", "VET", "ARB", "OP", "MKR", "AAVE", "GRT",
+    "ALGO", "QNT", "EGLD", "SAND", "MANA", "AXS", "THETA", "FTM", "XTZ", "EOS",
+    "FLOW", "CHZ", "KAVA", "MINA", "ZEC", "DASH", "ENJ", "BAT", "ZIL", "COMP",
+    "CRV", "SNX", "YFI", "SUSHI", "LDO", "RUNE", "INJ", "SEI", "SUI", "TIA",
+    "STX", "IMX", "RNDR", "FET", "GALA", "JUP", "PYTH", "ONDO", "STRK", "JTO",
+    "BLUR", "ENS", "DYDX", "GMX", "APE", "LRC", "CVX", "ROSE", "KSM", "ZRX",
+    "ANKR", "SKL", "BAND", "KNC", "STORJ", "GLM", "CELO", "IOTA", "NEO", "WAVES",
+    "KDA", "RVN", "ZEN", "HOT", "DGB", "IOTX", "ONE", "CFX", "WOO", "GMT",
+    "MASK", "PEPE", "SHIB", "FLOKI", "BONK", "WIF", "TON", "CKB", "AR", "OSMO",
+]]
+
 # Curated entry ranges (BUY triggers when price enters the range). entry=None => no trigger.
 WATCHLIST = {
     "GEV":  {"entry": (1010, 1060), "stop": 945},
@@ -176,6 +196,36 @@ def fetch(tickers) -> pd.DataFrame:
                        group_by="ticker", progress=False, threads=True)
 
 
+def rank_crypto():
+    """Rank the crypto universe with the same engine, benchmarked vs BTC."""
+    uni = sorted(set(CRYPTO_UNIVERSE) | {CRYPTO_BENCHMARK})
+    data = fetch(uni)
+
+    def frame(t):
+        try:
+            return data[t] if len(uni) > 1 else data
+        except Exception:
+            return None
+
+    b, b3 = frame(CRYPTO_BENCHMARK), 0.0
+    if b is not None:
+        bc = b["Close"].dropna()
+        if len(bc) > 64:
+            b3 = (float(bc.iloc[-1]) / float(bc.iloc[-64]) - 1) * 100
+    rows = []
+    for t in CRYPTO_UNIVERSE:
+        f = frame(t)
+        if f is None or getattr(f, "empty", True):
+            continue
+        a = analyze(f, b3)
+        if a and a["dollar_vol"] >= CRYPTO_MIN_DOLLAR_VOL:
+            v, why = verdict(t, a)
+            a.update(ticker=t, verdict=v, why=why)
+            rows.append(a)
+    rows.sort(key=lambda x: ({"BUY": 0, "WATCH": 1, "AVOID": 2}[x["verdict"]], -x["score"]))
+    return rows, b3
+
+
 def run(top_n: int = TOP_N, export: bool = False, snapshot=None) -> None:
     universe = sorted(set(UNIVERSE) | set(WATCHLIST) | set(POSITIONS) | {BENCHMARK})
     data = fetch(universe)
@@ -227,6 +277,12 @@ def run(top_n: int = TOP_N, export: bool = False, snapshot=None) -> None:
             "calls": [{"t": r["ticker"], "v": r["verdict"], "s": r["score"],
                        "p": round(r["price"], 2), "setup": r["setup"]} for r in rows],
             "positions": pos,
+        }
+        crows, cb3 = rank_crypto()
+        payload["crypto"] = {
+            "bench3m": round(cb3, 1),
+            "calls": [{"t": r["ticker"].replace("-USD", ""), "v": r["verdict"], "s": r["score"],
+                       "p": round(r["price"], 2), "setup": r["setup"], "why": r["why"]} for r in crows],
         }
         text = json.dumps(payload)
         if snapshot in (True, "-"):

@@ -141,15 +141,15 @@ const fmtClock = (iso) => {
 };
 
 function useLiveData() {
-  const [d, setD] = useState({ status: "idle", updated: null, calls: null, positions: null });
+  const [d, setD] = useState({ status: "idle", updated: null, calls: null, positions: null, crypto: null });
   const refresh = useCallback(async () => {
     setD((s) => ({ ...s, status: s.status === "live" ? "live" : "loading" }));
     try {
       const res = await fetch(`${DATA_URL}?t=${Date.now()}`, { cache: "no-store" });
       if (!res.ok) throw new Error(String(res.status));
       const j = await res.json();
-      setD({ status: "live", updated: j.updated || null, calls: Array.isArray(j.calls) ? j.calls : null, positions: Array.isArray(j.positions) ? j.positions : null });
-    } catch (e) { setD((s) => ({ status: s.updated ? "live" : "snapshot", updated: s.updated, calls: s.calls, positions: s.positions })); }
+      setD({ status: "live", updated: j.updated || null, calls: Array.isArray(j.calls) ? j.calls : null, positions: Array.isArray(j.positions) ? j.positions : null, crypto: j.crypto || null });
+    } catch (e) { setD((s) => ({ status: s.updated ? "live" : "snapshot", updated: s.updated, calls: s.calls, positions: s.positions, crypto: s.crypto })); }
   }, []);
   useEffect(() => { refresh(); const id = setInterval(refresh, REFRESH_MS); return () => clearInterval(id); }, [refresh]);
   return { ...d, refresh };
@@ -159,9 +159,13 @@ function useLiveData() {
 const livePriceMap = (live) => {
   const map = {};
   (live.calls || []).forEach((c) => { const t = (c.t || c.ticker || "").toUpperCase(); const p = Number(c.p ?? c.price); if (t && p) map[t] = p; });
+  ((live.crypto && live.crypto.calls) || []).forEach((c) => { const t = (c.t || "").toUpperCase(); const p = Number(c.p); if (t && p) map[t] = p; });
   (live.positions || []).forEach((c) => { const t = (c.t || c.ticker || "").toUpperCase(); const p = Number(c.p ?? c.price ?? c.current); if (t && p) map[t] = p; });
   return map;
 };
+
+/* Crypto-aware price format: coins span from $100k to $0.00001. */
+const cUsd = (n) => { n = Number(n) || 0; return n >= 1 ? usd2(n) : ("$" + n.toPrecision(3)); };
 
 /* ======================= icons (inline, offline-safe) ======================= */
 const Ic = (p) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="ic">{p}</svg>;
@@ -185,6 +189,7 @@ const BAR = [
 export default function EdgeDesk() {
   const [tab, setTab] = useState("overview");
   const [menu, setMenu] = useState(false);
+  const [mode, setMode] = useState("stocks");
   const [loaded, setLoaded] = useState(false);
   const [positions, setPositions] = useState(SEED_POSITIONS);
   const live = useLiveData();
@@ -238,6 +243,13 @@ export default function EdgeDesk() {
         </div>
       </header>
 
+      <div className="assetbar">
+        <div className="seg2" role="tablist" aria-label="Asset class">
+          <button className={`seg2-btn ${mode === "stocks" ? "seg2-on" : ""}`} onClick={() => setMode("stocks")} role="tab" aria-selected={mode === "stocks"}>Stocks</button>
+          <button className={`seg2-btn ${mode === "crypto" ? "seg2-on" : ""}`} onClick={() => setMode("crypto")} role="tab" aria-selected={mode === "crypto"}>Crypto</button>
+        </div>
+      </div>
+
       {menu && (
         <div className="menu" onClick={() => setMenu(false)}>
           <div className="menu-panel" onClick={(e) => e.stopPropagation()}>
@@ -260,9 +272,9 @@ export default function EdgeDesk() {
       )}
 
       <main className="main">
-        {tab === "overview" && <Overview regime={regime} go={go} live={live} />}
-        {tab === "signals" && <Signals onLog={logTrade} priceMap={priceMap} />}
-        {tab === "universe" && <Universe onLog={logTrade} live={live} />}
+        {tab === "overview" && <Overview regime={regime} go={go} live={live} mode={mode} />}
+        {tab === "signals" && <Signals onLog={logTrade} priceMap={priceMap} mode={mode} live={live} />}
+        {tab === "universe" && <Universe onLog={logTrade} live={live} mode={mode} />}
         {tab === "portfolio" && <Portfolio positions={positions} setPositions={setPositions} live={live} />}
         {tab === "sizer" && <div className="wrap"><Sizer /></div>}
         {tab === "analyst" && <div className="wrap"><Analyst onAdd={(it) => addPosition(it.ticker, it.company || it.name)} /></div>}
@@ -281,8 +293,13 @@ export default function EdgeDesk() {
 }
 
 /* ======================= overview ======================= */
-function Overview({ regime, go, live = {} }) {
-  const buys = rankedSignals().filter((s) => s.verdict === "BUY").slice(0, 3);
+function Overview({ regime, go, live = {}, mode = "stocks" }) {
+  const isCrypto = mode === "crypto";
+  const cCalls = (live.crypto && live.crypto.calls) || [];
+  const cTop = cCalls.filter((c) => (c.v || "").toUpperCase() === "BUY");
+  const buys = isCrypto
+    ? (cTop.length ? cTop : cCalls).slice(0, 3).map((c) => ({ ticker: c.t, theme: c.setup, score: c.s, verdict: (c.v || "WATCH").toUpperCase() }))
+    : rankedSignals().filter((s) => s.verdict === "BUY").slice(0, 3);
 
   return (
     <div>
@@ -300,18 +317,20 @@ function Overview({ regime, go, live = {} }) {
       </section>
 
       <div className="wrap">
-        <Section eyebrow="Top calls" title="Highest-conviction buys" date={ASOF} sub="My strongest setups right now. Tap to see the full call list.">
+        <Section eyebrow="Top calls" title={isCrypto ? "Top crypto right now" : "Highest-conviction buys"} date={isCrypto ? null : ASOF} sub={isCrypto ? "The strongest coins in today's live ranking. Tap for the full list." : "My strongest setups right now. Tap to see the full call list."}>
           <div className="tops">
-            {buys.map((s) => (
+            {buys.length === 0 && <Empty>No standout {isCrypto ? "coins" : "buys"} right now — the ranking refreshes through the day.</Empty>}
+            {buys.map((s) => { const vm = VERDICT[s.verdict] || VERDICT.BUY; return (
               <button key={s.ticker} className="card top-card" onClick={() => go("signals")}>
-                <span className="verdict" style={{ background: VERDICT.BUY.bg, color: VERDICT.BUY.color }}>BUY</span>
+                <span className="verdict" style={{ background: vm.bg, color: vm.color }}>{s.verdict || "BUY"}</span>
                 <div className="top-meta"><span className="top-tkr">{s.ticker}</span><span className="top-theme">{s.theme}</span></div>
                 <span className="top-score num">{s.score}/10</span>
               </button>
-            ))}
+            ); })}
           </div>
         </Section>
 
+        {!isCrypto && (<>
         <Section eyebrow="Macro" title="The regime" date={ASOF} sub="My current read on the forces framing every call — read-only, not a guess you adjust. It updates when the analysis refreshes.">
           <div className="macro-grid">
             {SEED_MACRO.map((m) => { const meta = STATE_META[m.state]; return (
@@ -334,13 +353,42 @@ function Overview({ regime, go, live = {} }) {
             ))}
           </div>
         </Section>
+        </>)}
       </div>
     </div>
   );
 }
 
 /* ======================= signals ======================= */
-function Signals({ onLog, priceMap = {} }) {
+function Signals({ onLog, priceMap = {}, mode = "stocks", live = {} }) {
+  if (mode === "crypto") {
+    const crows = ((live.crypto && live.crypto.calls) || []).slice(0, 40);
+    const cb = live.crypto && typeof live.crypto.bench3m === "number" ? live.crypto.bench3m : null;
+    return (
+      <div className="wrap">
+        <div className="page-head"><div><h1 className="page-title">Signals</h1><p className="page-sub">Live crypto ranking — same engine as stocks, benchmarked vs Bitcoin{cb != null ? ` (BTC 3m ${cb >= 0 ? "+" : ""}${cb}%)` : ""}. Setups that match criteria, not predictions.</p></div></div>
+        {crows.length === 0
+          ? <Empty>No crypto signals yet — the feed refreshes through the day. When crypto is weak, expect mostly Watch and Avoid.</Empty>
+          : <div className="sig-list">
+              {crows.map((d) => { const vv = (d.v || "WATCH").toUpperCase(); const m = VERDICT[vv] || VERDICT.WATCH; return (
+                <div key={d.t} className="card sig-card">
+                  <div className="sig-top">
+                    <span className="verdict" style={{ background: m.bg, color: m.color }}>{vv}</span>
+                    <span className="sig-tkr num">{d.t}</span>
+                    <span className="sig-co">{d.setup}</span>
+                    <span className="sig-gem"><b className="num" style={{ color: m.color }}>{d.s}</b><span>/10</span></span>
+                  </div>
+                  <div className="sig-levels">
+                    <div className="sig-lev"><span className="sig-lk">Now</span><b className="num sig-lv">{cUsd(d.p)}<span className="sig-livedot" /></b></div>
+                  </div>
+                  <p className="sig-reason">{d.why}</p>
+                  <button className="btn-ghost sig-log" onClick={() => onLog({ ticker: d.t, name: d.t, entry: null, price: Number(d.p) || 0 })}>Log this trade →</button>
+                </div>
+              ); })}
+            </div>}
+      </div>
+    );
+  }
   const rows = rankedSignals();
   return (
     <div className="wrap">
@@ -392,11 +440,12 @@ function Signals({ onLog, priceMap = {} }) {
 }
 
 /* ======================= universe ======================= */
-function Universe({ onLog, live = {} }) {
+function Universe({ onLog, live = {}, mode = "stocks" }) {
   const [raw, setRaw] = useState("");
   const [pasted, setPasted] = useState(null);
   const [showAll, setShowAll] = useState(false);
   const [err, setErr] = useState("");
+  const isCrypto = mode === "crypto";
   const sigMap = Object.fromEntries(SIGNALS.map((s) => [s.ticker, s.verdict]));
   const total = UNIVERSE.reduce((n, g) => n + g.names.length, 0);
   const ord = { BUY: 0, WATCH: 1, AVOID: 2 };
@@ -410,20 +459,21 @@ function Universe({ onLog, live = {} }) {
     } catch (e) { setErr(`Couldn't read that — ${e.message}. Paste the JSON the advisor prints with --export.`); }
   };
 
-  const liveRanked = Array.isArray(live.calls) && live.calls.length ? sortCalls(live.calls) : null;
-  const ranked = pasted || (!showAll ? liveRanked : null);
+  const feedCalls = isCrypto ? ((live.crypto && live.crypto.calls) || null) : live.calls;
+  const liveRanked = Array.isArray(feedCalls) && feedCalls.length ? sortCalls(feedCalls) : null;
+  const ranked = (!isCrypto && pasted) || (!showAll ? liveRanked : null);
 
   return (
     <div className="wrap">
       <div className="page-head">
-        <div><h1 className="page-title">Universe</h1><p className="page-sub">Every name I track ({total}+), re-ranked by today's prices — strongest on top, weakening names flagged AVOID.</p></div>
-        {ranked && <button className="btn-ghost" onClick={() => { setShowAll(true); setPasted(null); setRaw(""); }}>Show all by theme →</button>}
-        {showAll && liveRanked && !pasted && <button className="btn-ghost" onClick={() => setShowAll(false)}>← Back to live ranking</button>}
+        <div><h1 className="page-title">Universe</h1><p className="page-sub">{isCrypto ? "Every liquid coin I track, re-ranked live versus Bitcoin — strongest on top, weakening names flagged AVOID." : `Every name I track (${total}+), re-ranked by today's prices — strongest on top, weakening names flagged AVOID.`}</p></div>
+        {!isCrypto && ranked && <button className="btn-ghost" onClick={() => { setShowAll(true); setPasted(null); setRaw(""); }}>Show all by theme →</button>}
+        {!isCrypto && showAll && liveRanked && !pasted && <button className="btn-ghost" onClick={() => setShowAll(false)}>← Back to live ranking</button>}
       </div>
 
       {ranked ? (
         <div>
-          {liveRanked && !pasted && <p className="uni-live"><span className="live-dot" /> Live ranking · updated {fmtClock(live.updated)} · {ranked.length} names</p>}
+          {liveRanked && !pasted && <p className="uni-live"><span className="live-dot" /> Live ranking · updated {fmtClock(live.updated)} · {ranked.length} {isCrypto ? "coins" : "names"}</p>}
           <div className="uni-ranked">
             {ranked.map((d, i) => { const v = (d.v || d.verdict || "WATCH").toUpperCase(); const meta = VERDICT[v] || VERDICT.WATCH; const tk = d.t || d.ticker; return (
               <div key={tk + i} className="uni-row">
@@ -431,13 +481,15 @@ function Universe({ onLog, live = {} }) {
                 <span className="verdict" style={{ background: meta.bg, color: meta.color }}>{v}</span>
                 <span className="uni-tkr num">{tk}</span>
                 <span className="uni-setup">{d.setup || ""}</span>
-                <span className="uni-price num">{d.p != null ? usd0(d.p) : ""}</span>
+                <span className="uni-price num">{d.p != null ? (isCrypto ? cUsd(d.p) : usd0(d.p)) : ""}</span>
                 <span className="uni-score num" style={{ color: meta.color }}>{(d.s ?? d.score) != null ? `${d.s ?? d.score}/10` : ""}</span>
                 <button className="uni-log" onClick={() => onLog({ ticker: tk, name: tk, entry: null, price: Number(d.p) || 0 })} aria-label={`Log ${tk}`}>+</button>
               </div>
             ); })}
           </div>
         </div>
+      ) : isCrypto ? (
+        <Empty>The crypto ranking is loading — it refreshes through the day. When the market's weak you'll see mostly Watch and Avoid.</Empty>
       ) : (
         <div>
           <div className="card card-pad uni-import">
@@ -939,6 +991,13 @@ const CSS = `
   padding:calc(env(safe-area-inset-top) + 12px) 16px 12px; box-shadow:0 2px 16px rgba(11,14,20,.16); }
 .appbar .brand{ gap:9px; }
 .appbar-right{ display:flex; align-items:center; gap:9px; }
+
+/* stocks / crypto toggle bar */
+.assetbar{ display:flex; justify-content:center; background:var(--surface); border-bottom:1px solid var(--line); padding:10px 16px; }
+.seg2{ display:inline-flex; background:#EDF0F4; border-radius:12px; padding:3px; gap:3px; }
+.seg2-btn{ border:none; background:none; font-family:var(--body); font-size:13.5px; font-weight:600; color:var(--ink2); padding:7px 26px; border-radius:9px; transition:.15s; }
+.seg2-btn:active{ transform:scale(.97); }
+.seg2-on{ background:#fff; color:var(--brand-d); box-shadow:0 1px 3px rgba(19,26,38,.13); }
 
 /* live status pill */
 .live{ display:inline-flex; align-items:center; gap:7px; border:1px solid transparent; padding:6px 10px; border-radius:22px; background:rgba(255,255,255,.06); font-family:inherit; transition:.15s; }
