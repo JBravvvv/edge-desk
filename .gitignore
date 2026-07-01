@@ -1,0 +1,13 @@
+# Personal / private — never publish these
+positions.json
+portfolio_history.csv
+
+# Local dev tooling
+.claude/
+scratchpad/
+
+# Build artifacts / archives
+*.zip
+__pycache__/
+*.pyc
+.DS_Store

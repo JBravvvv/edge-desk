@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <!-- viewport-fit=cover lets us paint under the Dynamic Island / home indicator -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <title>Edge Desk</title>
+  <meta name="description" content="Personal equity-research dashboard, signals, and trade log." />
+
+  <!-- Standalone home-screen app (iOS + Android) -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Edge Desk" />
+  <meta name="theme-color" content="#131A26" />
+
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" href="icons/icon-192.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <!-- Brand fonts (progressive enhancement: falls back to system fonts offline) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <style>
+    /* Dark base so the status-bar area and any overscroll match the app chrome */
+    html { background: #131A26; }
+    html, body { margin: 0; padding: 0; }
+    body { -webkit-text-size-adjust: 100%; overscroll-behavior: none; }
+    * { -webkit-tap-highlight-color: transparent; }
+
+    /* Fill the full device height, including the notch/Dynamic Island area.
+       Safe-area insets (Dynamic Island, home indicator) are handled inside the
+       app's own CSS — on the app bar, the bottom tab bar, and main content. */
+    #root, .app { min-height: 100dvh; }
+
+    /* First-paint splash (replaced by React on mount) so launch isn't blank */
+    #boot {
+      position: fixed; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 18px;
+      background: #131A26; color: #fff;
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+    #boot .gem {
+      width: 54px; height: 54px; border-radius: 13px; transform: rotate(45deg);
+      background: linear-gradient(135deg, #0E7A57, #1FB37D);
+      box-shadow: 0 0 26px rgba(31, 179, 125, .5);
+      animation: bootpulse 1.4s ease-in-out infinite;
+    }
+    #boot .word { font-size: 22px; font-weight: 600; letter-spacing: .01em; }
+    #boot .word span { color: #1FB37D; }
+    #boot .sub {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 12.5px; color: #8A94A2; letter-spacing: .02em;
+    }
+    @keyframes bootpulse { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { #boot .gem { animation: none; } }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <div id="boot">
+      <div class="gem"></div>
+      <div class="word">Edge<span>Desk</span></div>
+      <div class="sub">loading your desk…</div>
+    </div>
+  </div>
+
+  <script>
+    /* Shim the Claude-artifact storage API onto localStorage so the Portfolio
+       trade log persists between launches of the home-screen app. */
+    if (!window.storage) {
+      window.storage = {
+        get:    async (k) => { const v = localStorage.getItem(k); return v === null ? null : { value: v }; },
+        set:    async (k, v) => { localStorage.setItem(k, v); return true; },
+        delete: async (k) => { localStorage.removeItem(k); return true; },
+      };
+    }
+  </script>
+
+  <!-- React + JSX transpiler, bundled locally so the app runs with no build step and offline -->
+  <script src="vendor/react.production.min.js"></script>
+  <script src="vendor/react-dom.production.min.js"></script>
+  <script src="vendor/babel.min.js"></script>
+  <script type="text/babel" data-presets="react" src="app.jsx"></script>
+
+  <script>
+    /* Register the service worker for offline use (needs HTTPS or localhost). */
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js').catch(function () {});
+      });
+    }
+  </script>
+</body>
+</html>

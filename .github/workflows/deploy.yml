@@ -1,0 +1,54 @@
+name: Deploy Edge Desk + refresh live data
+
+# Publishes edge-desk-app/ to GitHub Pages, and on a schedule re-runs the
+# advisor to refresh data.json — so the installed app auto-updates during the
+# day with no computer left on. Data is always the advisor's own output.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    # Roughly every 15 min during US market hours (13:30–20:00 UTC ≈ 9:30a–4p ET), Mon–Fri.
+    - cron: "30,45 13 * * 1-5"
+    - cron: "0,15,30,45 14-19 * * 1-5"
+    - cron: "0 20 * * 1-5"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install advisor dependencies
+        run: pip install -r edge-desk-app/requirements.txt
+
+      # A yfinance hiccup in CI must not block the deploy — we fall back to the
+      # last committed data.json if the refresh fails.
+      - name: Refresh live data (data.json)
+        continue-on-error: true
+        run: python edge_desk_advisor.py --snapshot edge-desk-app/data.json
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: edge-desk-app
+
+      - id: deploy
+        uses: actions/deploy-pages@v4
