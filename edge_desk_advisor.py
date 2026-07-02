@@ -87,6 +87,109 @@ CRYPTO_UNIVERSE = [f"{s}-USD" for s in [
     "MASK", "PEPE", "SHIB", "FLOKI", "BONK", "WIF", "TON", "CKB", "AR", "OSMO",
 ]]
 
+# Display names (ticker -> company/coin). Missing tickers fall back to the symbol.
+NAMES = {
+    "NVDA": "NVIDIA", "AVGO": "Broadcom", "AMD": "Advanced Micro Devices", "MU": "Micron",
+    "MRVL": "Marvell", "TSM": "TSMC", "ARM": "Arm Holdings", "ALAB": "Astera Labs",
+    "CRDO": "Credo", "SMCI": "Super Micro", "QCOM": "Qualcomm", "TXN": "Texas Instruments",
+    "LRCX": "Lam Research", "AMAT": "Applied Materials", "KLAC": "KLA Corp", "ASML": "ASML",
+    "ADI": "Analog Devices", "NXPI": "NXP Semi", "ON": "ON Semi", "MCHP": "Microchip",
+    "GEV": "GE Vernova", "VRT": "Vertiv", "CEG": "Constellation Energy", "VST": "Vistra",
+    "TLN": "Talen Energy", "NRG": "NRG Energy", "ETN": "Eaton", "PWR": "Quanta Services",
+    "OKLO": "Oklo", "SMR": "NuScale Power", "CCJ": "Cameco", "NEE": "NextEra Energy",
+    "SO": "Southern Co", "D": "Dominion Energy", "DUK": "Duke Energy", "AEP": "American Electric",
+    "EXC": "Exelon", "NBIS": "Nebius", "CRWV": "CoreWeave", "PLTR": "Palantir", "NOW": "ServiceNow",
+    "SNOW": "Snowflake", "CRWD": "CrowdStrike", "NET": "Cloudflare", "DDOG": "Datadog",
+    "MDB": "MongoDB", "APP": "AppLovin", "ORCL": "Oracle", "CRM": "Salesforce", "ADBE": "Adobe",
+    "PANW": "Palo Alto Networks", "ZS": "Zscaler", "S": "SentinelOne", "FTNT": "Fortinet",
+    "WDAY": "Workday", "TEAM": "Atlassian", "INTC": "Intel", "AAPL": "Apple", "MSFT": "Microsoft",
+    "GOOGL": "Alphabet", "AMZN": "Amazon", "META": "Meta Platforms", "TSLA": "Tesla",
+    "NFLX": "Netflix", "UBER": "Uber", "ABNB": "Airbnb", "SHOP": "Shopify", "PINS": "Pinterest",
+    "RBLX": "Roblox", "LLY": "Eli Lilly", "NVO": "Novo Nordisk", "VKTX": "Viking Therapeutics",
+    "HIMS": "Hims & Hers", "UNH": "UnitedHealth", "ISRG": "Intuitive Surgical", "REGN": "Regeneron",
+    "VRTX": "Vertex Pharma", "AMGN": "Amgen", "MRK": "Merck", "BSX": "Boston Scientific",
+    "MDT": "Medtronic", "LMT": "Lockheed Martin", "RTX": "RTX Corp", "NOC": "Northrop Grumman",
+    "GD": "General Dynamics", "AVAV": "AeroVironment", "KTOS": "Kratos", "BAH": "Booz Allen",
+    "LDOS": "Leidos", "COIN": "Coinbase", "HOOD": "Robinhood", "SOFI": "SoFi", "CRCL": "Circle",
+    "PYPL": "PayPal", "CAT": "Caterpillar", "DE": "Deere", "HON": "Honeywell", "GE": "GE Aerospace",
+    "DASH": "DoorDash", "EMR": "Emerson", "PH": "Parker Hannifin", "ROK": "Rockwell", "SPY": "S&P 500 ETF",
+    "SMH": "Semiconductor ETF", "VOO": "Vanguard S&P 500", "WEN": "Wendy's",
+}
+CRYPTO_NAMES = {
+    "BTC": "Bitcoin", "ETH": "Ethereum", "BNB": "BNB", "SOL": "Solana", "XRP": "XRP",
+    "ADA": "Cardano", "DOGE": "Dogecoin", "AVAX": "Avalanche", "TRX": "TRON", "DOT": "Polkadot",
+    "LINK": "Chainlink", "MATIC": "Polygon", "LTC": "Litecoin", "BCH": "Bitcoin Cash", "UNI": "Uniswap",
+    "XLM": "Stellar", "ATOM": "Cosmos", "XMR": "Monero", "ETC": "Ethereum Classic", "HBAR": "Hedera",
+    "FIL": "Filecoin", "ICP": "Internet Computer", "APT": "Aptos", "NEAR": "NEAR Protocol",
+    "VET": "VeChain", "ARB": "Arbitrum", "OP": "Optimism", "MKR": "Maker", "AAVE": "Aave", "GRT": "The Graph",
+    "ALGO": "Algorand", "QNT": "Quant", "EGLD": "MultiversX", "SAND": "The Sandbox", "MANA": "Decentraland",
+    "AXS": "Axie Infinity", "THETA": "Theta", "FTM": "Fantom", "XTZ": "Tezos", "EOS": "EOS",
+    "FLOW": "Flow", "CHZ": "Chiliz", "KAVA": "Kava", "MINA": "Mina", "ZEC": "Zcash", "DASH": "Dash",
+    "ENJ": "Enjin", "BAT": "Basic Attention", "ZIL": "Zilliqa", "COMP": "Compound", "CRV": "Curve",
+    "SNX": "Synthetix", "YFI": "yearn.finance", "SUSHI": "SushiSwap", "LDO": "Lido", "RUNE": "THORChain",
+    "INJ": "Injective", "SEI": "Sei", "SUI": "Sui", "TIA": "Celestia", "STX": "Stacks", "IMX": "Immutable",
+    "RNDR": "Render", "FET": "Fetch.ai", "GALA": "Gala", "JUP": "Jupiter", "PYTH": "Pyth", "ONDO": "Ondo",
+    "STRK": "Starknet", "JTO": "Jito", "BLUR": "Blur", "ENS": "ENS", "DYDX": "dYdX", "GMX": "GMX",
+    "APE": "ApeCoin", "LRC": "Loopring", "CVX": "Convex", "ROSE": "Oasis", "KSM": "Kusama", "ZRX": "0x",
+    "ANKR": "Ankr", "SKL": "SKALE", "BAND": "Band", "KNC": "Kyber", "STORJ": "Storj", "GLM": "Golem",
+    "CELO": "Celo", "IOTA": "IOTA", "NEO": "Neo", "WAVES": "Waves", "KDA": "Kadena", "RVN": "Ravencoin",
+    "ZEN": "Horizen", "HOT": "Holo", "DGB": "DigiByte", "IOTX": "IoTeX", "ONE": "Harmony", "CFX": "Conflux",
+    "WOO": "WOO", "GMT": "STEPN", "MASK": "Mask Network", "PEPE": "Pepe", "SHIB": "Shiba Inu",
+    "FLOKI": "Floki", "BONK": "Bonk", "WIF": "dogwifhat", "TON": "Toncoin", "CKB": "Nervos", "AR": "Arweave",
+    "OSMO": "Osmosis",
+}
+
+
+def _why(a: dict, horizon: str) -> str:
+    """A short, honest reason for the given horizon."""
+    up = a["price"] > a["sma50"] > a["sma200"]
+    if horizon == "long":
+        if up and a["ret3m"] > 0:
+            return "strong uptrend, leading the market"
+        if up:
+            return "steady long-term uptrend"
+        if a["above50"] > 22:
+            return "stretched above its trend"
+        if a["price"] < a["sma200"]:
+            return "below its long-term trend"
+        return "basing — no long-term trend yet"
+    if a["rsi"] > 78:
+        return "overbought — risky to chase"
+    if a["setup"] == "Breakout":
+        return "fresh breakout on volume"
+    if a["ret1m"] > 0 and a["rsi"] < 72:
+        return "short-term momentum building"
+    if a["ret1m"] < -5:
+        return "fading over the last month"
+    return "range-bound short-term"
+
+
+def call_obj(a: dict, ticker: str, name_map: dict) -> dict:
+    """Enriched per-name entry for the app snapshot (both horizons + detail stats)."""
+    return {
+        "t": ticker, "name": name_map.get(ticker, ticker),
+        "p": round(a["price"], 2), "chg": round(a["chg"], 2), "setup": a["setup"],
+        "ss": a["score_short"], "sl": a["score_long"],
+        "vs": verdict_h(a["score_short"]), "vl": verdict_h(a["score_long"]),
+        "ws": _why(a, "short"), "wl": _why(a, "long"),
+        "rsi": round(a["rsi"]), "r1m": round(a["ret1m"], 1), "r3m": round(a["ret3m"], 1),
+        "hi": round(a["hi52"], 4), "lo": round(a["lo52"], 4),
+        "dvol": round(a["dollar_vol"]), "vol": round(a["vol"]), "spark": a["spark"],
+    }
+
+
+def market_gauge(rows: list, bench3m: float) -> dict:
+    """A 0-100 risk-on/off reading from breadth + benchmark momentum + average RSI."""
+    if not rows:
+        return {"value": 50, "label": "—"}
+    breadth = 100.0 * sum(1 for r in rows if r["above50"] > 0) / len(rows)
+    mom = max(0.0, min(100.0, 50 + bench3m * 2))
+    heat = max(0.0, min(100.0, sum(r["rsi"] for r in rows) / len(rows)))
+    g = round(0.45 * breadth + 0.30 * mom + 0.25 * heat)
+    label = ("Risk-off" if g < 25 else "Cautious" if g < 45 else
+             "Balanced" if g < 65 else "Risk-on" if g < 82 else "Frothy")
+    return {"value": g, "label": label, "breadth": round(breadth)}
+
 # Curated entry ranges (BUY triggers when price enters the range). entry=None => no trigger.
 WATCHLIST = {
     "GEV":  {"entry": (1010, 1060), "stop": 945},
@@ -124,19 +227,38 @@ def rsi(series: pd.Series, period: int = 14) -> pd.Series:
     return 100 - (100 / (1 + ag / al))
 
 
+def _spark(close, n: int = 24) -> list:
+    """A small downsampled price series (~last 90 bars) for the detail-page chart."""
+    s = close.iloc[-90:]
+    if len(s) > n:
+        idx = sorted(set(int(i) for i in np.linspace(0, len(s) - 1, n)))
+        s = s.iloc[idx]
+    return [round(float(x), 4) for x in s.tolist()]
+
+
+def verdict_h(sc: int) -> str:
+    """Buy/Watch/Avoid from a 0-10 horizon score."""
+    return "BUY" if sc >= 7 else "WATCH" if sc >= 4 else "AVOID"
+
+
 def analyze(df: pd.DataFrame, bench_ret3m: float) -> "dict | None":
     close = df["Close"].dropna()
     if len(close) < 200:
         return None
     vol = df["Volume"].reindex(close.index).fillna(0)
     price = float(close.iloc[-1])
+    prev = float(close.iloc[-2]) if len(close) > 1 else price
+    chg = (price / prev - 1) * 100 if prev else 0.0
     r = float(rsi(close).iloc[-1])
     sma50 = float(close.rolling(50).mean().iloc[-1])
     sma200 = float(close.rolling(200).mean().iloc[-1])
     hi52 = float(close.rolling(252, min_periods=1).max().iloc[-1])
+    lo52 = float(close.rolling(252, min_periods=1).min().iloc[-1])
     from_high = (price / hi52 - 1) * 100
     ret1m = (price / float(close.iloc[-22]) - 1) * 100 if len(close) > 22 else 0.0
     ret3m = (price / float(close.iloc[-64]) - 1) * 100 if len(close) > 64 else 0.0
+    rets = close.pct_change().dropna()
+    volp = float(rets.iloc[-30:].std() * np.sqrt(252) * 100) if len(rets) >= 5 else 0.0  # annualized vol %
     avgvol = float(vol.rolling(50).mean().iloc[-1]) or 1.0
     dollar_vol = avgvol * price
     prev20high = float(close.iloc[-21:-1].max())
@@ -146,6 +268,7 @@ def analyze(df: pd.DataFrame, bench_ret3m: float) -> "dict | None":
     pullback = (0 <= above50 <= 4) and (38 <= r <= 62) and price > sma200
     extended = above50 > 18
 
+    # medium/default score — drives the console output + entry-range alerts
     score = 0
     if price > sma50 > sma200:
         score += 3
@@ -170,9 +293,52 @@ def analyze(df: pd.DataFrame, bench_ret3m: float) -> "dict | None":
     if r > 78:
         score -= 1
     score = max(0, score)
-    return {"price": price, "rsi": r, "score": score, "setup": setup,
-            "from_high": from_high, "ret1m": ret1m, "ret3m": ret3m,
-            "above50": above50, "dollar_vol": dollar_vol}
+
+    # long-term tilt: sustained trend + relative strength; penalize froth + high vol
+    sl = 0
+    if price > sma50 > sma200:
+        sl += 3
+    elif price > sma50:
+        sl += 1
+    if ret3m > bench_ret3m:
+        sl += 2
+    if ret3m > 0:
+        sl += 1
+    if from_high > -20:
+        sl += 1
+    if pullback:
+        sl += 1
+    if above50 > 22:
+        sl -= 2
+    if volp > 60:
+        sl -= 1
+    score_long = max(0, min(10, sl))
+
+    # short-term tilt: recent momentum + breakouts; penalize overbought + weakness
+    ss = 0
+    if ret1m > 0:
+        ss += 2
+    if breakout:
+        ss += 2
+    if from_high > -3:
+        ss += 1
+    if 55 <= r <= 72:
+        ss += 2
+    if price > sma50:
+        ss += 1
+    if pullback:
+        ss += 1
+    if r > 78:
+        ss -= 2
+    if ret1m < -5:
+        ss -= 2
+    score_short = max(0, min(10, ss))
+
+    return {"price": price, "chg": chg, "rsi": r, "score": score, "setup": setup,
+            "from_high": from_high, "ret1m": ret1m, "ret3m": ret3m, "above50": above50,
+            "dollar_vol": dollar_vol, "hi52": hi52, "lo52": lo52, "vol": volp,
+            "sma50": sma50, "sma200": sma200, "spark": _spark(close),
+            "score_short": score_short, "score_long": score_long}
 
 
 def verdict(ticker: str, a: dict) -> tuple:
@@ -274,15 +440,15 @@ def run(top_n: int = TOP_N, export: bool = False, snapshot=None) -> None:
         payload = {
             "updated": datetime.now().astimezone().isoformat(timespec="minutes"),
             "spy3m": round(bench_ret3m, 1),
-            "calls": [{"t": r["ticker"], "v": r["verdict"], "s": r["score"],
-                       "p": round(r["price"], 2), "setup": r["setup"]} for r in rows],
+            "market": market_gauge(rows, bench_ret3m),
+            "calls": [call_obj(r, r["ticker"], NAMES) for r in rows],
             "positions": pos,
         }
         crows, cb3 = rank_crypto()
         payload["crypto"] = {
             "bench3m": round(cb3, 1),
-            "calls": [{"t": r["ticker"].replace("-USD", ""), "v": r["verdict"], "s": r["score"],
-                       "p": round(r["price"], 2), "setup": r["setup"], "why": r["why"]} for r in crows],
+            "market": market_gauge(crows, cb3),
+            "calls": [call_obj(r, r["ticker"].replace("-USD", ""), CRYPTO_NAMES) for r in crows],
         }
         text = json.dumps(payload)
         if snapshot in (True, "-"):

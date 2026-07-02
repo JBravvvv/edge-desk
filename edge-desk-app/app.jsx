@@ -181,6 +181,12 @@ const livePriceMap = (live) => {
 /* Crypto-aware price format: coins span from $100k to $0.00001. */
 const cUsd = (n) => { n = Number(n) || 0; return n >= 1 ? usd2(n) : ("$" + n.toPrecision(3)); };
 
+/* Resolve the active strategy's verdict/score/reason from a call (falls back to
+   the older single-score shape while a fresh snapshot is still propagating). */
+const pick = (c, strat) => strat === "short"
+  ? { v: (c.vs || c.v || "WATCH"), s: (c.ss ?? c.s ?? 0), w: (c.ws || "") }
+  : { v: (c.vl || c.v || "WATCH"), s: (c.sl ?? c.s ?? 0), w: (c.wl || "") };
+
 /* ======================= icons (inline, offline-safe) ======================= */
 const Ic = (p) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className="ic">{p}</svg>;
 const IconOverview = () => Ic(<><path d="M4 14a8 8 0 0 1 16 0" /><path d="M12 14l3.5-3" /><circle cx="12" cy="14" r="1.3" fill="currentColor" stroke="none" /></>);
@@ -204,6 +210,8 @@ function EdgeDesk() {
   const [tab, setTab] = useState("overview");
   const [menu, setMenu] = useState(false);
   const [mode, setMode] = useState("stocks");
+  const [strat, setStrat] = useState("long");
+  const [sel, setSel] = useState(null);
   const [loaded, setLoaded] = useState(false);
   const [positions, setPositions] = useState(SEED_POSITIONS);
   const live = useLiveData();
@@ -240,6 +248,7 @@ function EdgeDesk() {
     go("portfolio");
   };
   const addPosition = (ticker, name) => { setPositions((p) => [...p, { id: uid(), ticker, name: name || ticker, invested: 0, entry: 0, current: 0 }]); go("portfolio"); };
+  const openDetail = (t, crypto) => setSel({ t, crypto: !!crypto });
 
   return (
     <div className="app">
@@ -262,6 +271,10 @@ function EdgeDesk() {
         <div className="seg2" role="tablist" aria-label="Asset class">
           <button className={`seg2-btn ${mode === "stocks" ? "seg2-on" : ""}`} onClick={() => setMode("stocks")} role="tab" aria-selected={mode === "stocks"}>Stocks</button>
           <button className={`seg2-btn ${mode === "crypto" ? "seg2-on" : ""}`} onClick={() => setMode("crypto")} role="tab" aria-selected={mode === "crypto"}>Crypto</button>
+        </div>
+        <div className="seg2" role="tablist" aria-label="Strategy">
+          <button className={`seg2-btn ${strat === "short" ? "seg2-on" : ""}`} onClick={() => setStrat("short")} role="tab" aria-selected={strat === "short"}>Day trade</button>
+          <button className={`seg2-btn ${strat === "long" ? "seg2-on" : ""}`} onClick={() => setStrat("long")} role="tab" aria-selected={strat === "long"}>Long term</button>
         </div>
       </div>
 
@@ -287,14 +300,16 @@ function EdgeDesk() {
       )}
 
       <main className="main">
-        {tab === "overview" && <Overview regime={regime} go={go} live={live} mode={mode} />}
-        {tab === "signals" && <Signals onLog={logTrade} priceMap={priceMap} mode={mode} live={live} />}
-        {tab === "universe" && <Universe onLog={logTrade} live={live} mode={mode} />}
+        {tab === "overview" && <Overview regime={regime} go={go} live={live} mode={mode} strat={strat} onOpen={openDetail} />}
+        {tab === "signals" && <Signals onLog={logTrade} priceMap={priceMap} mode={mode} strat={strat} live={live} onOpen={openDetail} />}
+        {tab === "universe" && <Universe onLog={logTrade} live={live} mode={mode} strat={strat} onOpen={openDetail} />}
         {tab === "portfolio" && <Portfolio positions={positions} setPositions={setPositions} live={live} />}
         {tab === "sizer" && <div className="wrap"><Sizer /></div>}
         {tab === "analyst" && <div className="wrap"><Analyst onAdd={(it) => addPosition(it.ticker, it.company || it.name)} /></div>}
         {tab === "about" && <About go={go} />}
       </main>
+
+      {sel && <DetailView sel={sel} live={live} strat={strat} onClose={() => setSel(null)} onLog={logTrade} />}
 
       <nav className="tabbar">
         {BAR.map(([k, l, Icon]) => (
@@ -308,13 +323,16 @@ function EdgeDesk() {
 }
 
 /* ======================= overview ======================= */
-function Overview({ regime, go, live = {}, mode = "stocks" }) {
+function Overview({ regime, go, live = {}, mode = "stocks", strat = "long", onOpen }) {
   const isCrypto = mode === "crypto";
-  const cCalls = (live.crypto && live.crypto.calls) || [];
-  const cTop = cCalls.filter((c) => (c.v || "").toUpperCase() === "BUY");
-  const buys = isCrypto
-    ? (cTop.length ? cTop : cCalls).slice(0, 3).map((c) => ({ ticker: c.t, theme: c.setup, score: c.s, verdict: (c.v || "WATCH").toUpperCase() }))
-    : rankedSignals().filter((s) => s.verdict === "BUY").slice(0, 3);
+  const feed = isCrypto ? ((live.crypto && live.crypto.calls) || []) : (live.calls || []);
+  const ord = { BUY: 0, WATCH: 1, AVOID: 2 };
+  const ranked = [...feed].sort((a, b) => { const pa = pick(a, strat), pb = pick(b, strat); return (ord[pa.v] ?? 1) - (ord[pb.v] ?? 1) || (pb.s - pa.s); });
+  const live3 = ranked.slice(0, 3).map((c) => { const P = pick(c, strat); return { ticker: c.t, theme: c.name || c.setup, score: P.s, verdict: P.v, crypto: isCrypto }; });
+  const buys = (!isCrypto && live3.length === 0)
+    ? rankedSignals().filter((s) => s.verdict === "BUY").slice(0, 3).map((s) => ({ ticker: s.ticker, theme: s.name, score: s.score, verdict: s.verdict, crypto: false }))
+    : live3;
+  const market = isCrypto ? (live.crypto && live.crypto.market) : live.market;
 
   return (
     <div>
@@ -332,11 +350,12 @@ function Overview({ regime, go, live = {}, mode = "stocks" }) {
       </section>
 
       <div className="wrap">
-        <Section eyebrow="Top calls" title={isCrypto ? "Top crypto right now" : "Highest-conviction buys"} date={isCrypto ? null : ASOF} sub={isCrypto ? "The strongest coins in today's live ranking. Tap for the full list." : "My strongest setups right now. Tap to see the full call list."}>
+        {market && <MarketGauge market={market} label={isCrypto ? "Crypto" : "Market"} />}
+        <Section eyebrow="Top calls" title={isCrypto ? "Top crypto right now" : "Highest-conviction names"} date={isCrypto ? null : ASOF} sub={`Strongest ${strat === "short" ? "short-term" : "long-term"} setups right now. Tap any name for detail.`}>
           <div className="tops">
-            {buys.length === 0 && <Empty>No standout {isCrypto ? "coins" : "buys"} right now — the ranking refreshes through the day.</Empty>}
+            {buys.length === 0 && <Empty>No standout {isCrypto ? "coins" : "names"} right now — the ranking refreshes through the day.</Empty>}
             {buys.map((s) => { const vm = VERDICT[s.verdict] || VERDICT.BUY; return (
-              <button key={s.ticker} className="card top-card" onClick={() => go("signals")}>
+              <button key={s.ticker} className="card top-card" onClick={() => (onOpen ? onOpen(s.ticker, s.crypto) : go("signals"))}>
                 <span className="verdict" style={{ background: vm.bg, color: vm.color }}>{s.verdict || "BUY"}</span>
                 <div className="top-meta"><span className="top-tkr">{s.ticker}</span><span className="top-theme">{s.theme}</span></div>
                 <span className="top-score num">{s.score}/10</span>
@@ -375,29 +394,30 @@ function Overview({ regime, go, live = {}, mode = "stocks" }) {
 }
 
 /* ======================= signals ======================= */
-function Signals({ onLog, priceMap = {}, mode = "stocks", live = {} }) {
+function Signals({ onLog, priceMap = {}, mode = "stocks", live = {}, strat = "long", onOpen }) {
   if (mode === "crypto") {
-    const crows = ((live.crypto && live.crypto.calls) || []).slice(0, 40);
+    const ordc = { BUY: 0, WATCH: 1, AVOID: 2 };
+    const crows = [...((live.crypto && live.crypto.calls) || [])].sort((a, b) => { const pa = pick(a, strat), pb = pick(b, strat); return (ordc[pa.v] ?? 1) - (ordc[pb.v] ?? 1) || (pb.s - pa.s); }).slice(0, 40);
     const cb = live.crypto && typeof live.crypto.bench3m === "number" ? live.crypto.bench3m : null;
     return (
       <div className="wrap">
-        <div className="page-head"><div><h1 className="page-title">Signals</h1><p className="page-sub">Live crypto ranking — same engine as stocks, benchmarked vs Bitcoin{cb != null ? ` (BTC 3m ${cb >= 0 ? "+" : ""}${cb}%)` : ""}. Setups that match criteria, not predictions.</p></div></div>
+        <div className="page-head"><div><h1 className="page-title">Signals</h1><p className="page-sub">Live crypto ranking — same engine as stocks, benchmarked vs Bitcoin{cb != null ? ` (BTC 3m ${cb >= 0 ? "+" : ""}${cb}%)` : ""}. {strat === "short" ? "Day-trade" : "Long-term"} view. Tap a coin for detail.</p></div></div>
         {crows.length === 0
           ? <Empty>No crypto signals yet — the feed refreshes through the day. When crypto is weak, expect mostly Watch and Avoid.</Empty>
           : <div className="sig-list">
-              {crows.map((d) => { const vv = (d.v || "WATCH").toUpperCase(); const m = VERDICT[vv] || VERDICT.WATCH; return (
-                <div key={d.t} className="card sig-card">
+              {crows.map((d) => { const P = pick(d, strat); const m = VERDICT[P.v] || VERDICT.WATCH; return (
+                <div key={d.t} className="card sig-card sig-tap" onClick={() => onOpen && onOpen(d.t, true)}>
                   <div className="sig-top">
-                    <span className="verdict" style={{ background: m.bg, color: m.color }}>{vv}</span>
+                    <span className="verdict" style={{ background: m.bg, color: m.color }}>{P.v}</span>
                     <span className="sig-tkr num">{d.t}</span>
-                    <span className="sig-co">{d.setup}</span>
-                    <span className="sig-gem"><b className="num" style={{ color: m.color }}>{d.s}</b><span>/10</span></span>
+                    <span className="sig-co">{d.name || d.setup}</span>
+                    <span className="sig-gem"><b className="num" style={{ color: m.color }}>{P.s}</b><span>/10</span></span>
                   </div>
                   <div className="sig-levels">
                     <div className="sig-lev"><span className="sig-lk">Now</span><b className="num sig-lv">{cUsd(d.p)}<span className="sig-livedot" /></b></div>
                   </div>
-                  <p className="sig-reason">{d.why}</p>
-                  <button className="btn-ghost sig-log" onClick={() => onLog({ ticker: d.t, name: d.t, entry: null, price: Number(d.p) || 0 })}>Log this trade →</button>
+                  <p className="sig-reason">{P.w || d.why}</p>
+                  <button className="btn-ghost sig-log" onClick={(e) => { e.stopPropagation(); onLog({ ticker: d.t, name: d.name || d.t, entry: null, price: Number(d.p) || 0 }); }}>Log this trade →</button>
                 </div>
               ); })}
             </div>}
@@ -424,7 +444,7 @@ function Signals({ onLog, priceMap = {}, mode = "stocks", live = {} }) {
           const span = (hi - lo) || 1;
           const pc = (x) => Math.max(0, Math.min(100, ((x - lo) / span) * 100));
           return (
-            <div key={s.ticker} className="card sig-card">
+            <div key={s.ticker} className="card sig-card sig-tap" onClick={() => onOpen && onOpen(s.ticker, false)}>
               <div className="sig-top">
                 <span className="verdict" style={{ background: v.bg, color: v.color }}>{s.verdict}</span>
                 <span className="sig-tkr num">{s.ticker}</span>
@@ -445,7 +465,7 @@ function Signals({ onLog, priceMap = {}, mode = "stocks", live = {} }) {
                 </div>
               )}
               <p className="sig-reason">{s.reason}</p>
-              <button className="btn-ghost sig-log" onClick={() => onLog(s)}>Log this trade →</button>
+              <button className="btn-ghost sig-log" onClick={(e) => { e.stopPropagation(); onLog(s); }}>Log this trade →</button>
             </div>
           );
         })}
@@ -455,7 +475,7 @@ function Signals({ onLog, priceMap = {}, mode = "stocks", live = {} }) {
 }
 
 /* ======================= universe ======================= */
-function Universe({ onLog, live = {}, mode = "stocks" }) {
+function Universe({ onLog, live = {}, mode = "stocks", strat = "long", onOpen }) {
   const [raw, setRaw] = useState("");
   const [pasted, setPasted] = useState(null);
   const [showAll, setShowAll] = useState(false);
@@ -464,7 +484,7 @@ function Universe({ onLog, live = {}, mode = "stocks" }) {
   const sigMap = Object.fromEntries(SIGNALS.map((s) => [s.ticker, s.verdict]));
   const total = UNIVERSE.reduce((n, g) => n + g.names.length, 0);
   const ord = { BUY: 0, WATCH: 1, AVOID: 2 };
-  const sortCalls = (data) => [...data].sort((a, b) => (ord[(a.v || a.verdict || "WATCH").toUpperCase()] ?? 1) - (ord[(b.v || b.verdict || "WATCH").toUpperCase()] ?? 1) || (Number(b.s ?? b.score ?? 0) - Number(a.s ?? a.score ?? 0)));
+  const sortCalls = (data) => [...data].sort((a, b) => { const pa = pick(a, strat), pb = pick(b, strat); return (ord[pa.v] ?? 1) - (ord[pb.v] ?? 1) || (pb.s - pa.s); });
 
   const importData = () => {
     try {
@@ -490,15 +510,15 @@ function Universe({ onLog, live = {}, mode = "stocks" }) {
         <div>
           {liveRanked && !pasted && <p className="uni-live"><span className="live-dot" /> Live ranking · updated {fmtClock(live.updated)} · {ranked.length} {isCrypto ? "coins" : "names"}</p>}
           <div className="uni-ranked">
-            {ranked.map((d, i) => { const v = (d.v || d.verdict || "WATCH").toUpperCase(); const meta = VERDICT[v] || VERDICT.WATCH; const tk = d.t || d.ticker; return (
-              <div key={tk + i} className="uni-row">
+            {ranked.map((d, i) => { const P = pick(d, strat); const meta = VERDICT[P.v] || VERDICT.WATCH; const tk = d.t || d.ticker; return (
+              <div key={tk + i} className="uni-row uni-row-tap" onClick={() => onOpen && onOpen(tk, isCrypto)}>
                 <span className="uni-rank num">{i + 1}</span>
-                <span className="verdict" style={{ background: meta.bg, color: meta.color }}>{v}</span>
+                <span className="verdict" style={{ background: meta.bg, color: meta.color }}>{P.v}</span>
                 <span className="uni-tkr num">{tk}</span>
-                <span className="uni-setup">{d.setup || ""}</span>
+                <span className="uni-setup">{d.name || d.setup || ""}</span>
                 <span className="uni-price num">{d.p != null ? (isCrypto ? cUsd(d.p) : usd0(d.p)) : ""}</span>
-                <span className="uni-score num" style={{ color: meta.color }}>{(d.s ?? d.score) != null ? `${d.s ?? d.score}/10` : ""}</span>
-                <button className="uni-log" onClick={() => onLog({ ticker: tk, name: tk, entry: null, price: Number(d.p) || 0 })} aria-label={`Log ${tk}`}>+</button>
+                <span className="uni-score num" style={{ color: meta.color }}>{P.s != null ? `${P.s}/10` : ""}</span>
+                <button className="uni-log" onClick={(e) => { e.stopPropagation(); onLog({ ticker: tk, name: d.name || tk, entry: null, price: Number(d.p) || 0 }); }} aria-label={`Log ${tk}`}>+</button>
               </div>
             ); })}
           </div>
@@ -741,6 +761,99 @@ function Analyst({ onAdd }) {
 }
 
 /* ======================= atoms ======================= */
+function Spark({ data }) {
+  if (!Array.isArray(data) || data.length < 2) return <div className="spark-empty">No chart data</div>;
+  const w = 320, h = 84, min = Math.min(...data), max = Math.max(...data), rng = (max - min) || 1;
+  const up = data[data.length - 1] >= data[0];
+  const col = up ? "#138A5E" : "#CC3B3B";
+  const pts = data.map((v, i) => `${(i / (data.length - 1)) * w},${(h - 4) - ((v - min) / rng) * (h - 10) + 2}`).join(" ");
+  return (
+    <svg className="spark-svg" viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="none" aria-hidden="true">
+      <polyline points={`0,${h} ${pts} ${w},${h}`} fill={up ? "rgba(19,138,94,.09)" : "rgba(204,59,59,.09)"} stroke="none" />
+      <polyline points={pts} fill="none" stroke={col} strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+    </svg>
+  );
+}
+
+function RiskMeter({ vol }) {
+  const v = Math.max(3, Math.min(100, Math.round((vol / 120) * 100)));
+  const label = vol < 30 ? "Low" : vol < 60 ? "Moderate" : vol < 90 ? "High" : "Very high";
+  const col = vol < 30 ? "#138A5E" : vol < 60 ? "#B5852F" : "#CC3B3B";
+  return (
+    <div className="riskm">
+      <div className="riskm-top"><span className="riskm-k">Risk level (volatility)</span><span className="riskm-v" style={{ color: col }}>{label} · {Math.round(vol)}%</span></div>
+      <div className="riskm-track"><span className="riskm-fill" style={{ width: `${v}%`, background: col }} /></div>
+    </div>
+  );
+}
+
+function MarketGauge({ market, label }) {
+  if (!market) return null;
+  const v = Math.max(0, Math.min(100, market.value));
+  const col = v < 25 ? "#CC3B3B" : v < 45 ? "#B5852F" : v < 82 ? "#138A5E" : "#B5852F";
+  return (
+    <div className="card card-pad gauge">
+      <div className="gauge-top"><span className="gauge-k">{label} risk</span><span className="gauge-label" style={{ color: col }}>{market.label} · {v}/100</span></div>
+      <div className="gauge-track"><span className="gauge-fill" style={{ width: `${v}%` }} /><span className="gauge-marker" style={{ left: `${v}%` }} /></div>
+      <div className="gauge-scale"><span>Risk-off</span><span>Balanced</span><span>Frothy</span></div>
+      {market.breadth != null && <p className="gauge-note">{market.breadth}% of names are above their 50-day average.</p>}
+    </div>
+  );
+}
+
+function DetailView({ sel, live, strat, onClose, onLog }) {
+  const feed = sel.crypto ? ((live.crypto && live.crypto.calls) || []) : (live.calls || []);
+  const c = feed.find((x) => (x.t || "").toUpperCase() === (sel.t || "").toUpperCase());
+  const fmt = sel.crypto ? cUsd : usd0;
+  return (
+    <div className="detail">
+      <div className="detail-bar">
+        <button className="detail-back" onClick={onClose} aria-label="Back">←</button>
+        <div className="detail-id"><span className="detail-tkr num">{sel.t}</span>{c && <span className="detail-name">{c.name}</span>}</div>
+      </div>
+      {!c ? (
+        <div className="wrap"><Empty>No live data for {sel.t} yet — it refreshes through the day.</Empty></div>
+      ) : (() => {
+        const p = pick(c, strat);
+        const meta = VERDICT[p.v] || VERDICT.WATCH;
+        const up = (c.chg || 0) >= 0;
+        const rangePct = c.hi > c.lo ? Math.max(0, Math.min(100, ((c.p - c.lo) / (c.hi - c.lo)) * 100)) : 50;
+        return (
+          <div className="wrap detail-body">
+            <div className="detail-head">
+              <div className="detail-price">
+                <span className="detail-p num">{sel.crypto ? cUsd(c.p) : usd2(c.p)}</span>
+                <span className="detail-chg num" style={{ color: up ? "var(--up)" : "var(--down)" }}>{up ? "▲" : "▼"} {c.chg >= 0 ? "+" : ""}{c.chg}% today</span>
+              </div>
+              <span className="verdict" style={{ background: meta.bg, color: meta.color }}>{p.v} · {p.s}/10</span>
+            </div>
+            <div className="card detail-chart"><Spark data={c.spark} /></div>
+            <div className="detail-range">
+              <div className="detail-range-lab"><span>52-wk low {fmt(c.lo)}</span><span>high {fmt(c.hi)}</span></div>
+              <div className="rng"><span className="rng-fill" style={{ width: `${rangePct}%` }} /><span className="rng-dot" style={{ left: `${rangePct}%` }} /></div>
+            </div>
+            <div className="card card-pad"><RiskMeter vol={c.vol} /></div>
+            <div className="detail-stats">
+              <Stat k="1-mo return" v={`${c.r1m >= 0 ? "+" : ""}${c.r1m}%`} />
+              <Stat k="3-mo return" v={`${c.r3m >= 0 ? "+" : ""}${c.r3m}%`} />
+              <Stat k="RSI" v={`${c.rsi}`} />
+              <Stat k="Setup" v={c.setup} />
+              <Stat k="Avg volume" v={`$${(c.dvol / 1e6).toFixed(0)}M`} />
+              <Stat k="Score" v={`${p.s}/10`} />
+            </div>
+            <div className="card card-pad detail-why">
+              <span className="detail-why-k">{strat === "short" ? "Short-term read" : "Long-term read"}</span>
+              <p>{p.w || "—"}.</p>
+            </div>
+            <button className="btn btn-block" onClick={() => { onLog({ ticker: c.t, name: c.name, entry: null, price: Number(c.p) || 0 }); onClose(); }}>Log this trade →</button>
+            <p className="hint-note">Informational only — not investment advice. Prices refresh through the day.</p>
+          </div>
+        );
+      })()}
+    </div>
+  );
+}
+
 function About({ go }) {
   return (
     <div className="wrap">
@@ -1008,7 +1121,7 @@ const CSS = `
 .appbar-right{ display:flex; align-items:center; gap:9px; }
 
 /* stocks / crypto toggle bar */
-.assetbar{ display:flex; justify-content:center; background:var(--surface); border-bottom:1px solid var(--line); padding:10px 16px; }
+.assetbar{ display:flex; justify-content:center; align-items:center; gap:10px; flex-wrap:wrap; background:var(--surface); border-bottom:1px solid var(--line); padding:10px 16px; }
 .seg2{ display:inline-flex; background:#EDF0F4; border-radius:12px; padding:3px; gap:3px; }
 .seg2-btn{ border:none; background:none; font-family:var(--body); font-size:13.5px; font-weight:600; color:var(--ink2); padding:7px 26px; border-radius:9px; transition:.15s; }
 .seg2-btn:active{ transform:scale(.97); }
@@ -1100,6 +1213,54 @@ const CSS = `
 .about .about-list li{ font-size:13.5px; line-height:1.6; color:var(--ink2); margin-bottom:5px; }
 .about .about-list b, .about p b{ color:var(--ink); font-weight:600; }
 .about .btn-block{ margin-top:20px; }
+
+/* tap affordances */
+.sig-tap, .uni-row-tap{ cursor:pointer; -webkit-user-select:none; user-select:none; transition:.12s; }
+.sig-tap:active, .uni-row-tap:active{ transform:scale(.994); background:#FBFCFD; }
+
+/* market risk gauge */
+.gauge{ margin-bottom:16px; }
+.gauge-top{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px; }
+.gauge-k{ font-family:var(--disp); font-weight:600; font-size:16px; }
+.gauge-label{ font-size:13px; font-weight:700; font-variant-numeric:tabular-nums; }
+.gauge-track{ position:relative; height:8px; border-radius:5px; background:linear-gradient(90deg,#E5A6A6 0%,#E8CE93 35%,#9CD9BF 60%,#E8CE93 90%,#E5A6A6 100%); }
+.gauge-fill{ display:none; }
+.gauge-marker{ position:absolute; top:-3px; width:14px; height:14px; margin-left:-7px; border-radius:50%; background:var(--ink); border:3px solid #fff; box-shadow:0 1px 4px rgba(19,26,38,.3); }
+.gauge-scale{ display:flex; justify-content:space-between; margin-top:7px; font-size:10.5px; font-weight:600; color:var(--ink2); text-transform:uppercase; letter-spacing:.03em; }
+.gauge-note{ font-size:12px; color:var(--ink2); margin:9px 0 0; }
+
+/* per-stock risk meter */
+.riskm-top{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:8px; }
+.riskm-k{ font-size:12.5px; font-weight:600; color:var(--ink2); }
+.riskm-v{ font-size:13px; font-weight:700; font-variant-numeric:tabular-nums; }
+.riskm-track{ height:8px; border-radius:5px; background:#EEF1F5; overflow:hidden; }
+.riskm-fill{ display:block; height:100%; border-radius:5px; transition:width .3s; }
+
+/* detail view (Robinhood/Coinbase-style) */
+.detail{ position:fixed; inset:0; z-index:80; background:var(--bg); overflow-y:auto; -webkit-overflow-scrolling:touch; animation:fade .16s; }
+.detail-bar{ position:sticky; top:0; z-index:2; display:flex; align-items:center; gap:12px; background:linear-gradient(158deg,#16233A,#0F1726); padding:calc(env(safe-area-inset-top) + 12px) 16px 12px; }
+.detail-back{ width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.1); border:none; color:#fff; font-size:19px; line-height:1; flex:0 0 auto; }
+.detail-id{ display:flex; flex-direction:column; gap:1px; min-width:0; }
+.detail-tkr{ font-family:var(--disp); font-weight:700; font-size:18px; color:#fff; letter-spacing:-.01em; }
+.detail-name{ font-size:12.5px; color:#AEB8C4; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.detail-body{ padding-bottom:calc(env(safe-area-inset-bottom) + 40px); }
+.detail-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin:6px 0 16px; }
+.detail-price{ display:flex; flex-direction:column; gap:3px; }
+.detail-p{ font-family:var(--disp); font-weight:700; font-size:34px; letter-spacing:-.02em; line-height:1; }
+.detail-chg{ font-size:14px; font-weight:600; }
+.detail-chart{ padding:10px 6px; margin-bottom:16px; }
+.spark-svg{ width:100%; height:90px; display:block; }
+.spark-empty{ height:90px; display:flex; align-items:center; justify-content:center; color:var(--ink2); font-size:13px; }
+.detail-range{ margin-bottom:18px; }
+.detail-range-lab{ display:flex; justify-content:space-between; font-size:12px; color:var(--ink2); font-weight:500; margin-bottom:7px; font-variant-numeric:tabular-nums; }
+.rng{ position:relative; height:6px; border-radius:4px; background:#EEF1F5; }
+.rng-fill{ position:absolute; left:0; top:0; bottom:0; border-radius:4px; background:linear-gradient(90deg,#BEE4D3,#0E7A57); }
+.rng-dot{ position:absolute; top:-3px; width:12px; height:12px; margin-left:-6px; border-radius:50%; background:var(--ink); border:2px solid #fff; box-shadow:0 1px 3px rgba(19,26,38,.3); }
+.detail-stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:16px 0; }
+.detail-why{ margin-top:4px; }
+.detail-why-k{ font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--brand); }
+.detail-why p{ font-size:14px; line-height:1.55; color:var(--ink); margin:6px 0 0; }
+@media (max-width:400px){ .detail-stats{ grid-template-columns:repeat(2,1fr); } }
 `;
 
 /* Mount the app (React 18). */
