@@ -1,7 +1,7 @@
 /* Auto-generated from edge-desk.jsx by build.py — do not edit directly.
    React is loaded as a global (vendor/react*.js) and the component is
    mounted explicitly at the bottom of this file. Otherwise identical. */
-const { useState, useEffect, useCallback } = React;
+const { useState, useEffect, useCallback, useRef } = React;
 
 /* ============================================================
    EDGE DESK — automated calls + trade log
@@ -182,6 +182,70 @@ function useDescriptions() {
     return () => { live = false; };
   }, []);
   return map;
+}
+
+/* iOS-style interactive swipe-back. Attach the returned ref to a full-screen
+   pushed panel; a drag starting from the left edge follows the finger and, past
+   a threshold (or a quick flick), calls onBack. Vertical drags fall through to
+   normal scrolling, so it never fights the page. */
+function useSwipeBack(onBack) {
+  const ref = useRef(null);
+  const cb = useRef(onBack);
+  cb.current = onBack;
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const EDGE = 44;                                   // only start from the left edge
+    const width = () => el.clientWidth || window.innerWidth || 360;
+    let startX = 0, startY = 0, startT = 0, dx = 0, active = false, decided = false, horiz = false;
+    const paint = (x, anim) => {
+      el.style.transition = anim ? "transform .24s cubic-bezier(.22,.61,.36,1)" : "none";
+      el.style.transform = x ? `translateX(${x}px)` : "";
+      el.style.boxShadow = x ? "-14px 0 34px rgba(15,23,38,.20)" : "";
+    };
+    const onStart = (e) => {
+      const t = e.touches[0];
+      if (!t || t.clientX > EDGE) return;
+      startX = t.clientX; startY = t.clientY; startT = Date.now();
+      dx = 0; active = true; decided = false; horiz = false;
+    };
+    const onMove = (e) => {
+      if (!active) return;
+      const t = e.touches[0];
+      const mx = t.clientX - startX, my = t.clientY - startY;
+      if (!decided) {
+        if (Math.abs(mx) < 8 && Math.abs(my) < 8) return;
+        decided = true; horiz = Math.abs(mx) > Math.abs(my);
+        if (!horiz) { active = false; return; }         // vertical → let it scroll
+      }
+      dx = Math.max(0, mx);
+      e.preventDefault();
+      paint(dx, false);
+    };
+    const onEnd = () => {
+      if (!active) return;
+      active = false;
+      const vx = dx / Math.max(1, Date.now() - startT);  // px per ms
+      if (dx > width() * 0.33 || (dx > 60 && vx > 0.4)) {
+        el.style.transition = "transform .2s ease-out";
+        el.style.transform = `translateX(${width()}px)`;
+        setTimeout(() => cb.current && cb.current(), 180);
+      } else if (dx > 0) {
+        paint(0, true);
+      }
+    };
+    el.addEventListener("touchstart", onStart, { passive: true });
+    el.addEventListener("touchmove", onMove, { passive: false });
+    el.addEventListener("touchend", onEnd);
+    el.addEventListener("touchcancel", onEnd);
+    return () => {
+      el.removeEventListener("touchstart", onStart);
+      el.removeEventListener("touchmove", onMove);
+      el.removeEventListener("touchend", onEnd);
+      el.removeEventListener("touchcancel", onEnd);
+    };
+  }, []);
+  return ref;
 }
 
 /* Build a ticker→price map from whatever the live feed carries. */
@@ -836,8 +900,9 @@ function DetailView({ sel, live, strat, desc, onClose, onLog }) {
   const feed = sel.crypto ? ((live.crypto && live.crypto.calls) || []) : (live.calls || []);
   const c = feed.find((x) => (x.t || "").toUpperCase() === (sel.t || "").toUpperCase());
   const fmt = sel.crypto ? cUsd : usd0;
+  const swipeRef = useSwipeBack(onClose);
   return (
-    <div className="detail">
+    <div className="detail" ref={swipeRef}>
       <div className="detail-bar">
         <button className="detail-back" onClick={onClose} aria-label="Back">←</button>
         <div className="detail-id"><span className="detail-tkr num">{sel.t}</span>{c && <span className="detail-name">{c.name}</span>}</div>
@@ -1282,7 +1347,7 @@ const CSS = `
 .riskm-fill{ display:block; height:100%; border-radius:5px; transition:width .3s; }
 
 /* detail view (Robinhood/Coinbase-style) */
-.detail{ position:fixed; inset:0; z-index:80; background:var(--bg); overflow-y:auto; -webkit-overflow-scrolling:touch; animation:fade .16s; }
+.detail{ position:fixed; inset:0; z-index:80; background:var(--bg); overflow-y:auto; -webkit-overflow-scrolling:touch; animation:fade .16s; touch-action:pan-y; will-change:transform; }
 .detail-bar{ position:sticky; top:0; z-index:2; display:flex; align-items:center; gap:12px; background:linear-gradient(158deg,#16233A,#0F1726); padding:calc(env(safe-area-inset-top) + 12px) 16px 12px; }
 .detail-back{ width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.1); border:none; color:#fff; font-size:19px; line-height:1; flex:0 0 auto; }
 .detail-id{ display:flex; flex-direction:column; gap:1px; min-width:0; }

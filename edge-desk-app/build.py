@@ -13,12 +13,12 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "edge-desk.jsx"
 OUT = ROOT / "edge-desk-app" / "app.jsx"
 
-IMPORT_LINE = 'import React, { useState, useEffect, useCallback } from "react";'
+IMPORT_LINE = 'import React, { useState, useEffect, useCallback, useRef } from "react";'
 HEADER = (
     "/* Auto-generated from edge-desk.jsx by build.py — do not edit directly.\n"
     "   React is loaded as a global (vendor/react*.js) and the component is\n"
     "   mounted explicitly at the bottom of this file. Otherwise identical. */\n"
-    "const { useState, useEffect, useCallback } = React;"
+    "const { useState, useEffect, useCallback, useRef } = React;"
 )
 MOUNT = (
     '\n\n/* Mount the app (React 18). */\n'
