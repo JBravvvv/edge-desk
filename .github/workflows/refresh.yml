@@ -9,9 +9,19 @@ name: Refresh live data (market-day loop)
 on:
   workflow_dispatch:
   schedule:
-    - cron: "32 13 * * 1-5"   # ~09:32 ET, a few morning attempts in case one is skipped
-    - cron: "2 14 * * 1-5"
-    - cron: "17 15 * * 1-5"
+    # GitHub's scheduler frequently SKIPS individual cron ticks, so we fire many
+    # redundant attempts across the morning. Once ANY one starts the loop, the
+    # ~5.66h job covers the rest of the session; extras just restart it
+    # (cancel-in-progress) if an earlier tick was skipped. The odds of GitHub
+    # skipping every one of these are very low.
+    - cron: "31 13 * * 1-5"   # 09:31 ET
+    - cron: "51 13 * * 1-5"   # 09:51 ET
+    - cron: "11 14 * * 1-5"   # 10:11 ET
+    - cron: "41 14 * * 1-5"   # 10:41 ET
+    - cron: "11 15 * * 1-5"   # 11:11 ET
+    - cron: "51 15 * * 1-5"   # 11:51 ET
+    - cron: "31 16 * * 1-5"   # 12:31 ET
+    - cron: "11 17 * * 1-5"   # 13:11 ET
 
 permissions:
   contents: write
