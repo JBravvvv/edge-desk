@@ -1,11 +1,12 @@
 /* Edge Desk service worker — caches the app shell so it opens instantly and
    works offline once installed. Bump CACHE when you change any asset. */
-const CACHE = 'edge-desk-v6';
+const CACHE = 'edge-desk-v7';
 const ASSETS = [
   './',
   './index.html',
   './app.jsx',
   './data.json',
+  './descriptions.json',
   './manifest.webmanifest',
   './vendor/react.production.min.js',
   './vendor/react-dom.production.min.js',

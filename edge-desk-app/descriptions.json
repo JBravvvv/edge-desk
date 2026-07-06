@@ -1,0 +1,1016 @@
+{
+"AAPL": {
+"desc": "Apple Inc. designs, manufactures, and markets smartphones, personal computers, tablets, wearables, and accessories worldwide. The company offers iPhone, a line of smartphones; Mac, a line of personal computers; iPad, a line of multi-purpose tablets; and wearables, home, and accessories comprising AirPods, Apple Vision Pro, Apple TV, Apple Watch, Beats products, and HomePod, as well as Apple branded and third-party accessories. It also provides AppleCare support and cloud services; and operates various platforms, including the App Store that allow customers to discover and download applications and digital content, such as books, music, video, games, and podcasts, as well as advertising services include third-party licensing arrangements and its own advertising platforms.",
+"sector": "Technology",
+"industry": "Consumer Electronics",
+"site": "https://www.apple.com"
+},
+"ABNB": {
+"desc": "Airbnb, Inc., together with its subsidiaries, operates a platform for stays, experiences, and services worldwide. The company's marketplace connects hosts and guests online or through mobile devices to book spaces, experiences, and services. It also offers gift cards. The company was formerly known as AirBed & Breakfast, Inc. and changed its name to Airbnb, Inc. in November 2010. Airbnb, Inc. was founded in 2007 and is headquartered in San Francisco, California.",
+"sector": "Consumer Cyclical",
+"industry": "Travel Services",
+"site": "https://www.airbnb.com"
+},
+"ADBE": {
+"desc": "Adobe Inc. operates as a technology company worldwide. The Digital Media segment offers products and services that enable individuals, teams, and enterprises to create, publish, and promote content. This segment serves photographers, video editors, graphic and experience designers, game developers, content creators, students, marketers, business owners, knowledge workers, and consumers. The Digital Experience segment provides an integrated platform; and products, services, and solutions that enable brands and businesses to create, manage, execute, measure, monetize, and optimize customer experiences from analytics to commerce. This segment serves marketers, advertisers, agencies, publishers, merchandisers, merchants, web analysts, data scientists, developers, and executives across the C-suite.",
+"sector": "Technology",
+"industry": "Software - Application",
+"site": "https://www.adobe.com"
+},
+"ADI": {
+"desc": "Analog Devices, Inc. engages in the design, manufacture, testing, and marketing of integrated circuits (ICs), software, and subsystems products in the United States, rest of North and South America, Europe, Japan, China, and rest of Asia. It provides data converter products, which translate real-world analog signals into digital data, as well as translates digital data into analog signals; power management and reference products for power conversion, driver monitoring, sequencing, and energy management applications in the automotive, communications, industrial, and consumer markets; and power ICs that include performance, integration, and software design simulation tools for accurate power supply designs.",
+"sector": "Technology",
+"industry": "Semiconductors",
+"site": "https://www.analog.com"
+},
+"AEP": {
+"desc": "American Electric Power Company, Inc., an electric public utility holding company, engages in the generation, transmission, and distribution of electricity for sale to retail and wholesale customers in the United States. It operates through Vertically Integrated Utilities, Transmission and Distribution Utilities, AEP Transmission Holdco, and Generation & Marketing segments. The company generates electricity using coal and lignite, nuclear, natural gas, renewable, hydro, solar, wind, and other energy sources; owns, operates, maintains, and invests in transmission infrastructure; and engages in the retail supply, and wholesale energy trading and marketing businesses. It operates approximately 252,000 circuit miles of distribution lines; 38,000 circuit miles of transmission lines; and 25,000 MWs of regulated owned generating capacity. American Electric Power Company, Inc.",
+"sector": "Utilities",
+"industry": "Utilities - Regulated Electric",
+"site": "https://www.aep.com"
+},
+"ALAB": {
+"desc": "Astera Labs, Inc. designs, manufactures, and sells semiconductor-based connectivity solutions for cloud and AI infrastructure in Taiwan and the United States. It offers an intelligent connectivity platform, comprised of semiconductor-based, high-speed, mixed-signal connectivity products that integrate a matrix of microcontrollers and sensors, and COSMOS. The company provides COSMOS software suite, a connectivity system management and optimization software that enables management and optimization of resources for large fleets at cloud-scale via link, fleet, and RAS management capabilities. In addition, it offers PCIe/CXL smart DSP retimers and cable modules; ethernet smart cable modules for cloud and AI infrastructure; CXL memory connectivity controllers; and smart fabric switches. The company serves hyperscalers and system original equipment manufacturers. Astera Labs, Inc.",
+"sector": "Technology",
+"industry": "Semiconductors",
+"site": "https://www.asteralabs.com"
+},
+"AMAT": {
+"desc": "Applied Materials, Inc. provides materials engineering solutions, equipment, services, and software to the semiconductor and related industries in the United States, China, Korea, Taiwan, Japan, Southeast Asia, Europe, and internationally. The company operates through Semiconductor Systems and Applied Global Services (AGS) segments. The Semiconductor Systems segment includes semiconductor capital equipment to enable materials engineering steps, including etch, rapid thermal processing, deposition, chemical mechanical planarization, metrology and inspection, wafer packaging, and ion implantation. The AGS segment offers integrated solutions to optimize equipment and fab performance and productivity comprising spares, upgrades, services, and 200 millimeter and other equipment and factory automation software for semiconductor and other products.",
+"sector": "Technology",
+"industry": "Semiconductor Equipment & Materials",
+"site": "https://www.appliedmaterials.com"
+},
+"AMD": {
+"desc": "Advanced Micro Devices, Inc. operates as a semiconductor company internationally. It operates in three segments: Data Center, Client and Gaming, and Embedded. The company offers artificial intelligence (AI) accelerators, microprocessors, and graphics processing units (GPUs) as standalone devices or as incorporated into accelerated processing units, chipsets, and data center and professional GPUs; and embedded processors and semi-custom system-on-chip (SoC) products, microprocessor and SoC development services and technology, data processing units, field programmable gate arrays (FPGA), system on modules, AI network interface cards, and adaptive SoC products.",
+"sector": "Technology",
+"industry": "Semiconductors",
+"site": "https://www.amd.com"
+},
+"AMGN": {
+"desc": "Amgen Inc. discovers, develops, manufactures, and delivers human therapeutics worldwide.",
+"sector": "Healthcare",
+"industry": "Drug Manufacturers - General",
+"site": "https://www.amgen.com"
+},
+"AMZN": {
+"desc": "Amazon.com, Inc. engages in the retail sale of consumer products, advertising, and subscriptions service through online and physical stores in North America and internationally. The company operates through three segments: North America, International, and Amazon Web Services (AWS). It also manufactures and sells electronic devices, including Kindle, fire tablets, fire TVs, echo, ring, blink, and eero; and develops and produces media content. In addition, the company offers programs that enable sellers to sell their products in its stores; and programs that allow authors, independent publishers, musicians, filmmakers, Twitch streamers, skill and app developers, and others to publish and sell content.",
+"sector": "Consumer Cyclical",
+"industry": "Internet Retail",
+"site": "https://www.amazon.com"
+},
+"APP": {
+"desc": "AppLovin Corporation provides end-to-end artificial intelligence-powered advertising solutions for businesses in the United States and internationally. It operates through two segments, Advertising and Apps. The company offers Axon Ads Manager, a suite of marketing solutions that enables developers to automate, optimize, and manage marketing efforts; MAX, an in-app bidding technology that optimizes the value of a publisher's advertising inventory by running a real-time competitive auction; Adjust, a measurement and analytics marketing platform; and Wurl, a connected TV platform, which distributes streaming video for content companies, provides advertising and publishing solutions. It serves individuals, small and independent businesses, enterprises, advertisers and advertising networks, mobile app publishers, and indie studio developers.",
+"sector": "Communication Services",
+"industry": "Advertising Agencies",
+"site": "https://www.applovin.com"
+},
+"ARM": {
+"desc": "Arm Holdings plc researches, develops, licenses, and markets central processing unit (CPU) intellectual property (IP), graphics processing unit IP, systems IP, compute subsystems (CSS), and associated software, tools and related services. The company provides a product portfolio, including CPU IP, GPU and neural processing unit (NPU) accelerators, system IP such as interconnects, compute platform products including pre-integrated CSSs, and development tools and software. The company serves semiconductor companies, original equipment manufacturers (OEMs), cloud service providers (CSPs), and organizations developing chips for end markets such as smartphones, consumer electronics, industrial IoT, embedded systems, cloud data centers, networking, automotive, and robotics. It provides its products and services in the United States, China, Japan, Taiwan, Korea, and internationally.",
+"sector": "Technology",
+"industry": "Semiconductors",
+"site": "https://www.arm.com"
+},
+"ASML": {
+"desc": "ASML Holding N.V. provides lithography solutions for the development, production, marketing, sales, upgrading, and servicing of advanced semiconductor equipment systems. The company offers lithography, metrology, and inspection systems. It also provides extreme ultraviolet lithography systems; and deep ultraviolet lithography systems comprising immersion and dry lithography systems solutions to manufacture various range of semiconductor nodes and technologies. In addition, the company offers metrology and inspection systems, including YieldStar optical metrology systems, a diffraction-based wafer metrology platform to assess the quality of patterns on the wafers; and HMI electron beam solutions to locate and analyze individual chip defects.",
+"sector": "Technology",
+"industry": "Semiconductor Equipment & Materials",
+"site": "https://www.asml.com"
+},
+"AVAV": {
+"desc": "AeroVironment, Inc. designs, develops, produces, delivers, and supports a portfolio of robotic systems and related services for government agencies and businesses in the United States and internationally. It operates in two segments, Autonomous Systems; and Space, Cyber and Directed Energy. The company provides uncrewed aircraft systems (UAS), which include small and medium UAS, and kinesis command and control software; and counter-UAS and precision strike, a loitering munitions solution that deliver actionable intelligence and precision firepower modern warfighters, including precision strike, radio frequency and kinetic C-UAS, and electronic warfare systems. It also offers autonomy, AI, and platform technologies; unmanned maritime; uncrewed ground systems; and high-altitude pseudo-satellites.",
+"sector": "Industrials",
+"industry": "Aerospace & Defense",
+"site": "https://www.avinc.com"
+},
+"AVGO": {
+"desc": "Broadcom Inc. designs, develops, and supplies various semiconductor devices and infrastructure software solutions internationally. The company operates in two segments: Semiconductor Solutions and Infrastructure Software. The company offers networking connectivity, such as custom silicon solutions, ethernet switching & routing, ethernet NIC controllers, physical layer devices, and fiber optic components; wireless device connectivity, including RF semiconductor devices, connectivity solutions, custom touch controllers, and inductive charging ASICS; servers and storage system solutions, such as PCIE switches, SAS & raid products, fibre channel products, and HDD & SSD solutions; broadband solutions, includes set-top box, and broadband access; and industrial.",
+"sector": "Technology",
+"industry": "Semiconductors",
+"site": "https://www.broadcom.com"
+},
+"BAH": {
+"desc": "Booz Allen Hamilton Holding Corporation, a technology company, provides technology solutions using artificial intelligence, cyber, and other technologies for government's cabinet-level departments and commercial customers in the United States and internationally. The company offers artificial intelligence (AI) which creates purpose-built AI solutions that adapt commercial and technology to the needs of the federal government; cyber solutions; and legacy systems with cloud-enabled infrastructure, data platforms, and software applications.It also provides multi-modal data fusion coupled with cyber and AI for intelligence, surveillance, and reconnaissance, earth observation, and domain awareness and battle management; and quantum information sciences that provides quantum computing, quantum sensing, quantum communications, post-quantum compute readiness, and post-quantum cryptography.",
+"sector": "Industrials",
+"industry": "Consulting Services",
+"site": "https://www.boozallen.com"
+},
+"CAT": {
+"desc": "Caterpillar Inc. provides construction and mining equipment, off-highway diesel and natural gas engines, industrial gas turbines, and diesel-electric locomotives in the United States and internationally. The Construction Industries segment offers asphalt pavers, cold planers, compactors, forestry machines, material handlers, motor graders, pipelayers, road reclaimers, telehandlers, track-type tractors, and track and wheel excavators; backhoe, compact track, skid steer, track-type, and wheel loaders; and related parts and work tools.",
+"sector": "Industrials",
+"industry": "Farm & Heavy Construction Machinery",
+"site": "https://www.caterpillar.com"
+},
+"CCJ": {
+"desc": "Cameco Corporation provides uranium for the generation of electricity in the Americas, Europe, and Asia. It operates in three segments: Uranium, Fuel Services, and Westinghouse. The Uranium segment engages in the exploration for, mining, milling, purchase, and sale of uranium concentrate. Its Fuel Services segment is involved in the refining, conversion, and fabrication of uranium concentrate, as well as purchase and sale of conversion services. The Westinghouse segment operates as a nuclear reactor technology original equipment manufacturer and a provider of products and services to commercial utilities and government agencies. It also provides outage and maintenance, engineering support, instrumentation and controls equipment, and plant modification services, as well as components and parts to nuclear reactors.",
+"sector": "Energy",
+"industry": "Uranium",
+"site": "https://www.cameco.com"
+},
+"CEG": {
+"desc": "Constellation Energy Corporation produces and sells energy products and services in the United States. The company operates through five segments: Mid-Atlantic, Midwest, New York, ERCOT, and Other Power Regions. It offers electricity, natural gas, energy-related products, and sustainable solutions. The company has approximately 31,676 megawatts of generating capacity consisting of nuclear, wind, solar, natural gas, and hydroelectric assets. It serves distribution utilities, municipalities, cooperatives, and commercial, industrial, public sector, and residential customers. The company was incorporated in 2021 and is headquartered in Baltimore, Maryland.",
+"sector": "Utilities",
+"industry": "Utilities - Independent Power Producers",
+"site": "https://www.constellationenergy.com"
+},
+"COIN": {
+"desc": "Coinbase Global, Inc. operates platform for crypto assets in the United States and internationally. It provides the primary financial account in the crypto economy for consumers; a brokerage platform with a pool of liquidity across the crypto marketplace for institutions; and a suite of products granting access to build onchain for developers. The company was founded in 2012 and is based in New York, New York.",
+"sector": "Financial Services",
+"industry": "Financial Data & Stock Exchanges",
+"site": "https://www.coinbase.com"
+},
+"CRCL": {
+"desc": "Circle Internet Group, Inc. operates as a platform, network, and market infrastructure for stablecoin and blockchain applications. The company provides various platform including Arc Blockchain and Developer Infrastructure, an open, layer-1 blockchain network purpose-built to bring real world economic activity onchain; Circle Digital Assets and Services, which includes circle digital assets, USDC, EURC, and USYC, as well as circle mint and xreserve, related liquidity, custody, and trust infrastructure; and Circle Applications, which includes circle payments network and stablefx, applications that use circle digital assets to deliver real-world utility on the arc network and across the broader multichain ecosystem. Its stablecoins network comprises circle stablecoins, tokenized funds, liquidity, payments network, and developer services, as well as integration services.",
+"sector": "Financial Services",
+"industry": "Capital Markets",
+"site": "https://www.circle.com"
+},
+"CRDO": {
+"desc": "Credo Technology Group Holding Ltd provides various high-speed connectivity solutions for optical and electrical Ethernet and PCIe applications in the United States, Taiwan, Mainland China, Hong Kong, and other international markets. The company offers ZeroFlap (ZF) active electrical cables and ZF optical transceivers, OmniConnect memory solutions, and a suite of retimers and DSPs for optical and copper Ethernet and PCIe, as well as integrated circuits, active electrical cables, and SerDes chiplets. It also provides intellectual property (IP) solutions, including SerDes IP licensing. The company offers was founded in 2008 and is headquartered in Grand Cayman, the Cayman Islands.",
+"sector": "Technology",
+"industry": "Semiconductors",
+"site": "https://credosemi.com"
+},
+"CRM": {
+"desc": "Salesforce, Inc. provides customer relationship management technology services that connect companies and customers together in the United States, Europe, and the Asia Pacific.",
+"sector": "Technology",
+"industry": "Software - Application",
+"site": "https://www.salesforce.com"
+},
+"CRWD": {
+"desc": "CrowdStrike Holdings, Inc. provides cybersecurity solutions in the United States and internationally. Its unified platform provides cloud-delivered protection of endpoints, cloud workloads, identity, and data through a software as a service (SaaS) subscription-based model. The company offers corporate endpoint and cloud workload security, managed security, security and vulnerability management, IT operations management, identity protection, threat intelligence, data protection, SaaS security posture management, and AI powered workflow automation, and securing generative AI workload services, as well as security orchestration, automation, and response; and security information and event management, and log management services. It primarily sells subscriptions to its Falcon platform and cloud modules.",
+"sector": "Technology",
+"industry": "Software - Infrastructure",
+"site": "https://www.crowdstrike.com"
+},
+"CRWV": {
+"desc": "CoreWeave, Inc. operates as a cloud infrastructure technology company in the United States. The company offers CoreWeave Cloud platform that comprises proprietary software and cloud services that deliver the automation and efficiency needed to manage complex artificial intelligence (AI) infrastructure at scale. It also offers data and storage solutions, such as Local Object Transport Accelerator; infrastructure control solutions, including CoreWeave Kubernetes service; mission control services, including node, rack, and fleet lifecycle management; model and agent development tools comprising Weights & Biases, an AI developer platform; and runtime acceleration. In addition, the company offers graphics processing unit compute, CPU compute, networking services, managed services, and virtual and bare metal servers.",
+"sector": "Technology",
+"industry": "Software - Infrastructure",
+"site": "https://www.coreweave.com"
+},
+"D": {
+"desc": "Dominion Energy, Inc. provides regulated electricity and natural gas services in the United States. It operates through Dominion Energy Virginia, Dominion Energy South Carolina, and Contracted Energy segments. The Dominion Energy Virginia segment engages in the generation, distribution, and transmission of electricity to approximately 2.8 million residential, commercial, industrial, and governmental customers in Virginia and North Carolina. The Dominion Energy South Carolina segment generates, transmits, and distributes electricity to approximately 0.8 million customers in the central, southern, and southwestern portions of South Carolina; and distributes natural gas to approximately 0.5 million residential, commercial, and industrial customers in South Carolina.",
+"sector": "Utilities",
+"industry": "Utilities - Regulated Electric",
+"site": "https://www.dominionenergy.com"
+},
+"DASH": {
+"desc": "DoorDash, Inc., together with its subsidiaries, operates a commerce platform that connects merchants, consumers, and dashers in the United States and internationally. The company operates DoorDash Marketplace, Wolt Marketplace, and Deliveroo Marketplace, which provide various services, such as customer acquisition, demand generation, order fulfillment, merchandising, payment processing, and customer support. It also offers consumer membership programs, DashPass, Wolt+, and Deliveroo Plus; advertising as a value-added service through its marketplaces; and white-label delivery fulfillment services, as well as services that help merchants establish online ordering, build branded mobile apps, manage reservations and in-store dining, manage consumer relationships, enable tableside order and pay, and improve customer support. The company was formerly known as Palo Alto Delivery Inc.",
+"sector": "Consumer Cyclical",
+"industry": "Internet Retail",
+"site": "https://www.doordash.com"
+},
+"DDOG": {
+"desc": "Datadog, Inc. operates an observability and security platform for cloud applications in the United States and internationally. The company's products comprise infrastructure and application performance monitoring, log management, observability pipelines, synthetics, real user monitoring, product analytics, continuous profiler, database monitoring, data observability, LLM observability, error tracking, network monitoring, incident response, workflow automation and App builder, event management, bits AI SRE, cloud cost management, cloud security, code security, cloud SIEM, threat management, sensitive data scanner, and CI visibility. Datadog, Inc. was incorporated in 2010 and is headquartered in New York, New York.",
+"sector": "Technology",
+"industry": "Software - Application",
+"site": "https://www.datadoghq.com"
+},
+"DE": {
+"desc": "Deere & Company engages in the manufacture and distribution of various equipment worldwide. The company operates through four segments: Production and Precision Agriculture, Small Agriculture and Turf, Construction and Forestry, and Financial Services. The Production and Precision Agriculture segment provides four-wheel-drive track and row crop tractors, harvesters, cotton pickers and strippers, sugarcane harvesters and loaders, soil preparation, tillage, seeding, and crop care equipment, as well as application equipment, including sprayers and nutrient management, soil preparation machinery, and related attachments and service parts.",
+"sector": "Industrials",
+"industry": "Farm & Heavy Construction Machinery",
+"site": "https://www.deere.com"
+},
+"DUK": {
+"desc": "Duke Energy Corporation, through its subsidiaries, operates as an energy company in the United States. The company operates through two segments: Electric Utilities and Infrastructure (EU&I); and Gas Utilities and Infrastructure (GU&I). The EU&I segment generates, transmits, distributes, and sells electricity to customers in the Southeast and Midwest regions. It generates electricity through coal, hydroelectric, natural gas, oil, renewables, and nuclear fuel. This segment also engages in the wholesale of electricity to municipalities, electric cooperative utilities, and other load-serving entities. The GU&I segment distributes natural gas to customers in the residential, commercial, industrial, and power generation natural gas sectors; and invests in pipeline transmission projects, renewable natural gas projects, and natural gas storage facilities.",
+"sector": "Utilities",
+"industry": "Utilities - Regulated Electric",
+"site": "https://www.duke-energy.com"
+},
+"ETN": {
+"desc": "Eaton Corporation plc operates as a power management company in the United States, Canada, Latin America, Europe, and the Asia Pacific. It operates through Electrical Americas, Electrical Global, Aerospace, Vehicle, and eMobility segments. The company offers electrical and industrial components, power distribution and assemblies, residential products, single- and three-phase power quality and connectivity products, wiring devices, circuit protection products, utility power distribution products, and power reliability equipment; and hazardous duty electrical equipment, emergency lighting, fire detection, intrinsically safe explosion-proof instrumentation, and structural support systems.",
+"sector": "Industrials",
+"industry": "Specialty Industrial Machinery",
+"site": "https://www.eaton.com"
+},
+"EXC": {
+"desc": "Exelon Corporation, a utility services holding company, engages in the energy distribution and transmission businesses in the United States. The company is involved in the purchase and regulated retail sale of electricity and natural gas; transmission and distribution of electricity; and distribution of natural gas to retail customers. It serves residential, commercial, industrial, and public authorities and electric railroads customers. Exelon Corporation was incorporated in 1999 and is headquartered in Chicago, Illinois.",
+"sector": "Utilities",
+"industry": "Utilities - Regulated Electric",
+"site": "https://www.exeloncorp.com"
+},
+"FTNT": {
+"desc": "Fortinet, Inc. provides cybersecurity and convergence of networking and security solutions worldwide. The company offers FortiOS, a unified operating system designed to address cybersecurity threats; FortiASIC application-specific integrated circuit (ASIC)-based security processing units; FortiCloud, a private cloud software as a service platform; FortiAI, which provides a dual-layered defense across the Fortinet Security Fabric; FortiEndpoint, which converges secure connectivity, endpoint protection, and capabilities into a single agent; and OT Security, which protect the engineered systems that underpin infrastructure and supply chains.",
+"sector": "Technology",
+"industry": "Software - Infrastructure",
+"site": "https://www.fortinet.com"
+},
+"GD": {
+"desc": "General Dynamics Corporation operates as an aerospace and defense company worldwide. It operates through four segments: Aerospace, Marine Systems, Combat Systems, and Technologies. The Aerospace segment produces and sells business jets; and offers aircraft maintenance and repair, management, aircraft-on-ground support, customer support and custom completion services, modifications, upgrades, and lifecycle sustainment support services. The Marine Systems segment designs and builds nuclear-powered submarines, surface combatants, and auxiliary ships for the United States Navy and Jones Act ships for commercial customers, as well as provides maintenance, modernization, and lifecycle support services for navy ships; offers and program management, planning, engineering, and design support services for submarine construction programs.",
+"sector": "Industrials",
+"industry": "Aerospace & Defense",
+"site": "https://www.gd.com"
+},
+"GE": {
+"desc": "General Electric Company, doing business as GE Aerospace, designs and produces commercial and defense aircraft engines, integrated engine components, electric power, and aircraft systems. The company operates through two segments, Commercial Engines & Services, and Defense & Propulsion Technologies. The Commercial Engines & Services segment designs, develops, manufactures, maintenance, repair, and overhaul (MRO) services of jet engines and sale of spare parts for commercial airframes, business aviation, and aeroderivative applications. The Defense & Propulsion Technologies designs, develops, manufactures, and services jet engines and avionics and power systems for governments, militaries, and commercial airframers, as well as MRO of engines and the sale of spare parts.",
+"sector": "Industrials",
+"industry": "Aerospace & Defense",
+"site": "https://www.geaerospace.com"
+},
+"GEV": {
+"desc": "GE Vernova Inc., an energy company, engages in the provision of various products and services that generate, transfer, orchestrate, convert, and store electricity in the United States, Europe, Asia, the Middle East, and Africa. The company operates through three segments: Power, Wind, and Electrification. The Power segment designs, manufactures, and services gas, nuclear, hydro, and steam technologies. It serves industrial, government, and other customers. The Wind segment offers wind generation technologies, including onshore and offshore wind turbines and blades. The Electrification segment provides grid solutions; power conversion; electrification software; and solar and storage solutions technologies required for the transmission, distribution, conversion, storage, and orchestration of electricity from point of generation to point of consumption.",
+"sector": "Industrials",
+"industry": "Specialty Industrial Machinery",
+"site": "https://www.gevernova.com"
+},
+"GOOGL": {
+"desc": "Alphabet Inc. offers various products and platforms in the United States, Europe, the Middle East, Africa, the Asia-Pacific, Canada, and Latin America. It operates through Google Services, Google Cloud, and Other Bets segments. The Google Services segment provides products and services, including ads, Android, Chrome, devices, Gmail, Google Drive, Google Maps, Google Photos, Google Play, Search, and YouTube. It is also involved in the sale of apps and in-app purchases and digital content in Google Play and YouTube; and devices, as well as the provision of YouTube consumer subscription services, such as YouTube TV, YouTube Music and Premium, NFL Sunday Ticket, and Google One. The Google Cloud segment offers consumption-based fees and subscriptions for AI solutions, including AI infrastructure, Vertex AI platform, and Gemini enterprise.",
+"sector": "Communication Services",
+"industry": "Internet Content & Information",
+"site": "https://abc.xyz"
+},
+"HIMS": {
+"desc": "Hims & Hers Health, Inc. operates as a consumer-first health and wellness platform that connects consumers to licensed healthcare professionals in the United States, the United Kingdom, Canada, Germany, the Republic of Ireland, France, Spain, and internationally. The company offers a range of curated prescription and non-prescription health and wellness products and services available to purchase on its websites and mobile application directly by customers. It also provides personalized health and wellness products; over-the-counter drug and device products, cosmetics, and supplement products primarily focusing on general wellness, skincare, sexual health and wellness, and hair care under the Hims & Hers brand name; and laboratory testing services to measure a set of biomarkers.",
+"sector": "Healthcare",
+"industry": "Drug Manufacturers - Specialty & Generic",
+"site": "https://www.hims.com"
+},
+"HON": {
+"desc": "Honeywell International Inc. engages in the aerospace technologies, industrial automation, building automation, and energy and sustainability solutions businesses in the United States, Europe, and internationally. The Aerospace Technologies segment offers auxiliary power units, propulsion engines, integrated avionics, connectivity services, electric power systems, management and technical services, environmental control systems, engine controls, flight safety products, communications products, navigation hardware, data and software applications, radar and surveillance systems, aircraft lighting, advanced systems and instruments, satellite and space components, and aircraft wheels and brakes. This segment also provides thermal systems; spare parts; and repair, overhaul, and maintenance services.",
+"sector": "Industrials",
+"industry": "Conglomerates",
+"site": "https://www.honeywell.com"
+},
+"HOOD": {
+"desc": "Robinhood Markets, Inc. operates financial services platform in the United States. The company's platform allows users to invest in stocks, exchange-traded funds (ETFs), and American depository receipts. It offers fractional trading, recurring investments, access to investing on margin, fully-paid securities lending, cash sweep, instant withdrawals, retirement program, around-the-clock trading, joint investing accounts, event contracts, future contract services, and short selling. The company also provides various learning and education solutions comprise Snacks, an accessible digest of business news stories for a new generation of investors; Learn, which is an online collection of guides, feature tutorials, and financial dictionary; Newsfeeds that offer access to free, premium news from sites from various sites, such as Barron's, Reuters, and Dow Jones.",
+"sector": "Financial Services",
+"industry": "Capital Markets",
+"site": "https://robinhood.com"
+},
+"INTC": {
+"desc": "Intel Corporation designs, develops, manufactures, markets, sells, and services computing and related end products and services in the United States, Ireland, Israel, and internationally. It operates through three segments: CCG, DCAI, and Intel Foundry. The company offers client computing group products, including client and commercial CPUs, discrete client GPUs, edge computing, and connectivity products; data center and AI products, such as server CPUs, discrete GPUs, and networking products; and semiconductors comprising wafer fabrication, substrates, and other related products and services. It also provides driving assistance and self-driving solutions; and develops and manufactures multi-beam mask writing tools. The company sells its products through sales organizations, distributors, resellers, retailers, and OEM partners.",
+"sector": "Technology",
+"industry": "Semiconductors",
+"site": "https://www.intel.com"
+},
+"ISRG": {
+"desc": "Intuitive Surgical, Inc. develops, manufactures, and markets products that enable physicians and healthcare providers to enhance the quality of and access to minimally invasive care in the United States and internationally. It offers the da Vinci Surgical System that enables surgical procedures using a minimally invasive approach; and Ion endoluminal system, which extends its commercial offerings beyond surgery into diagnostic endoluminal procedures enabling minimally invasive biopsies in the lung.",
+"sector": "Healthcare",
+"industry": "Medical Instruments & Supplies",
+"site": "https://www.intuitive.com"
+},
+"KLAC": {
+"desc": "KLA Corporation, together with its subsidiaries, designs, manufactures, and markets process control, process-enabling, and yield management solutions for the semiconductor and related electronics industries worldwide. The company operates through three segments: Semiconductor Process Control; Specialty Semiconductor Process; and PCB and Component Inspection.",
+"sector": "Technology",
+"industry": "Semiconductor Equipment & Materials",
+"site": "https://www.kla.com"
+},
+"KTOS": {
+"desc": "Kratos Defense & Security Solutions, Inc., a technology company, provides technology, hardware, products, system, and software for the defense, national security, and commercial markets in the United States, other North America, the Asia Pacific, the Middle East, Europe, and Internationally. The company operates through Kratos Government Solutions and Unmanned Systems segments.",
+"sector": "Industrials",
+"industry": "Aerospace & Defense",
+"site": "https://www.kratosdefense.com"
+},
+"LDOS": {
+"desc": "Leidos Holdings, Inc., together with its subsidiaries, provides services and solutions for government and commercial customers in the United States and internationally. The National Security & Digital segment provides national security software; services by using artificial intelligence and machine learning to coordinate sea, ground, air, and space to help warfighters; offensive, defensive, and physical cyber operation solutions; intelligence analysis, operational support, logistics operations, security, linguistics, force production, biometrics, chemical, biological, radiological, nuclear, and explosives, energetics, training, and other services; and Digital Modernization and transformation services.",
+"sector": "Technology",
+"industry": "Information Technology Services",
+"site": "https://www.leidos.com"
+},
+"LLY": {
+"desc": "Eli Lilly and Company discovers, develops, manufactures, and markets human pharmaceutical products in the United States, Europe, China, Japan, and internationally. The company offers cardiometabolic health products, including Basaglar, Humalog, Humalog Mix 75/25, Humalog U-100, Humalog U-200, Humalog Mix 50/50, insulin lispro, insulin lispro protamine, insulin lispro mix 75/25, Humulin, Humulin 70/30, Humulin N, Humulin R, Humulin U-500 for diabetes; Jardiance, Mounjaro, and Trulicity for type 2 diabetes; and Zepbound for obesity.",
+"sector": "Healthcare",
+"industry": "Drug Manufacturers - General",
+"site": "https://www.lilly.com"
+},
+"LMT": {
+"desc": "Lockheed Martin Corporation, an aerospace and defense company, engages in the research, design, development, manufacture, integration, and sustainment of technology systems, products, and services in the United States, Europe, Asia, the Middle East, and internationally. The company operates through four segments: Aeronautics; Missiles and Fire Control (MFC); Rotary and Mission Systems (RMS); and Space. The Aeronautics segment offers combat and air mobility aircraft, unmanned air vehicles, and related technologies. The MFC segment provides air and missile defense systems; tactical missiles and precision strike weapon systems; logistics; fire control systems; mission operations support, readiness, engineering support, and integration services; and ground vehicles.",
+"sector": "Industrials",
+"industry": "Aerospace & Defense",
+"site": "https://www.lockheedmartin.com"
+},
+"LRCX": {
+"desc": "Lam Research Corporation designs, manufactures, markets, refurbishes, and services semiconductor processing equipment used in the fabrication of integrated circuits in the United States, China, Korea, Taiwan, Japan, Southeast Asia, and Europe. The company offers ALTUS systems to deposit conformal or selective films for tungsten or molybdenum metallization applications; SABRE electrochemical deposition products for copper interconnect transition that offers copper damascene manufacturing; SPEED gapfill high-density plasma chemical vapor deposition (CVD) products; Striker single-wafer atomic layer deposition products for dielectric film solutions; and VECTOR plasma-enhanced CVD products.",
+"sector": "Technology",
+"industry": "Semiconductor Equipment & Materials",
+"site": "https://www.lamresearch.com"
+},
+"MCHP": {
+"desc": "Microchip Technology Incorporated develops, manufactures, and sells smart, connected, and secure embedded control solutions in the Americas, Europe, and Asia. It operates in two segments, Semiconductor Products and Technology Licensing. The company offers general-purpose 8-bit, 16-bit, 32-bit, and 64-bit mixed-signal microcontrollers; 32-bit and 64-bit embedded mixed-signal microprocessors; and specialized mixed-signal microcontrollers for automotive, industrial, computing, communications, lighting, power supplies, motor control, human-machine interface, security, wired connectivity, and wireless connectivity applications.",
+"sector": "Technology",
+"industry": "Semiconductors",
+"site": "https://www.microchip.com"
+},
+"MDB": {
+"desc": "MongoDB, Inc., together with its subsidiaries, provides general purpose database platform worldwide. The company offers MongoDB Atlas, a hosted multi-cloud database-as-a-service solution; MongoDB Enterprise Advanced, a commercial database server for enterprise customers to run in the cloud, on-premises, or in a hybrid environment; and Community Server, a free-to-download version of its database, which includes the functionality that developers need to get started with MongoDB. It offers professional services comprising consulting and training. The company was formerly known as 10gen, Inc. and changed its name to MongoDB, Inc. in August 2013. MongoDB, Inc. was incorporated in 2007 and is headquartered in New York, New York.",
+"sector": "Technology",
+"industry": "Software - Infrastructure",
+"site": "https://www.mongodb.com"
+},
+"META": {
+"desc": "Meta Platforms, Inc. engages in the development of products that enable people to connect and share with friends and family through mobile devices, personal computers, virtual reality (VR) headsets, and AI glasses in the United States, Canada, Europe, Asia-Pacific, and internationally. It operates through two segments, Family of Apps (FoA) and Reality Labs (RL).",
+"sector": "Communication Services",
+"industry": "Internet Content & Information",
+"site": "https://www.meta.com"
+},
+"MRK": {
+"desc": "Merck & Co., Inc. operates as a healthcare company worldwide. It offers human health pharmaceutical for various areas under the Keytruda, Keytruda Qlex, Welireg, Gardasil, ProQuad, M-M-R II, Varivax, Vaxneuvance, Capvaxive, RotaTeq, Pneumovax 23, Bridion, Prevymis, Dificid, Zerbaxa, Winrevair, Adempas/ Verquvo, Ohtuvayre, Lagevrio, Isentress/Isentress HD, Delstrigo, Pifeltro, Belsomra, Januvia, and Janumet brands.",
+"sector": "Healthcare",
+"industry": "Drug Manufacturers - General",
+"site": "https://www.merck.com"
+},
+"MRVL": {
+"desc": "Marvell Technology, Inc., together with its subsidiaries, provides data infrastructure semiconductor solutions and spanning the data center core to network edge in the United States, Argentina, China, India, Israel, Japan, Singapore, South Korea, Taiwan, Vietnam, and internationally. The company develops and scales system-on-a-chip architectures, integrating analog, mixed-signal, and digital signal processing functionality. It offers a portfolio of ethernet solutions, including spanning controllers, network adapters, physical transceivers, and switches; single or multiple core processors; and custom application specific integrated circuits, interconnects, fibre channel adapters, and processors.",
+"sector": "Technology",
+"industry": "Semiconductors",
+"site": "https://www.marvell.com"
+},
+"MSFT": {
+"desc": "Microsoft Corporation develops and supports software, services, devices, and solutions worldwide. The Productivity and Business Processes segment offers Microsoft 365 commercial, enterprise mobility + security, windows commercial, power BI, exchange, sharepoint, Microsoft teams, security and compliance, and copilot; Microsoft 365 commercial products, such as Windows commercial on-premises and office licensed services; Microsoft 365 consumer products and cloud services, including Microsoft 365 consumer subscriptions, office licensed on-premises, and other consumer services; LinkedIn; dynamics products and cloud services, such as dynamics 365, cloud-based applications, and on-premises ERP and CRM applications.",
+"sector": "Technology",
+"industry": "Software - Infrastructure",
+"site": "https://www.microsoft.com"
+},
+"MU": {
+"desc": "Micron Technology, Inc. designs, develops, manufactures, and sells memory and storage products in the United States, Taiwan, Japan, Mainland China, Hong Kong, Europe, and internationally. It operates through the Cloud Memory Business Unit; Core Data Center Business Unit; Mobile and Client Business Unit; and Automotive and Embedded Business Unit segments. The company provides memory products, including dynamic random access memory components and modules, CXL-based memory, LPDDR components and modules, graphics memory, high-bandwidth memory, and data center memory products; multichip packages (MCP) comprising embedded multimedia card-based, universal flash storage-based, and NAND-based MCPs; and technology leadership products that include 1y DRAM and G9 NAND technologies.",
+"sector": "Technology",
+"industry": "Semiconductors",
+"site": "https://www.micron.com"
+},
+"NBIS": {
+"desc": "Nebius Group N.V., a technology company, engages in building full-stack infrastructure to service the global AI industry in the United States, the United Kingdom, and internationally. It offers Nebius builds full-stack infrastructure for AI, including large-scale GPU clusters, cloud platforms, and tools and services for developers. The company also provides TripleTen, an edtech platform for re-skilling individuals for careers in technolgy; and Avride, which develops autonomous driving technology for self-driving cars and delivery robotics. It has a strategic alliance with NVIDIA Corporation to support the expansion of the company's AI cloud infrastructure. The company was formerly known as Yandex N.V. and changed its name to Nebius Group N.V. in August 2024. Nebius Group N.V. was founded in 1989 and is based in Schiphol, the Netherlands.",
+"sector": "Communication Services",
+"industry": "Internet Content & Information",
+"site": "https://nebius.com"
+},
+"NEE": {
+"desc": "NextEra Energy, Inc., through its subsidiaries, generates, stores, transmits, distributes, and sells electric power to retail and wholesale customers in North America. It operates through Florida Power & Light Company (FPL) and NEER segments. The company generates electricity from wind, solar, nuclear, natural gas, and other clean energy assets.",
+"sector": "Utilities",
+"industry": "Utilities - Regulated Electric",
+"site": "https://www.nexteraenergy.com"
+},
+"NET": {
+"desc": "Cloudflare, Inc. operates as a cloud services provider that delivers a range of services to businesses worldwide. The company provides a cloud-based security solution to secure a range of combination of platforms, including public and private cloud, on-premises, software-as-a-service applications, and Internet of things (IoT) devices; and application security products comprising web application firewall, bot management, distributed denial of service mitigation, API security, SSL/TLS encryption, client-side security, and security center products.",
+"sector": "Technology",
+"industry": "Software - Infrastructure",
+"site": "https://www.cloudflare.com"
+},
+"NFLX": {
+"desc": "Netflix, Inc. provides entertainment services worldwide. The company offers television (TV) series, documentaries, feature films, games, and live programming across various genres and languages. It also provides members the ability to receive streaming content through a host of internet-connected devices, including TVs, digital video players, TV set-top boxes, and mobile devices. Netflix, Inc. was incorporated in 1997 and is headquartered in Los Gatos, California.",
+"sector": "Communication Services",
+"industry": "Entertainment",
+"site": "https://www.netflix.com"
+},
+"NOC": {
+"desc": "Northrop Grumman Corporation operates as an aerospace and defense technology company in the United States, Asia/Pacific, Europe, and internationally. It operates through four segments: Aeronautics Systems, Defense Systems, Mission Systems and Space Systems. The Aeronautics Systems segment designs, develops, produces, integrates, sustains, and modernizes aircraft systems. This segment also offers unmanned autonomous aircraft systems, including high-altitude long-endurance strategic, surveillance and reconnaissance systems; and strategic long-range strike aircraft, tactical fighter and air dominance aircraft, and airborne battle management and command and control systems.",
+"sector": "Industrials",
+"industry": "Aerospace & Defense",
+"site": "https://www.northropgrumman.com"
+},
+"NOW": {
+"desc": "ServiceNow, Inc. provides cloud-based solution for digital workflows in the North America, Europe, the Middle East and Africa, Asia Pacific, and internationally. The company provides asset management, integrated risk management, IT service management, Operational Technology management, Security Operations, strategic portfolio management, IT operations management products; customer service management product; field service management applications; and sales and order management services. It also offers human resources delivery; legal and contract operations; workplace service delivery products; app engine product; automation engine; platform privacy and security product; and source-to-pay operations.",
+"sector": "Technology",
+"industry": "Software - Application",
+"site": "https://www.servicenow.com"
+},
+"NRG": {
+"desc": "NRG Energy, Inc., together with its subsidiaries, operates as an energy and home services company in the United States and Canada. It operates through the Texas, East, West/Other, Vivint Smart Home, and Corporate Activities segments. The company offers retail electricity, energy management, demand response and virtual power plant programs, carbon offsets, smart home security, and automation services.",
+"sector": "Utilities",
+"industry": "Utilities - Independent Power Producers",
+"site": "https://www.nrg.com"
+},
+"NVDA": {
+"desc": "NVIDIA Corporation operates as a data center scale AI infrastructure company in the United States, Taiwan, China, Hong Kong, Europe, and internationally. It operates through Compute & Networking, and Graphics segments. The Compute & Networking segment provides data center accelerated computing and networking platforms and artificial intelligence solutions and software, and automotive platforms and autonomous and electric vehicle solutions, including software. The Graphics segment offers GeForce GPUs for gaming and PCs; Quadro/NVIDIA RTX GPUs for enterprise workstation graphics. The company's products are used in gaming, professional visualization, data center, and automotive markets.",
+"sector": "Technology",
+"industry": "Semiconductors",
+"site": "https://www.nvidia.com"
+},
+"NVO": {
+"desc": "Novo Nordisk A/S, together with its subsidiaries, engages in the research and development, manufacture, and distribution of pharmaceutical products. It operates through two segments, Obesity and Diabetes Care, and Rare Disease. The Obesity and Diabetes care segment provides products for diabetes, obesity, cardiovascular, and other emerging therapy areas. The Rare Disease segment offers products in the areas of rare blood disorders, rare endocrine disorders, and hormone replacement therapy. The company also provides NovoPen 6 and NovoPen Echo Plus, smart insulin pens; Dose Check, an insulin dose guidance application; growth hormone pens and injection needles; and Wegovy pill an oral glucagon-like peptide-1 (GLP-1) receptor agonist therapy for weight management.",
+"sector": "Healthcare",
+"industry": "Drug Manufacturers - General",
+"site": "https://www.novonordisk.com"
+},
+"NXPI": {
+"desc": "NXP Semiconductors N.V. provides semiconductor products in the United States, Germany, Japan, South Korea, Taiwan, Singapore, the Netherlands, Mainland China, Hong Kong, and internationally. The company's product portfolio includes microcontrollers; application processors; communication processors; wireless connectivity solutions, such as near field communications, ultra-wideband, Bluetooth low-energy, Zigbee, Thread, and Wi-Fi and Wi-Fi/Bluetooth integrated SoCs; analog and interface products; radio frequency devices, and security controllers, as well as semiconductor-based environmental and inertial sensors, including pressure, inertial, magnetic, and gyroscopic sensors. Its products are used in various applications, including automotive, industrial and Internet of Things, mobile, and communication infrastructure.",
+"sector": "Technology",
+"industry": "Semiconductors",
+"site": "https://www.nxp.com"
+},
+"OKLO": {
+"desc": "Oklo Inc. develops fission power plants to provide energy at scale to customers in the United States. The company offers Aurora Powerhouse, which is designed to produce between 15 and up to 75 megawatts of electricity. It is also commercializing nuclear fuel recycling and fuel fabrication technology that can convert used nuclear fuel into usable fuel for its reactors. The company was formerly known as AltC Acquisition Corp. and changed its name to Oklo Inc. in May 2024. Oklo Inc. was founded in 2013 and is headquartered in Santa Clara, California.",
+"sector": "Utilities",
+"industry": "Utilities - Independent Power Producers",
+"site": "https://www.oklo.com"
+},
+"ON": {
+"desc": "ON Semiconductor Corporation provides intelligent sensing and power solutions in Hong Kong, Singapore, the United Kingdom, the United States, and internationally. It operates through three segments: Power Solutions Group, Analog and Mixed-Signal Group, and Intelligent Sensing Group. The Power Solutions Group segment offers discrete, module, and integrated semiconductor devices designed to enable power conversion, including power switching, signal conditioning, and circuit protection technologies. Its Analog and Mixed-Signal Group segment designs and develops analog and mixed-signal solutions, including power management, sensor interface, connectivity, and standard products for automotive, industrial automation, AI data centers, computing, and mobile end markets.",
+"sector": "Technology",
+"industry": "Semiconductors",
+"site": "https://www.onsemi.com"
+},
+"ORCL": {
+"desc": "Oracle Corporation offers products and services that build, run and support enterprise information technology frameworks worldwide. Its Oracle cloud software as a service offering includes various cloud software applications, including Oracle Fusion cloud enterprise resource planning ERP, Oracle Fusion cloud enterprise performance management EPM, Oracle Fusion cloud supply chain and manufacturing management SCM, Oracle Fusion cloud human capital management HCM, and NetSuite applications suite, Oracle Health applications, as well as Oracle Fusion Sales, Service, and Marketing. The company also offers cloud-based industry solutions for various industries; Oracle cloud license and on-premise license; and Oracle license support services.",
+"sector": "Technology",
+"industry": "Software - Infrastructure",
+"site": "https://www.oracle.com"
+},
+"PANW": {
+"desc": "Palo Alto Networks, Inc. provides cybersecurity solutions in the Americas, Europe, the Middle East, Africa, the Asia Pacific, and Japan. It offers Prisma Access, a secure access service edge solution; Strata Cloud Manager, a network security management solution; and Prisma AIRS to protect customers' entire AI ecosystem. It provides a comprehensive cloud native application protection platform; and Code to Cloud platform, as well as offers VM-Series and CN-Series virtual firewalls for inline network security on multi- and hybrid-cloud environments.",
+"sector": "Technology",
+"industry": "Software - Infrastructure",
+"site": "https://www.paloaltonetworks.com"
+},
+"PLTR": {
+"desc": "Palantir Technologies Inc. builds and deploys software platforms for the intelligence community to assist in counterterrorism investigations and operations in the United States, the United Kingdom, and internationally. It provides Palantir Gotham integrates with other platforms for defense offerings which enables users to see, understand, and act in the modern battlespace; operations centers to the tactical edge; integrating data from domains and sensors in near real-time; and situational awareness and accelerating operational decision-making, as well as facilitates the hand-off between analysts and operational users, helping operators plan and execute real-world responses to threats that have been identified within the platform.",
+"sector": "Technology",
+"industry": "Software - Infrastructure",
+"site": "https://www.palantir.com"
+},
+"PWR": {
+"desc": "Quanta Services, Inc. offers infrastructure solutions for the electric and gas utility, power generation, load center, manufacturing, communications, pipeline, and energy industries. The company's Electric Infrastructure Solutions segment engages in the design, procurement, construction, upgrade, repair, and maintenance of electric power transmission and distribution infrastructure and substation facilities; installation, maintenance, and upgrade of electric power infrastructure projects; installation of smart grid technologies on electric power networks; and design, installation, maintenance, and repair of commercial and industrial wirings.",
+"sector": "Industrials",
+"industry": "Engineering & Construction",
+"site": "https://www.quantaservices.com"
+},
+"PYPL": {
+"desc": "PayPal Holdings, Inc. operates a technology platform that enables digital payments for merchants and consumers worldwide. The company operates a two-sided network at scale that connects merchants and consumers that enables its customers to connect, transact, and send and receive payments through online and in person, as well as transfer and withdraw funds using various funding sources, such as bank accounts, PayPal or Venmo account balance, consumer credit and debit products, credit and debit cards, and cryptocurrencies, as well as other stored value products, including gift cards and eligible rewards. It provides payment solutions under the PayPal, PayPal Credit, Braintree, Venmo, Xoom, Hyperwallet, Honey, and Paidy names. The company was founded in 1998 and is headquartered in San Jose, California.",
+"sector": "Financial Services",
+"industry": "Credit Services",
+"site": "https://www.paypal.com"
+},
+"QCOM": {
+"desc": "QUALCOMM Incorporated engages in the development and commercialization of foundational technologies for the wireless industry worldwide. It operates through three segments: Qualcomm CDMA Technologies (QCT); Qualcomm Technology Licensing (QTL); and Qualcomm Strategic Initiatives (QSI). The QCT segment develops and supplies integrated circuits and system software with connectivity and computing technologies for use in mobile devices; automotive systems for connectivity, digital cockpit, and ADAS/AD; and IoT, including consumer electronic devices, industrial devices, and edge networking products.",
+"sector": "Technology",
+"industry": "Semiconductors",
+"site": "https://www.qualcomm.com"
+},
+"QQQ": {
+"desc": "To maintain the correspondence between the composition and weights of the securities in the trust (the \"securities\") and the stocks in the NASDAQ-100 Index\u00ae, the adviser adjusts the securities from time to time to conform to periodic changes in the identity and/or relative weights of index securities. The composition and weighting of the securities portion of a portfolio deposit are also adjusted to conform to changes in the index."
+},
+"REGN": {
+"desc": "Regeneron Pharmaceuticals, Inc. discovers, invents, develops, manufactures, and commercializes medicines to treat various diseases worldwide. The company develops product candidates to treat eye, allergic and inflammatory, cardiovascular, metabolic, neurological, infectious, and rare diseases; and cancer, hematologic conditions. It also offers EYLEA injections for wet age-related macular degeneration and diabetic macular edema; myopic choroidal neovascularization; diabetic retinopathy; neovascular glaucoma; retinopathy of prematurity; Dupixent injection to treat atopic dermatitis and asthma; Libtayo injection for metastatic or locally advanced cutaneous squamous cell carcinoma; Praluent injection to treat heterozygous familial hypercholesterolemia (HoFH); and Kevzara solution for rheumatoid arthritis.",
+"sector": "Healthcare",
+"industry": "Biotechnology",
+"site": "https://www.regeneron.com"
+},
+"RTX": {
+"desc": "RTX Corporation, an aerospace and defense company, provides systems and services for commercial, military, and government customers worldwide. It operates through three segments: Collins Aerospace (Collins), Pratt & Whitney, and Raytheon. The Collins segment offers aerospace and defense products, and aftermarket services for civil and military aircraft manufacturers and commercial airlines, as well as regional, business, and general aviation, defense, and commercial space operations.",
+"sector": "Industrials",
+"industry": "Aerospace & Defense",
+"site": "https://www.rtx.com"
+},
+"S": {
+"desc": "SentinelOne, Inc. operates as a cybersecurity provider in the United States and internationally. The company's Singularity Platform delivers an artificial intelligence-powered autonomous threat prevention, detection, and response capabilities across an organization's endpoints, cloud workloads, and identify credentials, which enables seamless and autonomous protection against a spectrum of cyber threats. It also offers generative AI-security agent (Purple AI), security information and event management, endpoint security, cloud security, identity security, exposure and vulnerability management, and threat services. The company was formerly known as Sentinel Labs, Inc. and changed its name to SentinelOne, Inc. in March 2021. SentinelOne, Inc. was incorporated in 2013 and is headquartered in Mountain View, California.",
+"sector": "Technology",
+"industry": "Software - Infrastructure",
+"site": "https://www.sentinelone.com"
+},
+"SHOP": {
+"desc": "Shopify Inc., a commerce technology company, provides tools to start, scale, market, and run a business of various sizes in Canada, the United States, Europe, the Middle East, Africa, the Asia Pacific, and Latin America. The Company offers Shopify platform that enables merchants to manage products and inventory, process orders and payments, fulfill and ship orders, build customer relationships, source products, leverage analytics, and reporting and access financing for running their business across all of their sales channels, including web and mobile storefronts, physical retail locations, social media storefronts, and marketplaces. It also provides Shopify Payments, a fully integrated payment processing service that allows merchants to accept and process payment cards online and offline.",
+"sector": "Technology",
+"industry": "Software - Application",
+"site": "https://www.shopify.com"
+},
+"SMCI": {
+"desc": "Super Micro Computer, Inc., together with its subsidiaries, develops and sells server and storage solutions based on modular and open-standard architecture in the United States, Asia, Europe, and internationally. The company provides liquid and air-cooled AI servers for training and inferencing with integrated graphics processing units (GPUs) or PCIe based architectures; SuperBlade, MicroBlade, FlexTwin, GrandTwin, and BigTwin blade and multi-node systems; SuperStorage systems; Hyper, CloudDC, and WIO and rackmount systems; embedded (5G/IoT/Edge) systems; and MicroCloud server systems. It also offers workstations and networking devices; and modular server subsystems and accessories, including server boards, chassis, power supplies, and other accessories.",
+"sector": "Technology",
+"industry": "Computer Hardware",
+"site": "https://www.supermicro.com"
+},
+"SMH": {
+"desc": "The fund normally invests at least 80% of its total assets in securities that comprise the fund's benchmark index. The index includes common stocks and depositary receipts of U.S. exchange-listed companies in the semiconductor industry. Such companies may include medium-capitalization companies and foreign companies that are listed on a U.S. exchange. The fund is non-diversified."
+},
+"SMR": {
+"desc": "NuScale Power Corporation provides small modular reactor technology solutions. It offers NuScale Power Module (NPM), a light water nuclear reactor that can generate 77 megawatts of electricity (MWe). The company also provides design and nuclear regulatory licensing basis information to construct and operate the power plant; and licensing, design, development, construction, operation, and maintenance of the power plant. In addition, it offers regulatory licensing support services; start-up testing and commissioning support; accredited training programs to support initial and ongoing power plant operations; management of all aspects of the U.S.",
+"sector": "Industrials",
+"industry": "Specialty Industrial Machinery",
+"site": "https://www.nuscalepower.com"
+},
+"SNOW": {
+"desc": "Snowflake Inc. provides a cloud-based data platform for various organizations in the United States and internationally. The company's platform includes artificial intelligence (AI) Data Cloud, which enables customers to consolidate data into a single source of truth to drive meaningful business insights, build data applications, and share data and data products, as well as applies AI for solving business problems. It serves financial services, advertising, media and entertainment, retail and consumer goods, healthcare and life sciences, manufacturing, technology, telecom, travel and hospitality, and government and defense industries, as well as the public sector. the company has a collaboration with OpenAI, L.L.C. for the development of AI solutions for joint enterprise customers that deliver tangible return on investment. The company was formerly known as Snowflake Computing, Inc.",
+"sector": "Technology",
+"industry": "Software - Application",
+"site": "https://www.snowflake.com"
+},
+"SO": {
+"desc": "The Southern Company, through its subsidiaries, engages in the sale of electricity. The company offers electric service to retail customers and wholesale customers; and energy-related products and services to natural gas choice markets. It also develops, constructs, acquires, owns, operates, and manages power generation assets, as well as battery energy storage projects; sells electricity at market-based rates in the wholesale market; and deploys microgrids for commercial, industrial, governmental, and utility customers. In addition, the company is involved in the distribution of natural gas in Illinois, Georgia, Virginia, and Tennessee; distributes energy and resilience solutions; and invests in telecommunications. The Southern Company was incorporated in 1945 and is headquartered in Atlanta, Georgia.",
+"sector": "Utilities",
+"industry": "Utilities - Regulated Electric",
+"site": "https://www.southerncompany.com"
+},
+"SOFI": {
+"desc": "SoFi Technologies, Inc. provides various financial services in the United States, Latin America, Canada, and Hong Kong. The company operates through three segments: Lending, Technology Platform, and Financial Services. It offers lending and financial services and products that allows its members to borrow, save, spend, invest, and protect money; and personal loans, student loans, home loans, and related services. The company also operates Galileo, a technology platform that offers services to financial and non-financial institution; and Technisys, a cloud-native digital and core banking platform that provides software licenses and associated services, including implementation and maintenance.",
+"sector": "Financial Services",
+"industry": "Credit Services",
+"site": "https://www.sofi.com"
+},
+"TEAM": {
+"desc": "Atlassian Corporation provides a collaboration software that enables organizations to connect all teams through a system of work that unlocks productivity at scale worldwide. Its product portfolio includes Jira, a project management platform for planning, tracking, and managing work; Confluence, a connected workspace to create, organize, and share team knowledge, documents, and collaboration content; Loom, an asynchronous video communication tool to record and share videos; Jira Service Management, an intuitive service management solution for IT, HR, and other teams; and Rovo, an AI offering that assists teams with its Search, Chat and Agent capabilities.",
+"sector": "Technology",
+"industry": "Software - Application",
+"site": "https://www.atlassian.com"
+},
+"TLN": {
+"desc": "Talen Energy Corporation, an independent power producer and infrastructure company, produces and sells electricity, capacity, and ancillary services into wholesale power markets in the United States. The company's plants generate power using a variety of fuels, such as nuclear, fossil, oil, natural gas, and coal power plants. It owns and operates approximately 13.1 GW of power infrastructure. Talen Energy Corporation was incorporated in 2014 and is headquartered in Houston, Texas.",
+"sector": "Utilities",
+"industry": "Utilities - Independent Power Producers",
+"site": "https://www.talenenergy.com"
+},
+"TSLA": {
+"desc": "Tesla, Inc. designs, develops, manufactures, leases, and sells electric vehicles, and energy generation and storage systems in the United States, China, and internationally. The company operates in two segments, Automotive; and Energy Generation and Storage. The company offers electric vehicles, as well as sells automotive regulatory credits; and non-warranty maintenance services and collision, automotive insurance services, as well as part sales and retail merchandise sale. It also provides sedans and sport utility vehicles through direct and used vehicle sales, a network of Tesla Superchargers, and in-app upgrades; purchase financing and leasing services; services for electric vehicles through its company-owned service locations and Tesla mobile service technicians; and vehicle limited warranties and extended service plans.",
+"sector": "Consumer Cyclical",
+"industry": "Auto Manufacturers",
+"site": "https://www.tesla.com"
+},
+"TSM": {
+"desc": "Taiwan Semiconductor Manufacturing Company Limited, together with its subsidiaries, manufactures, packages, tests, and sells integrated circuits and other semiconductor devices in Taiwan, China, Europe, the Middle East, Africa, Japan, the United States, and internationally. It provides various wafer fabrication processes, such as processes to manufacture complementary metal- oxide-semiconductor (CMOS) logic, mixed-signal, radio frequency, embedded memory, bipolar CMOS mixed-signal, and others. The company also involved in providing customer and engineering support services; manufacturing of masks; investment in technology start-up companies; research, designing, developing, manufacturing, packaging, testing, and sale of color filters; and investment activities.",
+"sector": "Technology",
+"industry": "Semiconductors",
+"site": "https://www.tsmc.com"
+},
+"TXN": {
+"desc": "Texas Instruments Incorporated designs, manufactures, and sells semiconductors to electronics designers and manufacturers in the United States, China, the rest of Asia, Europe, the Middle East, Africa, Japan, and internationally. It operates through Analog and Embedded Processing segments. The Analog segment offers power products to manage power requirements across various voltage levels, including battery-management solutions, DC/DC switching regulators, AC/DC and isolated controllers and converters, power switches, linear regulators, voltage references, multiphase controllers and power stages, and lighting products.",
+"sector": "Technology",
+"industry": "Semiconductors",
+"site": "https://www.ti.com"
+},
+"UBER": {
+"desc": "Uber Technologies, Inc. develops and operates proprietary technology applications in the United States, Canada, Latin America, Europe, the Middle East, Africa, and the Asia Pacific. The company operates through three segments: Mobility, Delivery, and Freight. The Mobility segment connects consumers with a range of transportation modalities, such as ridesharing, carsharing, micromobility, rentals, public transit, taxis, and other modalities; and offers riders in a variety of vehicle types, as well as financial partnerships products and advertising services.",
+"sector": "Technology",
+"industry": "Software - Application",
+"site": "https://www.uber.com"
+},
+"UNH": {
+"desc": "UnitedHealth Group Incorporated operates as a health care company in the United States and internationally. It operates through four segments: Optum Health, Optum Insight, Optum Rx; and UnitedHealthcare. The Optum Health segment provides care delivery, care management, wellness and consumer engagement, and health financial services with patients, consumers, care delivery systems, providers, employers, payers, and public-sector entities. The Optum Insight segment offers software and information products, advisory consulting arrangements, and managed services outsourcing contracts to hospital systems, physicians, health plans, public entities, life sciences companies and other organizations.",
+"sector": "Healthcare",
+"industry": "Healthcare Plans",
+"site": "https://www.unitedhealthgroup.com"
+},
+"VKTX": {
+"desc": "Viking Therapeutics, Inc., a clinical-stage biopharmaceutical company, focuses on the development of novel therapies for metabolic and endocrine disorders. Its lead drug candidate is VK2809, an orally available tissue and receptor-subtype selective agonist of the thyroid hormone receptor beta (TR\u00df), which is in Phase IIb clinical trials to treat patients with biopsy-confirmed non-alcoholic steatohepatitis, as well as NAFLD.",
+"sector": "Healthcare",
+"industry": "Biotechnology",
+"site": "https://www.vikingtherapeutics.com"
+},
+"VOO": {
+"desc": "The fund manager employs an indexing investment approach designed to track the performance of the Standard & Poor's 500 Index, a widely recognized benchmark of U.S. stock market performance that is dominated by the stocks of large U.S. companies. The advisor attempts to replicate the target index by investing all, or substantially all, of its assets in the stocks that make up the index, holding each stock in approximately the same proportion as its weighting in the index. The fund is non-diversified."
+},
+"VRT": {
+"desc": "Vertiv Holdings Co designs, manufactures, and services critical digital infrastructure technologies and life cycle services for data centers, communication networks, and commercial and industrial environments in the Americas, the Asia Pacific, Europe, the Middle East, and Africa.",
+"sector": "Industrials",
+"industry": "Electrical Equipment & Parts",
+"site": "https://www.vertiv.com"
+},
+"VRTX": {
+"desc": "Vertex Pharmaceuticals Incorporated operates as a biotechnology company in the United States, Europe, and internationally. The company offers transformative medicines for people with serious diseases with a focus on specialty markets, such as cystic fibrosis (CF), sickle cell disease (SCD), transfusion dependent beta thalassemia (TDT), and acute pain. It markets TRIKAFTA/KAFTRIO for people with CF with at least one F508del mutation for 2 years of age and older; ALYFTREK for the treatment for people with CF 6 years of age and older; SYMDEKO/SYMKEVI for treatment of patients with CF 6 years of age and older; ORKAMBI for CF patients 1 year or older; and KALYDECO for the treatment of patients with 1 month or older who have CF with ivacaftor.",
+"sector": "Healthcare",
+"industry": "Biotechnology",
+"site": "https://www.vrtx.com"
+},
+"VST": {
+"desc": "Vistra Corp., together with its subsidiaries, operates as an integrated retail electricity and power generation company in the United States. The company operates through five segments: Retail, Texas, East, West, and Asset Closure. The company retails electricity and natural gas to residential, commercial, and industrial customers across states in the United States and the District of Columbia. It is also involved in electricity generation, wholesale energy purchases and sales, commodity risk management, fuel procurement, and fuel logistics management activities. In addition, the company engages in decommissioning and reclamation of retired generation facilities, including mines, and battery removal and remediation activities.",
+"sector": "Utilities",
+"industry": "Utilities - Independent Power Producers",
+"site": "https://vistracorp.com"
+},
+"WDAY": {
+"desc": "Workday, Inc. provides enterprise cloud applications in the United States and internationally. The company offers a suite of financial management applications to maintain accounting information; manage financial processes, such as payables and receivables; identify real-time financial, operational, and management insights; perform financial consolidation; reduce time-to-close; promote internal control and auditability; and achieve consistency across finance operations.",
+"sector": "Technology",
+"industry": "Software - Application",
+"site": "https://www.workday.com"
+},
+"XLE": {
+"desc": "In seeking to track the performance of the index, the fund employs a replication strategy. It generally invests substantially all, but at least 95%, of its total assets in the securities comprising the index. The index includes companies that have been identified as Energy companies by the GICS\u00ae, including securities of companies from the following industries: oil, gas and consumable fuels; and energy equipment and services. It is non-diversified."
+},
+"XLK": {
+"desc": "In seeking to track the performance of the index, the fund employs a replication strategy, which means that the fund typically invests in substantially all of the securities represented in the index in approximately the same proportions as the index. It generally invests substantially all, but at least 95%, of its total assets in the securities comprising the index. The fund is non-diversified."
+},
+"XLV": {
+"desc": "In seeking to track the performance of the index, the fund employs a replication strategy. It generally invests substantially all, but at least 95%, of its total assets in the securities comprising the index. The index includes companies from the following industries: pharmaceuticals; health care equipment & supplies; health care providers & services; biotechnology; life sciences tools & services; and health care technology. The fund is non-diversified."
+},
+"ZS": {
+"desc": "Zscaler, Inc. operates as a cloud security company worldwide. The company offers cyberthreat protection products, including Zscaler Internet Access, which provides threat protection, cloud sandbox, and cloud browser isolation; Zscaler Private Access solution that includes cyberthreat and data protection, application discovery, secure application access, application segmentation, application protection, reduced attack surface, and browser isolation; Zero Trust Firewall; Cloud Sandbox; and Zero Trust Browser. It also provides data security products, such as web and email DLP, endpoint DLP, BYOD security, multi-mode CASB, unified SaaS security, DSPM, AI-SPM, public gen AI security, and Microsoft Copilot data protection; Zero Trust Cloud solution.",
+"sector": "Technology",
+"industry": "Software - Infrastructure",
+"site": "https://www.zscaler.com"
+},
+"BTC-USD": {
+"desc": "Bitcoin (BTC) is a cryptocurrency launched in 2010. Users are able to generate BTC through the process of mining. Bitcoin has a current supply of 20,052,856. The last known price of Bitcoin is 61,816.94539678 USD and is down -1.48 over the last 24 hours. It is currently trading on 12666 active market(s) with $27,704,931,630.79 traded over the last 24 hours. More information can be found at https://bitcoin.org/.",
+"site": "https://bitcoin.org/"
+},
+"ETH-USD": {
+"desc": "Ethereum (ETH) is a cryptocurrency . Ethereum has a current supply of 120,683,199.93981396. The last known price of Ethereum is 1,747.51614164 USD and is down -0.96 over the last 24 hours. It is currently trading on 12125 active market(s) with $10,166,893,897.93 traded over the last 24 hours. More information can be found at https://www.ethereum.org/.",
+"site": "https://www.ethereum.org/"
+},
+"BNB-USD": {
+"desc": "BNB (BNB) is a cryptocurrency . BNB has a current supply of 134,782,412.07. The last known price of BNB is 573.74507609 USD and is down -1.83 over the last 24 hours. It is currently trading on 3294 active market(s) with $1,355,547,664.71 traded over the last 24 hours. More information can be found at https://bnbchain.org/en.",
+"site": "https://bnbchain.org/en"
+},
+"SOL-USD": {
+"desc": "Solana (SOL) is a cryptocurrency launched in 2020. Solana has a current supply of 629,847,212.98312235 with 581,247,051.79702711 in circulation. The last known price of Solana is 80.64869853 USD and is down -0.54 over the last 24 hours. It is currently trading on 1142 active market(s) with $2,089,218,467.51 traded over the last 24 hours. More information can be found at https://solana.com.",
+"site": "https://solana.com"
+},
+"XRP-USD": {
+"desc": "XRP (XRP) is a cryptocurrency . XRP has a current supply of 99,985,645,029 with 62,241,508,805 in circulation. The last known price of XRP is 1.11806588 USD and is down -1.34 over the last 24 hours. It is currently trading on 1846 active market(s) with $1,424,710,724.13 traded over the last 24 hours. More information can be found at https://xrpl.org/.",
+"site": "https://xrpl.org/"
+},
+"ADA-USD": {
+"desc": "Cardano (ADA) is a cryptocurrency launched in 2017. Cardano has a current supply of 44,992,322,341.13371 with 36,453,321,539.872006 in circulation. The last known price of Cardano is 0.18021987 USD and is down -4.30 over the last 24 hours. It is currently trading on 1716 active market(s) with $470,904,561.04 traded over the last 24 hours. More information can be found at https://www.cardano.org.",
+"site": "https://www.cardano.org"
+},
+"DOGE-USD": {
+"desc": "Dogecoin (DOGE) is a cryptocurrency . Users are able to generate DOGE through the process of mining. Dogecoin has a current supply of 170,669,803,126.57912. The last known price of Dogecoin is 0.07516205 USD and is down -1.84 over the last 24 hours. It is currently trading on 1451 active market(s) with $653,859,244.74 traded over the last 24 hours. More information can be found at http://dogecoin.com/.",
+"site": "http://dogecoin.com/"
+},
+"AVAX-USD": {
+"desc": "Avalanche (AVAX) is a cryptocurrency launched in 2020. Avalanche has a current supply of 463,441,061.1772119 with 431,771,961.1772119 in circulation. The last known price of Avalanche is 6.77454328 USD and is down -1.67 over the last 24 hours. It is currently trading on 1098 active market(s) with $211,554,622.92 traded over the last 24 hours. More information can be found at https://avax.network/.",
+"site": "https://avax.network/"
+},
+"TRX-USD": {
+"desc": "TRON (TRX) is a cryptocurrency launched in 2018. TRON has a current supply of 94,857,799,113.948264 with 94,857,796,812.531264 in circulation. The last known price of TRON is 0.32708403 USD and is down -0.42 over the last 24 hours. It is currently trading on 1349 active market(s) with $576,510,475.56 traded over the last 24 hours. More information can be found at https://trondao.org/.",
+"site": "https://trondao.org/"
+},
+"DOT-USD": {
+"desc": "Polkadot (DOT) is a cryptocurrency . Polkadot has a current supply of 1,680,239,148.70978386. The last known price of Polkadot is 1.27519617 USD and is up 0.85 over the last 24 hours. It is currently trading on 1039 active market(s) with $18,113,684,327.40 traded over the last 24 hours. More information can be found at https://polkadot.com.",
+"site": "https://polkadot.com"
+},
+"LINK-USD": {
+"desc": "Chainlink (LINK) is a cryptocurrency launched in 2017and operates on the Ethereum platform. Chainlink has a current supply of 1,000,000,000 with 727,099,970.42554771 in circulation. The last known price of Chainlink is 7.83725511 USD and is down -1.09 over the last 24 hours. It is currently trading on 2255 active market(s) with $219,931,886.81 traded over the last 24 hours. More information can be found at https://chain.link/.",
+"site": "https://chain.link/"
+},
+"MATIC-USD": {
+"desc": "Polygon (MATIC) is a cryptocurrency . Polygon has a current supply of 10,000,000,000 with 0 in circulation. The last known price of Polygon is 0.21661934 USD and is up 2.57 over the last 24 hours. It is currently trading on 1477 active market(s) with $690,337.72 traded over the last 24 hours. More information can be found at https://polygon.technology/."
+},
+"LTC-USD": {
+"desc": "Litecoin (LTC) is a cryptocurrency . Users are able to generate LTC through the process of mining. Litecoin has a current supply of 84,000,000 with 77,354,635.02791354 in circulation. The last known price of Litecoin is 44.25204562 USD and is down -1.14 over the last 24 hours. It is currently trading on 1539 active market(s) with $279,785,880.85 traded over the last 24 hours. More information can be found at https://litecoin.org/.",
+"site": "https://litecoin.org/"
+},
+"BCH-USD": {
+"desc": "Bitcoin Cash (BCH) is a cryptocurrency . Users are able to generate BCH through the process of mining. Bitcoin Cash has a current supply of 20,057,715.625. The last known price of Bitcoin Cash is 235.33251089 USD and is down -0.81 over the last 24 hours. It is currently trading on 1170 active market(s) with $170,889,913.73 traded over the last 24 hours. More information can be found at http://bch.info.",
+"site": "http://bch.info"
+},
+"UNI-USD": {
+"desc": "UNICORN Token (UNI) is a cryptocurrency launched in 2019and operates on the Ethereum platform. UNICORN Token has a current supply of 9,800,000,000 with 106,912,508.514 in circulation. The last known price of UNICORN Token is 0.00016264 USD and is up 0.00 over the last 24 hours. It is currently trading on 3 active market(s) with $0.00 traded over the last 24 hours. More information can be found at https://unicorn.cm/."
+},
+"XLM-USD": {
+"desc": "Stellar (XLM) is a cryptocurrency launched in 2014. Stellar has a current supply of 50,001,786,839.912575 with 34,010,712,548.494316 in circulation. The last known price of Stellar is 0.1986935 USD and is down -0.88 over the last 24 hours. It is currently trading on 825 active market(s) with $671,149,977.09 traded over the last 24 hours. More information can be found at https://www.stellar.org.",
+"site": "https://www.stellar.org"
+},
+"ATOM-USD": {
+"desc": "Cosmos (ATOM) is a cryptocurrency . Cosmos has a current supply of 517,838,181.479919. The last known price of Cosmos is 1.56714735 USD and is up 0.75 over the last 24 hours. It is currently trading on 982 active market(s) with $27,169,583.75 traded over the last 24 hours. More information can be found at https://cosmos.network/.",
+"site": "https://cosmos.network/"
+},
+"XMR-USD": {
+"desc": "Monero (XMR) is a cryptocurrency . Users are able to generate XMR through the process of mining. Monero has a current supply of 18,774,370.10784577. The last known price of Monero is 318.59623308 USD and is down -3.28 over the last 24 hours. It is currently trading on 371 active market(s) with $100,706,046.96 traded over the last 24 hours. More information can be found at https://www.getmonero.org/.",
+"site": "https://www.getmonero.org/"
+},
+"ETC-USD": {
+"desc": "Ethereum Classic (ETC) is a cryptocurrency launched in 2015. Users are able to generate ETC through the process of mining. Ethereum Classic has a current supply of 210,700,000 with 157,389,744.40666224 in circulation. The last known price of Ethereum Classic is 7.06497309 USD and is down -0.46 over the last 24 hours. It is currently trading on 721 active market(s) with $38,904,979.55 traded over the last 24 hours. More information can be found at https://ethereumclassic.org/.",
+"site": "https://ethereumclassic.org/"
+},
+"HBAR-USD": {
+"desc": "Hedera (HBAR) is a cryptocurrency launched in 2017. Hedera has a current supply of 50,000,000,000 with 43,789,905,603.97311026 in circulation. The last known price of Hedera is 0.07316946 USD and is down -2.15 over the last 24 hours. It is currently trading on 439 active market(s) with $45,306,828.25 traded over the last 24 hours. More information can be found at https://www.hedera.com/.",
+"site": "https://www.hedera.com/"
+},
+"FIL-USD": {
+"desc": "Filecoin (FIL) is a cryptocurrency launched in 2020. Users are able to generate FIL through the process of mining. Filecoin has a current supply of 1,958,926,966 with 693,790,004 in circulation. The last known price of Filecoin is 2.3431982 USD and is down -0.23 over the last 24 hours. It is currently trading on 637 active market(s) with $198,293,854.77 traded over the last 24 hours. More information can be found at https://filecoin.io/.",
+"site": "\"https://filecoin.io/\""
+},
+"ICP-USD": {
+"desc": "Internet Computer (ICP) is a cryptocurrency launched in 2021. Internet Computer has a current supply of 554,310,520.09312378. The last known price of Internet Computer is 2.16858758 USD and is down -1.09 over the last 24 hours. It is currently trading on 424 active market(s) with $38,063,362.98 traded over the last 24 hours. More information can be found at https://internetcomputer.org/.",
+"site": "https://internetcomputer.org/"
+},
+"APT-USD": {
+"desc": "Apricot Finance (APT) is a cryptocurrency and operates on the Solana platform. Apricot Finance has a current supply of 1,000,000,000 with 0 in circulation. The last known price of Apricot Finance is 0.00013111 USD and is up 0.00 over the last 24 hours. It is currently trading on 9 active market(s) with $0.00 traded over the last 24 hours. More information can be found at https://apricot.one/."
+},
+"NEAR-USD": {
+"desc": "NEAR Protocol (NEAR) is a cryptocurrency launched in 2020. NEAR Protocol has a current supply of 1,293,447,018. The last known price of NEAR Protocol is 1.36849788 USD and is up 0.87 over the last 24 hours. It is currently trading on 631 active market(s) with $176,250,290.27 traded over the last 24 hours. More information can be found at https://near.org/.",
+"site": "https://near.org/"
+},
+"VET-USD": {
+"desc": "VeChain (VET) is a cryptocurrency launched in 2018. VeChain has a current supply of 85,985,041,177. The last known price of VeChain is 0.00468607 USD and is down -0.59 over the last 24 hours. It is currently trading on 394 active market(s) with $11,546,982.13 traded over the last 24 hours. More information can be found at https://www.vechain.org/.",
+"site": "https://www.vechain.org/"
+},
+"ARB-USD": {
+"desc": "ARbit (ARB) is a cryptocurrency . Users are able to generate ARB through the process of mining. ARbit has a current supply of 10,830,050 with 0 in circulation. The last known price of ARbit is 0.00075706 USD and is up 0.00 over the last 24 hours. It is currently trading on 36 active market(s) with $0.00 traded over the last 24 hours."
+},
+"OP-USD": {
+"desc": "Optimism (OP) is a cryptocurrency and operates on the Optimism platform. Optimism has a current supply of 4,294,967,296 with 2,159,485,520 in circulation. The last known price of Optimism is 0.10484303 USD and is down -1.85 over the last 24 hours. It is currently trading on 779 active market(s) with $35,079,068.61 traded over the last 24 hours. More information can be found at https://www.optimism.io/.",
+"site": "https://www.optimism.io/"
+},
+"MKR-USD": {
+"desc": "Maker (MKR) is a cryptocurrency and operates on the Ethereum platform. Maker has a current supply of 870,827.47 with 0 in circulation. The last known price of Maker is 1,388.39746717 USD and is down -1.87 over the last 24 hours. It is currently trading on 599 active market(s) with $176,979.25 traded over the last 24 hours. More information can be found at https://makerdao.com/.",
+"site": "https://makerdao.com/"
+},
+"AAVE-USD": {
+"desc": "Aave (AAVE) is a cryptocurrency and operates on the Ethereum platform. Aave has a current supply of 16,000,000 with 15,413,181.23989458 in circulation. The last known price of Aave is 93.1817182 USD and is up 5.17 over the last 24 hours. It is currently trading on 1327 active market(s) with $208,535,642.85 traded over the last 24 hours. More information can be found at https://aave.com/.",
+"site": "https://aave.com/"
+},
+"GRT-USD": {
+"desc": "Golden Ratio Token (GRT) is a cryptocurrency launched in 2020and operates on the Ethereum platform. Golden Ratio Token has a current supply of 16,180 with 0 in circulation. The last known price of Golden Ratio Token is 0.47823804 USD and is down -1.69 over the last 24 hours. It is currently trading on 19 active market(s) with $1,666,852.30 traded over the last 24 hours. More information can be found at https://goldenratiotoken.site."
+},
+"ALGO-USD": {
+"desc": "Algorand (ALGO) is a cryptocurrency launched in 2019. Algorand has a current supply of 10,000,000,000 with 8,949,587,042.395327 in circulation. The last known price of Algorand is 0.08723411 USD and is down -2.88 over the last 24 hours. It is currently trading on 574 active market(s) with $20,468,410.24 traded over the last 24 hours. More information can be found at http://algorand.foundation.",
+"site": "http://algorand.foundation"
+},
+"QNT-USD": {
+"desc": "Quant (QNT) is a cryptocurrency and operates on the Ethereum platform. Quant has a current supply of 14,881,364 with 12,072,738 in circulation. The last known price of Quant is 66.17539878 USD and is down -1.49 over the last 24 hours. It is currently trading on 375 active market(s) with $4,782,643.48 traded over the last 24 hours. More information can be found at https://quant.network/.",
+"site": "https://quant.network/"
+},
+"EGLD-USD": {
+"desc": "MultiversX (EGLD) is a cryptocurrency . MultiversX has a current supply of 29,769,717 with 29,764,561.51965901 in circulation. The last known price of MultiversX is 4.14005842 USD and is up 0.04 over the last 24 hours. It is currently trading on 325 active market(s) with $9,172,834.17 traded over the last 24 hours. More information can be found at https://multiversx.com/.",
+"site": "https://multiversx.com/"
+},
+"SAND-USD": {
+"desc": "The Sandbox (SAND) is a cryptocurrency and operates on the Ethereum platform. The Sandbox has a current supply of 3,000,000,000 with 2,937,639,702.37332254 in circulation. The last known price of The Sandbox is 0.0488361 USD and is down -2.40 over the last 24 hours. It is currently trading on 729 active market(s) with $15,211,665.59 traded over the last 24 hours. More information can be found at https://www.sandbox.game/en/.",
+"site": "https://www.sandbox.game/en/"
+},
+"MANA-USD": {
+"desc": "Decentraland (MANA) is a cryptocurrency and operates on the Ethereum platform. Decentraland has a current supply of 2,193,179,327.32014624 with 1,985,909,566.53314053 in circulation. The last known price of Decentraland is 0.06828176 USD and is down -3.63 over the last 24 hours. It is currently trading on 634 active market(s) with $12,201,732.14 traded over the last 24 hours. More information can be found at https://decentraland.org/.",
+"site": "https://decentraland.org/"
+},
+"AXS-USD": {
+"desc": "Axie Infinity (AXS) is a cryptocurrency and operates on the Ethereum platform. Axie Infinity has a current supply of 270,000,000 with 169,943,589.5469277 in circulation. The last known price of Axie Infinity is 1.09833717 USD and is down -0.59 over the last 24 hours. It is currently trading on 600 active market(s) with $20,520,681.18 traded over the last 24 hours. More information can be found at https://axieinfinity.com/.",
+"site": "https://axieinfinity.com/"
+},
+"THETA-USD": {
+"desc": "Theta Network (THETA) is a cryptocurrency . Theta Network has a current supply of 1,000,000,000. The last known price of Theta Network is 0.74079853 USD and is up 1.61 over the last 24 hours. It is currently trading on 258 active market(s) with $28,104,694.66 traded over the last 24 hours. More information can be found at https://www.thetatoken.org/.",
+"site": "\"https://www.thetatoken.org/\""
+},
+"FTM-USD": {
+"desc": "Fantom (FTM) is a cryptocurrency launched in 2018. Fantom has a current supply of 3,175,000,000 with 2,803,634,835.5265927 in circulation. The last known price of Fantom is 0.69880146 USD and is down -0.75 over the last 24 hours. It is currently trading on 750 active market(s) with $78,734,172.35 traded over the last 24 hours. More information can be found at https://fantom.foundation/."
+},
+"XTZ-USD": {
+"desc": "Tezos (XTZ) is a cryptocurrency launched in 2018. Tezos has a current supply of 1,109,818,911.872903 with 1,089,833,256.853501 in circulation. The last known price of Tezos is 0.24418437 USD and is down -2.86 over the last 24 hours. It is currently trading on 495 active market(s) with $23,860,694.62 traded over the last 24 hours. More information can be found at https://www.tezos.com/.",
+"site": "https://www.tezos.com/"
+},
+"EOS-USD": {
+"desc": "EOS (EOS) is a cryptocurrency launched in 2017. EOS has a current supply of 2,100,000,000 with 0 in circulation. The last known price of EOS is 0.07343895 USD and is up 0.16 over the last 24 hours. It is currently trading on 774 active market(s) with $32,219.77 traded over the last 24 hours. More information can be found at https://eosnetwork.com/.",
+"site": "https://eosnetwork.com/"
+},
+"FLOW-USD": {
+"desc": "Flow (FLOW) is a cryptocurrency launched in 2021. Flow has a current supply of 1,672,860,464.73128215. The last known price of Flow is 0.02744286 USD and is down -1.81 over the last 24 hours. It is currently trading on 277 active market(s) with $3,051,261.92 traded over the last 24 hours. More information can be found at https://flow.com.",
+"site": "https://flow.com"
+},
+"CHZ-USD": {
+"desc": "Chiliz (CHZ) is a cryptocurrency launched in 2018and operates on the Ethereum platform. Chiliz has a current supply of 10,449,099,490. The last known price of Chiliz is 0.01772576 USD and is down -3.13 over the last 24 hours. It is currently trading on 602 active market(s) with $27,660,515.25 traded over the last 24 hours. More information can be found at https://www.chiliz.com/.",
+"site": "https://www.chiliz.com/"
+},
+"KAVA-USD": {
+"desc": "Kava (KAVA) is a cryptocurrency launched in 2019and operates on the Ethereum platform. Kava has a current supply of 1,082,847,010. The last known price of Kava is 0.04432127 USD and is down -1.83 over the last 24 hours. It is currently trading on 232 active market(s) with $8,887,636.46 traded over the last 24 hours. More information can be found at https://www.kava.io/.",
+"site": "https://www.kava.io/"
+},
+"MINA-USD": {
+"desc": "Mina (MINA) is a cryptocurrency launched in 2021. Mina has a current supply of 1,287,249,412.84003925. The last known price of Mina is 0.04819536 USD and is up 3.20 over the last 24 hours. It is currently trading on 208 active market(s) with $18,881,344.55 traded over the last 24 hours. More information can be found at https://minaprotocol.com/.",
+"site": "https://minaprotocol.com/"
+},
+"ZEC-USD": {
+"desc": "Zcash (ZEC) is a cryptocurrency . Users are able to generate ZEC through the process of mining. Zcash has a current supply of 16,758,453.4155448 with 16,758,553.7905448 in circulation. The last known price of Zcash is 444.51918878 USD and is down -4.04 over the last 24 hours. It is currently trading on 627 active market(s) with $354,324,096.26 traded over the last 24 hours. More information can be found at https://z.cash/.",
+"site": "https://z.cash/"
+},
+"DASH-USD": {
+"desc": "Dash (DASH) is a cryptocurrency launched in 2014. Users are able to generate DASH through the process of mining. Dash has a current supply of 12,758,467.16015303. The last known price of Dash is 34.43649594 USD and is down -1.72 over the last 24 hours. It is currently trading on 568 active market(s) with $45,332,919.71 traded over the last 24 hours. More information can be found at https://www.dash.org/.",
+"site": "https://www.dash.org/"
+},
+"ENJ-USD": {
+"desc": "Enjin Coin (ENJ) is a cryptocurrency . Enjin Coin has a current supply of 2,003,412,950.6862168 with 1,980,166,263.0746818 in circulation. The last known price of Enjin Coin is 0.02853299 USD and is down -3.41 over the last 24 hours. It is currently trading on 498 active market(s) with $6,961,147.64 traded over the last 24 hours. More information can be found at https://enjin.io/.",
+"site": "https://enjin.io/"
+},
+"BAT-USD": {
+"desc": "Basic Attention Token (BAT) is a cryptocurrency launched in 2017and operates on the Ethereum platform. Basic Attention Token has a current supply of 1,500,000,000 with 1,495,724,656.95260575 in circulation. The last known price of Basic Attention Token is 0.08683287 USD and is up 1.12 over the last 24 hours. It is currently trading on 574 active market(s) with $14,451,447.23 traded over the last 24 hours. More information can be found at https://basicattentiontoken.org/.",
+"site": "https://basicattentiontoken.org/"
+},
+"ZIL-USD": {
+"desc": "Zilliqa (ZIL) is a cryptocurrency launched in 2017. Users are able to generate ZIL through the process of mining. Zilliqa has a current supply of 20,226,295,929.1247 with 19,545,140,503.4147 in circulation. The last known price of Zilliqa is 0.01115747 USD and is up 0.41 over the last 24 hours. It is currently trading on 389 active market(s) with $14,752,010.71 traded over the last 24 hours. More information can be found at https://www.zilliqa.com/.",
+"site": "\"https://www.zilliqa.com/\""
+},
+"COMP-USD": {
+"desc": "Compound Coin (COMP) is a cryptocurrency . Users are able to generate COMP through the process of mining. Compound Coin has a current supply of 54,281,727,831.442299 with 53,731,717,830.442299 in circulation. The last known price of Compound Coin is 0.00000005 USD and is up 0.00 over the last 24 hours. It is currently trading on 1 active market(s) with $0.00 traded over the last 24 hours. More information can be found at http://compound-coin.cc."
+},
+"CRV-USD": {
+"desc": "Curve DAO Token (CRV) is a cryptocurrency and operates on the Ethereum platform. Curve DAO Token has a current supply of 2,373,301,283.42389797 with 1,494,302,260.89336918 in circulation. The last known price of Curve DAO Token is 0.23137691 USD and is up 1.47 over the last 24 hours. It is currently trading on 956 active market(s) with $58,325,081.07 traded over the last 24 hours. More information can be found at https://www.curve.finance/.",
+"site": "https://www.curve.finance/"
+},
+"SNX-USD": {
+"desc": "Synthetix (SNX) is a cryptocurrency launched in 2018and operates on the Ethereum platform. Synthetix has a current supply of 343,889,850.0967736 with 343,466,216.99839868 in circulation. The last known price of Synthetix is 0.79925137 USD and is down -1.89 over the last 24 hours. It is currently trading on 706 active market(s) with $33,174,213.66 traded over the last 24 hours. More information can be found at https://www.synthetix.io/.",
+"site": "\"https://www.synthetix.io/\""
+},
+"YFI-USD": {
+"desc": "Yearn (YFI) is a cryptocurrency and operates on the Ethereum platform. Yearn has a current supply of 36,646.35595035 with 35,815.94701469 in circulation. The last known price of Yearn is 2,133.06120058 USD and is up 17.99 over the last 24 hours. It is currently trading on 575 active market(s) with $15,517,583.86 traded over the last 24 hours. More information can be found at https://yearn.fi/.",
+"site": "https://yearn.fi/"
+},
+"SUSHI-USD": {
+"desc": "SushiSwap (SUSHI) is a cryptocurrency launched in 2020and operates on the Ethereum platform. SushiSwap has a current supply of 291,514,753.90092285 with 286,835,035.95681928 in circulation. The last known price of SushiSwap is 0.21735937 USD and is up 0.32 over the last 24 hours. It is currently trading on 967 active market(s) with $18,381,026.56 traded over the last 24 hours. More information can be found at https://sushi.com/.",
+"site": "https://sushi.com/"
+},
+"LDO-USD": {
+"desc": "Lido DAO (LDO) is a cryptocurrency and operates on the Ethereum platform. Lido DAO has a current supply of 1,000,000,000 with 842,834,643.45608348 in circulation. The last known price of Lido DAO is 0.26646319 USD and is down -0.48 over the last 24 hours. It is currently trading on 633 active market(s) with $27,706,454.47 traded over the last 24 hours. More information can be found at https://lido.fi/.",
+"site": "https://lido.fi/"
+},
+"RUNE-USD": {
+"desc": "THORChain (RUNE) is a cryptocurrency launched in 2018. THORChain has a current supply of 354,173,734 with 338,306,903 in circulation. The last known price of THORChain is 0.3967929 USD and is down -3.70 over the last 24 hours. It is currently trading on 279 active market(s) with $6,432,499.35 traded over the last 24 hours. More information can be found at https://thorchain.org/.",
+"site": "https://thorchain.org/"
+},
+"INJ-USD": {
+"desc": "Injective (INJ) is a cryptocurrency and operates on the Ethereum platform. Injective has a current supply of 100,000,000 with 99,970,954.5 in circulation. The last known price of Injective is 4.73834828 USD and is up 1.41 over the last 24 hours. It is currently trading on 581 active market(s) with $71,559,801.59 traded over the last 24 hours. More information can be found at https://injective.com.",
+"site": "https://injective.com"
+},
+"SEI-USD": {
+"desc": "Sei (SEI) is a cryptocurrency launched in 2023. Sei has a current supply of 10,000,000,000 with 7,217,777,777 in circulation. The last known price of Sei is 0.04856048 USD and is down -0.17 over the last 24 hours. It is currently trading on 370 active market(s) with $25,900,451.12 traded over the last 24 hours. More information can be found at https://www.sei.io/.",
+"site": "https://www.sei.io/"
+},
+"SUI-USD": {
+"desc": "Salmonation (SUI) is a cryptocurrency launched in 2022. Salmonation has a current supply of 100,000,000 with 0 in circulation. The last known price of Salmonation is 0.00030019 USD and is up 0.00 over the last 24 hours. It is currently trading on 9 active market(s) with $0.00 traded over the last 24 hours. More information can be found at https://salmonchain.com."
+},
+"TIA-USD": {
+"desc": "Celestia (TIA) is a cryptocurrency launched in 2023and operates on the Osmosis platform. Celestia has a current supply of 1,168,685,161.483695 with 919,932,996.62251 in circulation. The last known price of Celestia is 0.37839628 USD and is down -2.67 over the last 24 hours. It is currently trading on 357 active market(s) with $32,380,249.98 traded over the last 24 hours. More information can be found at https://www.celestia.org.",
+"site": "https://www.celestia.org"
+},
+"STX-USD": {
+"desc": "Stox (STX) is a cryptocurrency and operates on the Ethereum platform. Stox has a current supply of 55,026,628.96315698 with 0 in circulation. The last known price of Stox is 0.00283447 USD and is up 0.00 over the last 24 hours. It is currently trading on 11 active market(s) with $0.00 traded over the last 24 hours. More information can be found at https://www.stox.com/."
+},
+"IMX-USD": {
+"desc": "Impermax (IMX) is a cryptocurrency launched in 2021and operates on the Ethereum platform. Impermax has a current supply of 100,000,000 with 0 in circulation. The last known price of Impermax is 0.00414309 USD and is up 0.00 over the last 24 hours. It is currently trading on 4 active market(s) with $0.00 traded over the last 24 hours. More information can be found at https://impermax.finance/."
+},
+"RNDR-USD": {
+"desc": "Render (RNDR) is a cryptocurrency launched in 2019and operates on the Ethereum platform. Render has a current supply of 532,219,654.73549163 with 392,459,381.4554916 in circulation. The last known price of Render is 6.92738624 USD and is down -0.17 over the last 24 hours. It is currently trading on 442 active market(s) with $79,624,365.19 traded over the last 24 hours. More information can be found at https://rendernetwork.com/."
+},
+"FET-USD": {
+"desc": "Artificial Superintelligence Alliance (FET) is a cryptocurrency launched in 2018. Artificial Superintelligence Alliance has a current supply of 2,714,384,546.672 with 2,247,443,192.51251403 in circulation. The last known price of Artificial Superintelligence Alliance is 0.16933267 USD and is down -3.97 over the last 24 hours. It is currently trading on 568 active market(s) with $149,878,689.67 traded over the last 24 hours. More information can be found at https://superintelligence.io/.",
+"site": "https://superintelligence.io/"
+},
+"GALA-USD": {
+"desc": "Gala (GALA) is a cryptocurrency and operates on the Ethereum platform. Gala has a current supply of 47,858,603,087.64788122. The last known price of Gala is 0.00317777 USD and is down -4.79 over the last 24 hours. It is currently trading on 586 active market(s) with $29,309,286.93 traded over the last 24 hours. More information can be found at https://gala.com/.",
+"site": "https://gala.com/"
+},
+"JUP-USD": {
+"desc": "Jupiter (JUP) is a cryptocurrency launched in 2020. Jupiter has a current supply of 3,000,000,000 with 0 in circulation. The last known price of Jupiter is 0.00023956 USD and is up 1,909.15 over the last 24 hours. It is currently trading on 35 active market(s) with $170.25 traded over the last 24 hours. More information can be found at https://jup.io.",
+"site": "https://jup.io"
+},
+"PYTH-USD": {
+"desc": "Pyth Network (PYTH) is a cryptocurrency launched in 2021and operates on the Solana platform. Pyth Network has a current supply of 9,999,981,857.422035 with 7,874,981,732.051919 in circulation. The last known price of Pyth Network is 0.04370707 USD and is up 7.29 over the last 24 hours. It is currently trading on 429 active market(s) with $54,313,627.00 traded over the last 24 hours. More information can be found at https://pyth.network/.",
+"site": "https://pyth.network/"
+},
+"ONDO-USD": {
+"desc": "Ondo (ONDO) is a cryptocurrency launched in 2021and operates on the Ethereum platform. Ondo has a current supply of 10,000,000,000 with 4,869,330,647 in circulation. The last known price of Ondo is 0.32825893 USD and is down -0.18 over the last 24 hours. It is currently trading on 438 active market(s) with $79,046,964.57 traded over the last 24 hours. More information can be found at https://ondo.foundation/.",
+"site": "https://ondo.foundation/"
+},
+"STRK-USD": {
+"desc": "Strike (STRK) is a cryptocurrency launched in 2021and operates on the Ethereum platform. Strike has a current supply of 6,540,888 with 5,681,679.35922443 in circulation. The last known price of Strike is 0.03040575 USD and is down -1.41 over the last 24 hours. It is currently trading on 30 active market(s) with $0.00 traded over the last 24 hours. More information can be found at https://strike.org.",
+"site": "https://strike.org"
+},
+"JTO-USD": {
+"desc": "Jito (JTO) is a cryptocurrency launched in 2023and operates on the Solana platform. Jito has a current supply of 986,522,996.48116403 with 491,128,895.9 in circulation. The last known price of Jito is 0.72216697 USD and is down -0.27 over the last 24 hours. It is currently trading on 386 active market(s) with $29,221,692.80 traded over the last 24 hours. More information can be found at https://www.jito.network/.",
+"site": "https://www.jito.network/"
+},
+"BLUR-USD": {
+"desc": "Blur (BLUR) is a cryptocurrency and operates on the Ethereum platform. Blur has a current supply of 3,000,000,000 with 2,836,912,529.252283 in circulation. The last known price of Blur is 0.01491925 USD and is down -0.10 over the last 24 hours. It is currently trading on 346 active market(s) with $17,766,830.68 traded over the last 24 hours. More information can be found at https://blur.io/.",
+"site": "https://blur.io/"
+},
+"ENS-USD": {
+"desc": "Ethereum Name Service (ENS) is a cryptocurrency and operates on the Ethereum platform. Ethereum Name Service has a current supply of 100,000,000 with 40,896,654.00091147 in circulation. The last known price of Ethereum Name Service is 4.09077236 USD and is up 1.46 over the last 24 hours. It is currently trading on 488 active market(s) with $12,045,107.20 traded over the last 24 hours. More information can be found at https://ens.domains/.",
+"site": "https://ens.domains/"
+},
+"DYDX-USD": {
+"desc": "dYdX (DYDX) is a cryptocurrency launched in 2021and operates on the Osmosis platform. dYdX has a current supply of 958,342,962.317931 with 848,250,796.0970293 in circulation. The last known price of dYdX is 0.13003207 USD and is up 2.28 over the last 24 hours. It is currently trading on 290 active market(s) with $10,938,828.80 traded over the last 24 hours. More information can be found at https://dydx.trade/?utm_source=cmc&utm_medium=media&utm_campaign=cmc-feed.",
+"site": "https://dydx.trade/?utm_source=cmc&utm_medium=media&utm_campaign=cmc-feed"
+},
+"GMX-USD": {
+"desc": "GameX (GMX) is a cryptocurrency launched in 2021and operates on the BNB Smart Chain (BEP20) platform. GameX has a current supply of 0. The last known price of GameX is 0.00016621 USD and is up 0.00 over the last 24 hours. It is currently trading on 5 active market(s) with $0.00 traded over the last 24 hours. More information can be found at https://www.game-x.co/."
+},
+"APE-USD": {
+"desc": "APEcoin.dev (APE) is a cryptocurrency and operates on the BNB Smart Chain (BEP20) platform. APEcoin.dev has a current supply of 10,000,000 with 0 in circulation. The last known price of APEcoin.dev is 0.13589764 USD and is down -4.62 over the last 24 hours. It is currently trading on 45 active market(s) with $2,822.67 traded over the last 24 hours. More information can be found at https://apecoin.dev/.",
+"site": "https://apecoin.dev/"
+},
+"LRC-USD": {
+"desc": "Loopring (LRC) is a cryptocurrency launched in 2017and operates on the Ethereum platform. Loopring has a current supply of 1,373,873,397.44245744 with 1,368,406,998.50059517 in circulation. The last known price of Loopring is 0.01232208 USD and is up 0.16 over the last 24 hours. It is currently trading on 425 active market(s) with $2,190,672.10 traded over the last 24 hours. More information can be found at https://loopring.org.",
+"site": "https://loopring.org"
+},
+"CVX-USD": {
+"desc": "Convex Finance (CVX) is a cryptocurrency and operates on the Ethereum platform. Convex Finance has a current supply of 99,970,132.99855783 with 97,747,857.6872996 in circulation. The last known price of Convex Finance is 1.59939672 USD and is down -3.40 over the last 24 hours. It is currently trading on 313 active market(s) with $19,829,902.31 traded over the last 24 hours. More information can be found at https://www.convexfinance.com/.",
+"site": "https://www.convexfinance.com/"
+},
+"ROSE-USD": {
+"desc": "Oasis (ROSE) is a cryptocurrency launched in 2020and operates on the BNB Smart Chain (BEP20) platform. Oasis has a current supply of 10,000,000,000 with 7,925,797,229 in circulation. The last known price of Oasis is 0.00585648 USD and is down -1.74 over the last 24 hours. It is currently trading on 193 active market(s) with $1,516,726.56 traded over the last 24 hours. More information can be found at https://oasis.net/.",
+"site": "https://oasis.net/"
+},
+"KSM-USD": {
+"desc": "Kusama (KSM) is a cryptocurrency launched in 2019. Kusama has a current supply of 18,469,926.66684659. The last known price of Kusama is 3.45304694 USD and is up 7.13 over the last 24 hours. It is currently trading on 301 active market(s) with $19,117,858.55 traded over the last 24 hours. More information can be found at https://kusama.network/.",
+"site": "https://kusama.network/"
+},
+"ZRX-USD": {
+"desc": "0x Protocol (ZRX) is a cryptocurrency and operates on the Ethereum platform. 0x Protocol has a current supply of 1,000,000,000 with 848,396,562.89734384 in circulation. The last known price of 0x Protocol is 0.08707105 USD and is down -2.83 over the last 24 hours. It is currently trading on 449 active market(s) with $6,799,895.71 traded over the last 24 hours. More information can be found at http://0xprotocol.org/.",
+"site": "http://0xprotocol.org/"
+},
+"ANKR-USD": {
+"desc": "Ankr (ANKR) is a cryptocurrency launched in 2019and operates on the Ethereum platform. Ankr has a current supply of 10,000,000,000. The last known price of Ankr is 0.00357203 USD and is down -1.58 over the last 24 hours. It is currently trading on 392 active market(s) with $4,057,095.58 traded over the last 24 hours. More information can be found at https://www.ankr.com/.",
+"site": "https://www.ankr.com/"
+},
+"SKL-USD": {
+"desc": "SKALE (SKL) is a cryptocurrency launched in 2020and operates on the Ethereum platform. SKALE has a current supply of 6,342,291,667 with 6,192,144,337 in circulation. The last known price of SKALE is 0.00356425 USD and is down -0.78 over the last 24 hours. It is currently trading on 254 active market(s) with $2,140,305.04 traded over the last 24 hours. More information can be found at https://skale.space/?utm_medium=website&utm_source=coinmarketcap&utm_campaign=skalepage.",
+"site": "https://skale.space/?utm_medium=website&utm_source=coinmarketcap&utm_campaign=skalepage"
+},
+"BAND-USD": {
+"desc": "Band (BAND) is a cryptocurrency and operates on the Ethereum platform. Band has a current supply of 178,751,447.514063. The last known price of Band is 0.16804033 USD and is up 2.28 over the last 24 hours. It is currently trading on 345 active market(s) with $8,363,972.28 traded over the last 24 hours. More information can be found at https://bandprotocol.com/.",
+"site": "https://bandprotocol.com/"
+},
+"KNC-USD": {
+"desc": "Kyber Network Crystal v2 (KNC) is a cryptocurrency and operates on the Ethereum platform. Kyber Network Crystal v2 has a current supply of 240,988,598.91619297 with 209,267,567.35098339 in circulation. The last known price of Kyber Network Crystal v2 is 0.10927165 USD and is down -1.98 over the last 24 hours. It is currently trading on 504 active market(s) with $2,284,910.03 traded over the last 24 hours. More information can be found at https://kyberswap.com/.",
+"site": "https://kyberswap.com/"
+},
+"STORJ-USD": {
+"desc": "Storj (STORJ) is a cryptocurrency and operates on the Ethereum platform. Storj has a current supply of 424,999,998.00000112. The last known price of Storj is 0.07461117 USD and is down -2.87 over the last 24 hours. It is currently trading on 319 active market(s) with $4,416,436.83 traded over the last 24 hours. More information can be found at https://storj.io/.",
+"site": "https://storj.io/"
+},
+"GLM-USD": {
+"desc": "Golem (GLM) is a cryptocurrency launched in 2016and operates on the Ethereum platform. Golem has a current supply of 1,000,000,000. The last known price of Golem is 0.09888543 USD and is down -3.20 over the last 24 hours. It is currently trading on 240 active market(s) with $3,516,699.21 traded over the last 24 hours. More information can be found at https://golem.network/.",
+"site": "https://golem.network/"
+},
+"CELO-USD": {
+"desc": "Celo (CELO) is a cryptocurrency launched in 2017. Celo has a current supply of 1,000,000,000 with 603,763,925 in circulation. The last known price of Celo is 0.0676255 USD and is up 1.90 over the last 24 hours. It is currently trading on 339 active market(s) with $8,282,217.72 traded over the last 24 hours. More information can be found at https://celo.org/.",
+"site": "https://celo.org/"
+},
+"IOTA-USD": {
+"desc": "IOTA (IOTA) is a cryptocurrency launched in 2015. IOTA has a current supply of 4,600,000,000 with 4,519,204,748 in circulation. The last known price of IOTA is 0.03666046 USD and is down -2.59 over the last 24 hours. It is currently trading on 233 active market(s) with $6,327,766.28 traded over the last 24 hours. More information can be found at https://www.iota.org/.",
+"site": "https://www.iota.org/"
+},
+"NEO-USD": {
+"desc": "Neo (NEO) is a cryptocurrency . Neo has a current supply of 100,000,000 with 70,538,831 in circulation. The last known price of Neo is 1.94830154 USD and is down -1.27 over the last 24 hours. It is currently trading on 422 active market(s) with $7,006,945.05 traded over the last 24 hours. More information can be found at https://neo.org/.",
+"site": "https://neo.org/"
+},
+"WAVES-USD": {
+"desc": "Waves (WAVES) is a cryptocurrency launched in 2016. Waves has a current supply of 131,616,820. The last known price of Waves is 0.26161176 USD and is down -1.80 over the last 24 hours. It is currently trading on 321 active market(s) with $4,456,097.98 traded over the last 24 hours. More information can be found at https://waves.tech/.",
+"site": "https://waves.tech/"
+},
+"KDA-USD": {
+"desc": "Kadena (KDA) is a cryptocurrency launched in 2020. Users are able to generate KDA through the process of mining. Kadena has a current supply of 1,000,000,000 with 335,294,433.31464 in circulation. The last known price of Kadena is 0.00585292 USD and is down -5.42 over the last 24 hours. It is currently trading on 120 active market(s) with $5,377.43 traded over the last 24 hours. More information can be found at https://kda-chain.org/index.html.",
+"site": "https://kda-chain.org/index.html"
+},
+"RVN-USD": {
+"desc": "Ravencoin (RVN) is a cryptocurrency launched in 2018. Users are able to generate RVN through the process of mining. Ravencoin has a current supply of 15,652,163,068.47192955. The last known price of Ravencoin is 0.01242482 USD and is up 0.09 over the last 24 hours. It is currently trading on 196 active market(s) with $11,277,988.13 traded over the last 24 hours. More information can be found at https://ravencoin.org/.",
+"site": "\"https://ravencoin.org/\""
+},
+"ZEN-USD": {
+"desc": "Horizen (ZEN) is a cryptocurrency launched in 2017. Horizen has a current supply of 21,000,000 with 18,177,613.58666088 in circulation. The last known price of Horizen is 4.13388125 USD and is down -2.09 over the last 24 hours. It is currently trading on 247 active market(s) with $10,440,628.92 traded over the last 24 hours. More information can be found at https://www.horizen.io/.",
+"site": "https://www.horizen.io/"
+},
+"HOT-USD": {
+"desc": "Hydro Protocol (HOT) is a cryptocurrency and operates on the Ethereum platform. Hydro Protocol has a current supply of 1,560,000,000 with 0 in circulation. The last known price of Hydro Protocol is 0.00090958 USD and is down -0.10 over the last 24 hours. It is currently trading on 17 active market(s) with $46,094.12 traded over the last 24 hours. More information can be found at https://hydroprotocol.io/.",
+"site": "\"https://hydroprotocol.io/\""
+},
+"DGB-USD": {
+"desc": "DigiByte (DGB) is a cryptocurrency launched in 2014. Users are able to generate DGB through the process of mining. DigiByte has a current supply of 18,368,482,380.920323. The last known price of DigiByte is 0.00243456 USD and is down -3.46 over the last 24 hours. It is currently trading on 173 active market(s) with $2,823,208.84 traded over the last 24 hours. More information can be found at https://digibyte.org/.",
+"site": "https://digibyte.org/"
+},
+"IOTX-USD": {
+"desc": "IoTeX (IOTX) is a cryptocurrency launched in 2018. IoTeX has a current supply of 9,441,368,502.27327779 with 9,441,368,497.55314465 in circulation. The last known price of IoTeX is 0.00267544 USD and is down -3.73 over the last 24 hours. It is currently trading on 278 active market(s) with $998,221.51 traded over the last 24 hours. More information can be found at https://www.iotex.io/.",
+"site": "https://www.iotex.io/"
+},
+"ONE-USD": {
+"desc": "BigONE Token (ONE) is a cryptocurrency launched in 2018and operates on the Ethereum platform. BigONE Token has a current supply of 8,584,171,727.14508873. The last known price of BigONE Token is 0.00055937 USD and is up 0.01 over the last 24 hours. It is currently trading on 14 active market(s) with $0.00 traded over the last 24 hours. More information can be found at https://big.one/.",
+"site": "\"https://big.one/\""
+},
+"CFX-USD": {
+"desc": "Conflux (CFX) is a cryptocurrency launched in 2020. Users are able to generate CFX through the process of mining. Conflux has a current supply of 5,221,756,396.61. The last known price of Conflux is 0.04425241 USD and is down -0.75 over the last 24 hours. It is currently trading on 270 active market(s) with $6,309,476.10 traded over the last 24 hours. More information can be found at https://confluxnetwork.org/.",
+"site": "https://confluxnetwork.org/"
+},
+"WOO-USD": {
+"desc": "WOO (WOO) is a cryptocurrency launched in 2020and operates on the Ethereum platform. WOO has a current supply of 1,888,782,088.2947378. The last known price of WOO is 0.01172595 USD and is down -0.34 over the last 24 hours. It is currently trading on 407 active market(s) with $1,354,036.04 traded over the last 24 hours. More information can be found at https://woo.org.",
+"site": "https://woo.org"
+},
+"GMT-USD": {
+"desc": "Gambit (GMT) is a cryptocurrency and operates on the BNB Smart Chain (BEP20) platform. Gambit has a current supply of 0. The last known price of Gambit is 0.69603835 USD and is up 1.92 over the last 24 hours. It is currently trading on 5 active market(s) with $0.00 traded over the last 24 hours. More information can be found at https://gambit.financial/."
+},
+"MASK-USD": {
+"desc": "NFTX Hashmasks Index (MASK) is a cryptocurrency . NFTX Hashmasks Index has a current supply of 177.97491356. The last known price of NFTX Hashmasks Index is 814.09692236 USD and is up 0.00 over the last 24 hours. It is currently trading on 1 active market(s) with $0.00 traded over the last 24 hours. More information can be found at https://nftx.org/#/fund/20."
+},
+"PEPE-USD": {
+"desc": "PEPEGOLD (PEPE) is a cryptocurrency and operates on the Ethereum platform. PEPEGOLD has a current supply of 10,000,000,000 with 0 in circulation. The last known price of PEPEGOLD is 0.0000062 USD and is up 0.00 over the last 24 hours. It is currently trading on 1 active market(s) with $0.00 traded over the last 24 hours. More information can be found at https://pepe.gold/.",
+"site": "https://pepe.gold/"
+},
+"SHIB-USD": {
+"desc": "Shiba Inu (SHIB) is a cryptocurrency launched in 2020and operates on the Ethereum platform. Shiba Inu has a current supply of 589,499,779,785,984.68389856 with 589,243,099,733,533.2400503 in circulation. The last known price of Shiba Inu is 0.0000043 USD and is down -1.01 over the last 24 hours. It is currently trading on 1057 active market(s) with $62,601,195.79 traded over the last 24 hours. More information can be found at https://shibatoken.com/.",
+"site": "https://shibatoken.com/"
+},
+"FLOKI-USD": {
+"desc": "FLOKI (FLOKI) is a cryptocurrency launched in 2021and operates on the Ethereum platform. FLOKI has a current supply of 9,648,255,571,993.83381329 with 9,567,591,538,143.29432261 in circulation. The last known price of FLOKI is 0.00002286 USD and is down -4.25 over the last 24 hours. It is currently trading on 703 active market(s) with $18,467,046.24 traded over the last 24 hours. More information can be found at https://floki.com/.",
+"site": "https://floki.com/"
+},
+"BONK-USD": {
+"desc": "Bonk (BONK) is a cryptocurrency launched in 2022and operates on the Ethereum platform. Bonk has a current supply of 87,994,713,397,596.96875. The last known price of Bonk is 0.00000463 USD and is down -3.99 over the last 24 hours. It is currently trading on 827 active market(s) with $42,708,287.42 traded over the last 24 hours. More information can be found at https://www.bonkcoin.com/.",
+"site": "https://www.bonkcoin.com/"
+},
+"WIF-USD": {
+"desc": "dogwifhat (WIF) is a cryptocurrency and operates on the Solana platform. dogwifhat has a current supply of 998,838,981.424714. The last known price of dogwifhat is 0.16968628 USD and is down -2.78 over the last 24 hours. It is currently trading on 813 active market(s) with $45,041,697.03 traded over the last 24 hours. More information can be found at https://dogwifhat.us/.",
+"site": "https://dogwifhat.us/"
+},
+"TON-USD": {
+"desc": "TON Token (TON) is a cryptocurrency and operates on the Ethereum platform. TON Token has a current supply of 5,047,558,527.7 with 0 in circulation. The last known price of TON Token is 0.00593614 USD and is up 0.00 over the last 24 hours. It is currently trading on 28 active market(s) with $0.00 traded over the last 24 hours. More information can be found at https://toncommunity.org/.",
+"site": "https://toncommunity.org/"
+},
+"CKB-USD": {
+"desc": "Nervos Network (CKB) is a cryptocurrency . Users are able to generate CKB through the process of mining. Nervos Network has a current supply of 49,909,289,708.16530086 with 49,084,389,789.25151379 in circulation. The last known price of Nervos Network is 0.00092256 USD and is down -2.96 over the last 24 hours. It is currently trading on 189 active market(s) with $2,661,934.78 traded over the last 24 hours. More information can be found at http://nervos.org/.",
+"site": "http://nervos.org/"
+},
+"AR-USD": {
+"desc": "Arweave (AR) is a cryptocurrency launched in 2018. Arweave has a current supply of 65,652,466. The last known price of Arweave is 1.98391582 USD and is down -1.43 over the last 24 hours. It is currently trading on 244 active market(s) with $10,534,994.50 traded over the last 24 hours. More information can be found at https://www.arweave.org.",
+"site": "https://www.arweave.org"
+},
+"OSMO-USD": {
+"desc": "Osmosis (OSMO) is a cryptocurrency launched in 2021. Osmosis has a current supply of 976,430,753.245137 with 780,045,218.42733 in circulation. The last known price of Osmosis is 0.03659389 USD and is down -0.86 over the last 24 hours. It is currently trading on 445 active market(s) with $2,702,425.54 traded over the last 24 hours. More information can be found at https://osmosis.zone/.",
+"site": "https://osmosis.zone/"
+}
+}

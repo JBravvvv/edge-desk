@@ -169,6 +169,21 @@ function useLiveData() {
   return { ...d, busy, refresh };
 }
 
+/* Company/coin descriptions are static (they don't change intraday), so they
+   ship bundled with the app and load once. Keyed by ticker; coins use SYM-USD. */
+function useDescriptions() {
+  const [map, setMap] = useState({});
+  useEffect(() => {
+    let live = true;
+    fetch("descriptions.json", { cache: "force-cache" })
+      .then((r) => (r.ok ? r.json() : {}))
+      .then((j) => { if (live && j && typeof j === "object") setMap(j); })
+      .catch(() => {});
+    return () => { live = false; };
+  }, []);
+  return map;
+}
+
 /* Build a ticker→price map from whatever the live feed carries. */
 const livePriceMap = (live) => {
   const map = {};
@@ -215,6 +230,7 @@ function EdgeDesk() {
   const [loaded, setLoaded] = useState(false);
   const [positions, setPositions] = useState(SEED_POSITIONS);
   const live = useLiveData();
+  const descriptions = useDescriptions();
   const priceMap = livePriceMap(live);
 
   useEffect(() => {
@@ -309,7 +325,7 @@ function EdgeDesk() {
         {tab === "about" && <About go={go} />}
       </main>
 
-      {sel && <DetailView sel={sel} live={live} strat={strat} onClose={() => setSel(null)} onLog={logTrade} />}
+      {sel && <DetailView sel={sel} live={live} strat={strat} desc={descriptions[sel.crypto ? `${sel.t}-USD` : (sel.t || "").toUpperCase()] || null} onClose={() => setSel(null)} onLog={logTrade} />}
 
       <nav className="tabbar">
         {BAR.map(([k, l, Icon]) => (
@@ -424,18 +440,33 @@ function Signals({ onLog, priceMap = {}, mode = "stocks", live = {}, strat = "lo
       </div>
     );
   }
-  const rows = rankedSignals();
+  // Hand-verified entry/stop/thesis for the curated names, keyed by ticker.
+  const PLAN = Object.fromEntries(SIGNALS.map((s) => [s.ticker, s]));
+  const liveCalls = live.calls || [];
+  const ord = { BUY: 0, WATCH: 1, AVOID: 2 };
+  const horizonLabel = strat === "short" ? "Day-trade" : "Long-term";
+  // Prefer the live, strategy-aware feed (differs by day-trade vs long-term);
+  // fall back to the static curated list only when live data hasn't loaded.
+  const rows = liveCalls.length
+    ? [...liveCalls]
+        .sort((a, b) => { const pa = pick(a, strat), pb = pick(b, strat); return (ord[pa.v] ?? 1) - (ord[pb.v] ?? 1) || (pb.s - pa.s); })
+        .slice(0, 40)
+        .map((c) => { const P = pick(c, strat), plan = PLAN[c.t] || {}; return {
+          ticker: c.t, name: c.name || plan.name || c.t, theme: plan.theme || c.setup || "",
+          verdict: P.v, score: P.s, reason: P.w || plan.reason || c.why || "",
+          price: c.p, entry: plan.entry || null, stop: plan.stop || null, live: true }; })
+    : rankedSignals().map((s) => ({ ...s, live: false }));
   return (
     <div className="wrap">
       <div className="page-head">
         <div>
           <h1 className="page-title">Signals</h1>
-          <p className="page-sub">Ranked buy / watch / avoid, generated for you. Prices refresh live through the day; the entry, stop and thesis are hand-verified as of {ASOF}.</p>
+          <p className="page-sub">Ranked buy / watch / avoid, generated for you — <strong>{horizonLabel}</strong> view. Prices and scores refresh live through the day; entry, stop and thesis for the flagged names are hand-verified as of {ASOF}. Tap any name for detail.</p>
         </div>
       </div>
       <div className="sig-list">
         {rows.map((s) => {
-          const v = VERDICT[s.verdict];
+          const v = VERDICT[s.verdict] || VERDICT.WATCH;
           const lp = priceMap[s.ticker];
           const px = lp || s.price;
           const hasPlan = !!(s.entry && s.stop);
@@ -451,7 +482,7 @@ function Signals({ onLog, priceMap = {}, mode = "stocks", live = {}, strat = "lo
                 <span className="sig-co">{s.name}</span>
                 <span className="sig-gem"><b className="num" style={{ color: v.color }}>{s.score}</b><span>/10</span></span>
               </div>
-              <span className="sig-theme">{s.theme}</span>
+              {s.theme && <span className="sig-theme">{s.theme}</span>}
               <div className="sig-levels">
                 <div className="sig-lev"><span className="sig-lk">{lp ? "Now" : "Price"}</span><b className="num sig-lv">{usd0(px)}{lp && <span className="sig-livedot" />}</b></div>
                 <div className="sig-lev"><span className="sig-lk">Entry zone</span><b className="num sig-lv" style={{ color: s.entry ? "var(--brand)" : "var(--ink2)" }}>{s.entry ? `${usd0(s.entry[0])}–${usd0(s.entry[1])}` : "—"}</b></div>
@@ -465,7 +496,7 @@ function Signals({ onLog, priceMap = {}, mode = "stocks", live = {}, strat = "lo
                 </div>
               )}
               <p className="sig-reason">{s.reason}</p>
-              <button className="btn-ghost sig-log" onClick={(e) => { e.stopPropagation(); onLog(s); }}>Log this trade →</button>
+              <button className="btn-ghost sig-log" onClick={(e) => { e.stopPropagation(); onLog({ ticker: s.ticker, name: s.name, entry: s.entry, price: Number(px) || 0 }); }}>Log this trade →</button>
             </div>
           );
         })}
@@ -801,7 +832,7 @@ function MarketGauge({ market, label }) {
   );
 }
 
-function DetailView({ sel, live, strat, onClose, onLog }) {
+function DetailView({ sel, live, strat, desc, onClose, onLog }) {
   const feed = sel.crypto ? ((live.crypto && live.crypto.calls) || []) : (live.calls || []);
   const c = feed.find((x) => (x.t || "").toUpperCase() === (sel.t || "").toUpperCase());
   const fmt = sel.crypto ? cUsd : usd0;
@@ -845,6 +876,20 @@ function DetailView({ sel, live, strat, onClose, onLog }) {
               <span className="detail-why-k">{strat === "short" ? "Short-term read" : "Long-term read"}</span>
               <p>{p.w || "—"}.</p>
             </div>
+            {desc && desc.desc && (
+              <div className="card card-pad detail-about">
+                <div className="detail-about-head">
+                  <span className="detail-why-k">About {c.name || sel.t}</span>
+                  {(desc.sector || desc.industry) && (
+                    <div className="detail-tags">
+                      {desc.sector && <span className="detail-tag">{desc.sector}</span>}
+                      {desc.industry && desc.industry !== desc.sector && <span className="detail-tag">{desc.industry}</span>}
+                    </div>
+                  )}
+                </div>
+                <p className="detail-about-body">{desc.desc}</p>
+              </div>
+            )}
             <button className="btn btn-block" onClick={() => { onLog({ ticker: c.t, name: c.name, entry: null, price: Number(c.p) || 0 }); onClose(); }}>Log this trade →</button>
             <p className="hint-note">Informational only — not investment advice. Prices refresh through the day.</p>
           </div>
@@ -1260,6 +1305,11 @@ const CSS = `
 .detail-why{ margin-top:4px; }
 .detail-why-k{ font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--brand); }
 .detail-why p{ font-size:14px; line-height:1.55; color:var(--ink); margin:6px 0 0; }
+.detail-about{ margin-top:4px; }
+.detail-about-head{ display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+.detail-tags{ display:flex; gap:6px; flex-wrap:wrap; }
+.detail-tag{ font-size:11px; font-weight:600; color:var(--ink2); background:var(--wash,#F1EFEA); border:1px solid var(--line,#E6E2D9); border-radius:999px; padding:3px 9px; white-space:nowrap; }
+.detail-about-body{ font-size:14px; line-height:1.62; color:var(--ink); margin:9px 0 0; }
 @media (max-width:400px){ .detail-stats{ grid-template-columns:repeat(2,1fr); } }
 `;
 
