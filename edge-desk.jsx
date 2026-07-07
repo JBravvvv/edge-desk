@@ -15,8 +15,6 @@ const NAV = [
   ["analyst", "Analyst"],
 ];
 
-const ASOF = "Jun 29, 2026";
-
 /* My ranked calls (a snapshot — the advisor script refreshes these live). */
 const SIGNALS = [
   { ticker: "GEV", name: "GE Vernova", theme: "Power · grid · nuclear", verdict: "BUY", score: 8, price: 1100, entry: [1010, 1060], stop: 945,
@@ -142,6 +140,15 @@ const fmtClock = (iso) => {
   let h = d.getHours(); const m = String(d.getMinutes()).padStart(2, "0");
   const ap = h >= 12 ? "p" : "a"; h = h % 12 || 12;
   return `${h}:${m}${ap}`;
+};
+
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+/* "Jul 7, 2026" from the live feed's timestamp, falling back to today so the
+   app's date always reflects the current market day rather than a frozen label. */
+const fmtDate = (iso) => {
+  let d = iso ? new Date(iso) : null;
+  if (!d || isNaN(d)) d = new Date();
+  return `${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
 };
 
 function useLiveData() {
@@ -402,6 +409,7 @@ export default function EdgeDesk() {
 /* ======================= overview ======================= */
 function Overview({ regime, go, live = {}, mode = "stocks", strat = "long", onOpen }) {
   const isCrypto = mode === "crypto";
+  const asOf = fmtDate(live.updated);
   const feed = isCrypto ? ((live.crypto && live.crypto.calls) || []) : (live.calls || []);
   const ord = { BUY: 0, WATCH: 1, AVOID: 2 };
   const ranked = [...feed].sort((a, b) => { const pa = pick(a, strat), pb = pick(b, strat); return (ord[pa.v] ?? 1) - (ord[pb.v] ?? 1) || (pb.s - pa.s); });
@@ -428,7 +436,7 @@ function Overview({ regime, go, live = {}, mode = "stocks", strat = "long", onOp
 
       <div className="wrap">
         {market && <MarketGauge market={market} label={isCrypto ? "Crypto" : "Market"} />}
-        <Section eyebrow="Top calls" title={isCrypto ? "Top crypto right now" : "Highest-conviction names"} date={isCrypto ? null : ASOF} sub={`Strongest ${strat === "short" ? "short-term" : "long-term"} setups right now. Tap any name for detail.`}>
+        <Section eyebrow="Top calls" title={isCrypto ? "Top crypto right now" : "Highest-conviction names"} date={isCrypto ? null : asOf} sub={`Strongest ${strat === "short" ? "short-term" : "long-term"} setups right now. Tap any name for detail.`}>
           <div className="tops">
             {buys.length === 0 && <Empty>No standout {isCrypto ? "coins" : "names"} right now — the ranking refreshes through the day.</Empty>}
             {buys.map((s) => { const vm = VERDICT[s.verdict] || VERDICT.BUY; return (
@@ -442,7 +450,7 @@ function Overview({ regime, go, live = {}, mode = "stocks", strat = "long", onOp
         </Section>
 
         {!isCrypto && (<>
-        <Section eyebrow="Macro" title="The regime" date={ASOF} sub="My current read on the forces framing every call — read-only, not a guess you adjust. It updates when the analysis refreshes.">
+        <Section eyebrow="Macro" title="The regime" date={asOf} sub="My current read on the forces framing every call — read-only, not a guess you adjust. It updates when the analysis refreshes.">
           <div className="macro-grid">
             {SEED_MACRO.map((m) => { const meta = STATE_META[m.state]; return (
               <div key={m.id} className="card macro-card" style={{ borderTopColor: meta.color }}>
@@ -472,6 +480,7 @@ function Overview({ regime, go, live = {}, mode = "stocks", strat = "long", onOp
 
 /* ======================= signals ======================= */
 function Signals({ onLog, priceMap = {}, mode = "stocks", live = {}, strat = "long", onOpen }) {
+  const asOf = fmtDate(live.updated);
   if (mode === "crypto") {
     const ordc = { BUY: 0, WATCH: 1, AVOID: 2 };
     const crows = [...((live.crypto && live.crypto.calls) || [])].sort((a, b) => { const pa = pick(a, strat), pb = pick(b, strat); return (ordc[pa.v] ?? 1) - (ordc[pb.v] ?? 1) || (pb.s - pa.s); }).slice(0, 40);
@@ -522,7 +531,7 @@ function Signals({ onLog, priceMap = {}, mode = "stocks", live = {}, strat = "lo
       <div className="page-head">
         <div>
           <h1 className="page-title">Signals</h1>
-          <p className="page-sub">Ranked buy / watch / avoid, generated for you — <strong>{horizonLabel}</strong> view. Prices and scores refresh live through the day; entry, stop and thesis for the flagged names are hand-verified as of {ASOF}. Tap any name for detail.</p>
+          <p className="page-sub">Ranked buy / watch / avoid, generated for you — <strong>{horizonLabel}</strong> view. Prices and scores refresh live through the day; entry, stop and thesis for the flagged names are hand-verified. Data as of {asOf}. Tap any name for detail.</p>
         </div>
       </div>
       <div className="sig-list">
